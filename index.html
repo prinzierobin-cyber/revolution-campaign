@@ -1,0 +1,1798 @@
+<title>REVOLUTION — No Permission Needed | KOMONO 2026</title>
+<style>
+  :root {
+    --ground: #080808;
+    --surface: #0E0E0E;
+    --text: #F0EEE6;
+    --muted: rgba(240,238,230,0.42);
+    --accent: #FF1F8E;
+    --acid: #C8FF00;
+    --border: rgba(240,238,230,0.09);
+    --spine: rgba(255,31,142,0.25);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPE ROLES ───────────────────────────────── */
+  .d { /* display / condensed-impact */
+    font-family: Impact, 'Arial Narrow', 'Haettenschweiler', 'Franklin Gothic Heavy', 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+  }
+  .mono {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.13em;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV ──────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 56px;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+  .nav-tag { color: var(--accent); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* ── HERO ─────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 56px 64px;
+    position: relative;
+    overflow: hidden;
+    background: var(--ground);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before { content:''; width:36px; height:1px; background:var(--accent); display:block; }
+
+  .hero-title {
+    font-size: clamp(88px, 17.5vw, 280px);
+    color: var(--text);
+    animation: glitch 7s infinite;
+    position: relative;
+    display: block;
+  }
+
+  @keyframes glitch {
+    0%,85%,100% { text-shadow: none; clip-path: none; }
+    87%  { text-shadow: -4px 0 var(--accent), 4px 0 var(--acid); }
+    88%  { text-shadow: 4px 0 var(--accent), -4px 0 var(--acid); clip-path: polygon(0 20%,100% 20%,100% 40%,0 40%); }
+    89%  { text-shadow: none; clip-path: none; }
+    91%  { text-shadow: -6px 0 var(--acid), 6px 0 var(--accent); clip-path: polygon(0 60%,100% 60%,100% 75%,0 75%); }
+    92%  { text-shadow: none; clip-path: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title { animation: none; }
+    .timeline-spine::after { animation: none; }
+    .scroll-tick::after { animation: none; }
+  }
+
+  .hero-sub {
+    font-size: clamp(28px, 5.5vw, 88px);
+    color: var(--accent);
+    margin-top: 6px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 56px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .hero-meta-item strong { display:block; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); margin-bottom:4px; }
+  .hero-meta-item span { font-size:13px; color:var(--muted); }
+
+  .scroll-tick {
+    position:absolute; right:56px; bottom:60px;
+    writing-mode:vertical-rl;
+    font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--muted); display:flex; align-items:center; gap:10px;
+  }
+  .scroll-tick::after {
+    content:''; width:1px; height:56px; background:var(--muted);
+    animation: breathe 2.2s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100%{opacity:0.25} 50%{opacity:1} }
+
+  /* ── MANIFESTO BAND ───────────────────────────── */
+  .manifesto-band {
+    background: var(--accent);
+    padding: 72px 56px;
+  }
+  .manifesto-band-inner {
+    max-width: 1380px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .manifesto-pull {
+    font-size: clamp(26px, 3.5vw, 52px);
+    color: #080808;
+    line-height: 1.1;
+  }
+  .manifesto-body { font-size: 15px; line-height: 1.75; color: rgba(8,8,8,0.72); }
+  .manifesto-body p + p { margin-top: 14px; }
+
+  /* ── WRAPPER ──────────────────────────────────── */
+  .wrap { max-width: 1380px; margin: 0 auto; padding: 0 56px; }
+  .section-pad { padding-top: 120px; padding-bottom: 120px; }
+
+  .section-hd {
+    display: flex; align-items: baseline; gap: 20px;
+    border-bottom: 1px solid var(--border); padding-bottom: 28px; margin-bottom: 80px;
+  }
+  .section-idx { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+  .section-name { font-size: clamp(32px, 4.5vw, 64px); line-height: 1; }
+
+  /* ── TIMELINE ─────────────────────────────────── */
+  .tl-wrap { position: relative; padding-left: 72px; }
+
+  .tl-spine {
+    position: absolute; left: 18px; top: 0; bottom: 0;
+    width: 1px; background: var(--spine); overflow: hidden;
+  }
+  .tl-spine::after {
+    content:''; position:absolute; left:0; top:-140px; width:1px; height:140px;
+    background: linear-gradient(to bottom, transparent, var(--accent) 50%, transparent);
+    animation: flowDown 3.5s linear infinite;
+  }
+  @keyframes flowDown { to { top: 105%; } }
+
+  .phase { position: relative; padding-bottom: 88px; }
+  .phase:last-child { padding-bottom: 0; }
+
+  .phase-dot {
+    position: absolute; left: -72px; top: 14px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 14px var(--accent);
+    transform: translateX(-4px);
+  }
+  .phase-dot.done { background: var(--acid); box-shadow: 0 0 14px var(--acid); }
+
+  .phase-ghost {
+    font-size: 160px; font-family: Impact, sans-serif; text-transform: uppercase;
+    color: var(--acid); opacity: 0.05; position: absolute;
+    right: 0; top: -28px; line-height: 1; user-select: none; pointer-events: none;
+  }
+
+  .phase-hd {
+    display: grid; grid-template-columns: 180px 1fr; gap: 48px; margin-bottom: 36px;
+  }
+  .phase-month { font-size: clamp(52px, 7vw, 88px); }
+
+  .phase-id {
+    border-left: 2px solid var(--accent); padding-left: 28px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .phase-tag { color: var(--accent); display:block; margin-bottom:6px; }
+  .phase-title { font-size: clamp(26px, 3vw, 44px); margin-bottom: 10px; }
+  .phase-obj { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  .phase-cols {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 1px solid var(--border); margin-top: 36px;
+  }
+  .phase-col {
+    padding: 32px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .phase-col:last-child { border-right: none; }
+  .phase-col-lbl {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--acid); margin-bottom: 14px;
+    font-family: 'Courier New', monospace;
+  }
+  .phase-col-body { font-size: 13px; line-height: 1.7; color: var(--text); }
+  .phase-col-body ul { list-style: none; }
+  .phase-col-body li { padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .phase-col-body li::before { content:'→ '; color:var(--accent); }
+  .phase-col-body li:last-child { border-bottom: none; }
+
+  .unlock-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-top: 36px;
+    border: 1px solid rgba(255,31,142,0.35); padding: 10px 20px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-family: 'Courier New', monospace;
+    transition: border-color 0.2s;
+  }
+  .unlock-tag:hover { border-color: var(--accent); }
+  .unlock-tag::after { content: '↓'; font-size: 14px; }
+
+  /* ── JOURNEY ──────────────────────────────────── */
+  .journey-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; background: var(--border);
+  }
+  .journey-grid + .journey-grid { margin-top: 1px; }
+
+  .j-step {
+    background: var(--surface); padding: 40px 28px;
+    position: relative;
+  }
+  .j-num {
+    font-family: Impact, sans-serif; font-size: 72px;
+    color: var(--acid); opacity: 0.1; line-height: 1; margin-bottom: 14px;
+  }
+  .j-action { font-size: clamp(15px, 1.6vw, 20px); font-weight: 500; line-height: 1.25; margin-bottom: 8px; }
+  .j-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .j-arrow {
+    position: absolute; right: -12px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent); font-size: 18px; z-index: 1;
+    background: var(--surface); padding: 2px;
+  }
+
+  /* ── SOCIAL SERIES ────────────────────────────── */
+  .series-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: var(--border);
+  }
+  .series-card { background: var(--surface); padding: 64px 56px; }
+  .series-fmt { color: var(--acid); margin-bottom: 8px; }
+  .series-ttl { font-size: clamp(22px, 2.5vw, 36px); color: var(--accent); margin-bottom: 20px; }
+  .series-body { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .series-qs { margin-top: 32px; border-top: 1px solid var(--border); padding-top: 24px; list-style: none; }
+  .series-qs li {
+    font-size: 13px; padding: 10px 0; border-bottom: 1px solid var(--border);
+    color: var(--text); display: flex; align-items: flex-start; gap: 10px;
+  }
+  .series-qs li::before { content:'"'; color: var(--accent); font-size: 22px; font-family: Georgia,serif; line-height: 1; flex-shrink: 0; }
+  .series-qs li:last-child { border-bottom: none; }
+
+  /* ── EVENT ────────────────────────────────────── */
+  .event-bg { background: var(--surface); }
+
+  .ticket-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+  .ticket {
+    background: var(--ground); padding: 48px 40px; position: relative;
+  }
+  .ticket.feat { border-top: 2px solid var(--accent); }
+  .ticket-flag {
+    position: absolute; top: -1px; right: 32px;
+    background: var(--accent); color: #080808;
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-family: 'Courier New', monospace; padding: 4px 10px;
+  }
+  .ticket-price { font-size: clamp(44px, 6vw, 88px); line-height: 1; margin-bottom: 4px; }
+  .ticket-name { color: var(--accent); margin-bottom: 28px; }
+  .ticket-inc { list-style: none; border-top: 1px solid var(--border); padding-top: 20px; }
+  .ticket-inc li {
+    font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border);
+    color: var(--muted); display: flex; align-items: center; gap: 10px;
+  }
+  .ticket-inc li::before { content: '✓'; color: var(--acid); font-weight: bold; flex-shrink: 0; }
+  .ticket-inc li:last-child { border-bottom: none; }
+
+  .grandma-box {
+    background: var(--accent); padding: 48px 40px; margin-top: 2px;
+  }
+  .grandma-box-ttl { font-size: clamp(20px, 2.5vw, 32px); color: #080808; margin-bottom: 14px; }
+  .grandma-box-body { font-size: 14px; line-height: 1.75; color: rgba(8,8,8,0.78); }
+
+  .exp-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0; background: var(--border); margin-top: 48px;
+  }
+  .exp-item { background: var(--surface); padding: 28px 24px; border-right: 1px solid var(--border); }
+  .exp-item:last-child { border-right: none; }
+  .exp-num { font-size: 9px; letter-spacing: 0.18em; color: var(--acid); margin-bottom: 10px; font-family: 'Courier New',monospace; }
+  .exp-name { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .exp-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── METRICS ──────────────────────────────────── */
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; border: 1px solid var(--border);
+  }
+  .metric-cat {
+    padding: 48px 36px;
+    border-right: 1px solid var(--border);
+  }
+  .metric-cat:last-child { border-right: none; }
+  .metric-cat-name { font-size: clamp(24px, 2.5vw, 36px); color: var(--accent); margin-bottom: 28px; }
+  .metric-item {
+    padding: 13px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; color: var(--muted);
+  }
+  .metric-item:last-child { border-bottom: none; }
+
+  /* ── CLOSE ────────────────────────────────────── */
+  .close-sec {
+    min-height: 85vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 120px 56px; background: var(--ground);
+    position: relative; overflow: hidden;
+  }
+  .close-tag { color: var(--accent); display: flex; align-items: center; gap: 14px; }
+  .close-tag::before { content:''; width:36px; height:1px; background:var(--accent); display:block; }
+  .close-quote {
+    font-size: clamp(26px, 4.5vw, 64px); line-height: 1.15;
+    max-width: 880px; margin: 52px 0;
+  }
+  .close-wordmark {
+    font-size: clamp(64px, 14vw, 220px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(240,238,230,0.1);
+    position: absolute; bottom: 56px; right: 56px; line-height: 1;
+    pointer-events: none; user-select: none;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────── */
+  @media (max-width: 960px) {
+    nav, .hero, .manifesto-band, .close-sec { padding-left: 24px; padding-right: 24px; }
+    .wrap { padding: 0 24px; }
+    .manifesto-band-inner { grid-template-columns: 1fr; gap: 36px; }
+    .phase-hd { grid-template-columns: 1fr; gap: 20px; }
+    .phase-cols { grid-template-columns: 1fr; }
+    .phase-col { border-right: none; border-bottom: 1px solid var(--border); }
+    .phase-col:last-child { border-bottom: none; }
+    .journey-grid { grid-template-columns: 1fr 1fr; }
+    .series-row { grid-template-columns: 1fr; }
+    .ticket-pair { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr 1fr; }
+    .exp-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .metric-cat:nth-child(2) { border-right: none; }
+    .metric-cat:nth-child(3) { border-top: 1px solid var(--border); }
+    .tl-wrap { padding-left: 40px; }
+    .phase-dot { left: -40px; }
+    .scroll-tick { display: none; }
+    .close-wordmark { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .journey-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .metric-cat { border-right: none; border-bottom: 1px solid var(--border); }
+    .metric-cat:last-child { border-bottom: none; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .j-arrow { display: none; }
+  }
+
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">KOMONO</a>
+  <span class="nav-tag mono">Campaign 2026 — Revolution</span>
+</nav>
+
+<!-- ════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="hero-eyebrow mono">KOMONO — Campaign Manifesto 2026</div>
+  <span class="d hero-title">Revolution</span>
+  <p class="d hero-sub">No Permission Needed.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <strong>Campaign Period</strong>
+      <span>January — June 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <strong>Phases</strong>
+      <span>06 Sequential Chapters</span>
+    </div>
+    <div class="hero-meta-item">
+      <strong>Peak Moment</strong>
+      <span>Revolution Party, May 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <strong>Core Principle</strong>
+      <span>The timeline IS the campaign</span>
+    </div>
+  </div>
+  <div class="scroll-tick mono">Scroll</div>
+</section>
+
+<!-- ════════════════════════════════════════ MANIFESTO BAND -->
+<section class="manifesto-band">
+  <div class="manifesto-band-inner">
+    <p class="d manifesto-pull">The most revolutionary thing a person can do today is live authentically.</p>
+    <div class="manifesto-body">
+      <p>After ODYSSEY, we discovered who we are. After SUPER NATURE, we found our connection to the world. REVOLUTION is the moment we stop asking for permission — not permission to dress differently, not permission to love differently, not permission to create differently.</p>
+      <p>This campaign doesn't just follow a calendar. Each phase creates the conditions for the next. Every activation unlocks the one that follows. The timeline is the story. The question creates the invitation. The invitation creates the playground. The playground creates the celebration.</p>
+      <p>The customer doesn't receive the campaign. They build it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ TRILOGY ARC -->
+<style>
+  .trilogy-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0; background: var(--border);
+  }
+  .tril-item {
+    padding: 56px 48px; background: var(--surface); position: relative;
+  }
+  .tril-item.current { background: var(--ground); border-top: 2px solid var(--accent); }
+  .tril-num { color: var(--muted); margin-bottom: 20px; }
+  .tril-name { font-size: clamp(40px, 5vw, 72px); margin-bottom: 20px; }
+  .tril-name.past-name { color: rgba(240,238,230,0.25); }
+  .tril-name.current-name { color: var(--text); }
+  .tril-line {
+    font-size: clamp(14px, 1.5vw, 18px); line-height: 1.5;
+  }
+  .tril-item.current .tril-line { color: var(--text); }
+  .tril-item:not(.current) .tril-line { color: var(--muted); }
+  .tril-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-family: 'Courier New', monospace; margin-top: 24px;
+  }
+  .tril-status.done { color: var(--muted); }
+  .tril-status.now { color: var(--accent); }
+  .tril-status.now::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); display:block; }
+  .tril-connector {
+    font-size: clamp(28px, 3vw, 44px); color: rgba(255,31,142,0.2);
+    position: absolute; right: -18px; top: 50%; transform: translateY(-50%);
+    z-index: 1; background: var(--surface); padding: 0 4px; line-height: 1;
+  }
+  .tril-item.current .tril-connector { display: none; }
+  @media (max-width: 960px) {
+    .trilogy-grid { grid-template-columns: 1fr; }
+    .tril-connector { display: none; }
+  }
+</style>
+<div style="background:var(--surface);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">02</span>
+      <h2 class="d section-name">The Trilogy</h2>
+    </div>
+    <p style="color:var(--muted); font-size:16px; max-width:640px; margin-bottom:64px; line-height:1.7;">REVOLUTION doesn't arrive from nowhere. It's the third chapter of a campaign trilogy that has been building a philosophy for three years. Each campaign asked a different question about who we are. This one closes the loop.</p>
+    <div class="trilogy-grid">
+      <div class="tril-item">
+        <div class="tril-connector d">→</div>
+        <div class="mono tril-num">Chapter 01</div>
+        <h3 class="d tril-name past-name">ODYSSEY</h3>
+        <p class="tril-line">We set out to discover who we are. The journey was the campaign. Identity was the destination.</p>
+        <div class="tril-status done">Completed</div>
+      </div>
+      <div class="tril-item">
+        <div class="tril-connector d">→</div>
+        <div class="mono tril-num">Chapter 02</div>
+        <h3 class="d tril-name past-name">SUPER NATURE</h3>
+        <p class="tril-line">We discovered our connection — to ourselves, to each other, to the world around us. Belonging was the subject.</p>
+        <div class="tril-status done">Completed</div>
+      </div>
+      <div class="tril-item current">
+        <div class="mono tril-num" style="color:var(--accent);">Chapter 03</div>
+        <h3 class="d tril-name current-name">REVOLUTION</h3>
+        <p class="tril-line">We know who we are. We know where we belong. Now we stop asking for permission to be it. The trilogy completes here.</p>
+        <div class="tril-status now">2026 — Active</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ TIMELINE -->
+<div style="background:var(--ground);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">03</span>
+      <h2 class="d section-name">Campaign Timeline</h2>
+    </div>
+
+    <div class="tl-wrap">
+      <div class="tl-spine"></div>
+
+      <!-- ─ PHASE 01 ─────────────────── -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-ghost">01</div>
+        <div class="phase-hd">
+          <h3 class="d phase-month">JAN</h3>
+          <div class="phase-id">
+            <span class="mono phase-tag">Phase 01 / The Question</span>
+            <h4 class="d phase-title">Create Intrigue</h4>
+            <p class="phase-obj">Introduce the campaign philosophy before revealing the collection. Plant a question the audience can't ignore.</p>
+          </div>
+        </div>
+        <div class="phase-cols">
+          <div class="phase-col">
+            <div class="phase-col-lbl">Hero Social Series</div>
+            <div class="phase-col-body">
+              <p style="font-size:15px; margin-bottom:10px; color:var(--accent);">WHO GAVE YOU PERMISSION?</p>
+              <ul>
+                <li>Street interview format</li>
+                <li>Real people. No influencers</li>
+                <li>No scripts. Authentic answers</li>
+                <li>Mysterious campaign visuals</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">The Questions Asked</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>To dress like that?</li>
+                <li>To dye your hair?</li>
+                <li>To start your own business?</li>
+                <li>To become an artist?</li>
+                <li>To live this way?</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Content Output</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>TikTok series</li>
+                <li>Reels</li>
+                <li>Street photography</li>
+                <li>OOH graphics</li>
+                <li>Teaser posters</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="unlock-tag mono">Unlocks February: The Invitation</div>
+      </div>
+
+      <!-- ─ PHASE 02 ─────────────────── -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-ghost">02</div>
+        <div class="phase-hd">
+          <h3 class="d phase-month">FEB</h3>
+          <div class="phase-id">
+            <span class="mono phase-tag">Phase 02 / The Invitation</span>
+            <h4 class="d phase-title">Move Spectators to Participants</h4>
+            <p class="phase-obj">The REVOLUTION PACK ships to press, creators, influencers, and community. The campaign becomes something people can hold.</p>
+          </div>
+        </div>
+        <div class="phase-cols">
+          <div class="phase-col">
+            <div class="phase-col-lbl">PR Drop — Inside the Pack</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Mini paper t-shirt mockup</li>
+                <li>Mini paper sunglasses mockup</li>
+                <li>Sticker sheets — for both</li>
+                <li>Campaign graphics</li>
+                <li>Campaign manifesto</li>
+                <li>Eyewear charm set</li>
+                <li>QR code to upload</li>
+              </ul>
+              <p style="margin-top:10px; font-size:12px; color:var(--acid);">Two mockups. One pack. Endless combinations.</p>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">The Challenge — At Home</div>
+            <div class="phase-col-body">
+              <p style="margin-bottom:10px;">The pack is made to be taken home. No deadline. No event required. People sit at their kitchen table, in their room, with scissors and stickers — and make something. A mini paper t-shirt. A mini paper pair of sunglasses. Both come with sticker sheets. Stick them up, cut them out, mix them together, photograph the result. Everything in the pack is a material, not an instruction.</p>
+              <p style="margin-top:10px; color:var(--accent);">The campaign happens in living rooms, not just at events.</p>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">What Happens Next</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Creators begin sharing designs</li>
+                <li>First interpretations appear</li>
+                <li>Every result looks different</li>
+              </ul>
+              <p style="margin-top:10px; color:var(--acid); font-size:12px;">That's the point.</p>
+            </div>
+          </div>
+        </div>
+        <div class="unlock-tag mono">Unlocks March: The Playground</div>
+      </div>
+
+      <!-- ─ PHASE 03 ─────────────────── -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-ghost">03</div>
+        <div class="phase-hd">
+          <h3 class="d phase-month">MAR</h3>
+          <div class="phase-id">
+            <span class="mono phase-tag">Phase 03 / The Playground</span>
+            <h4 class="d phase-title">Scale Participation</h4>
+            <p class="phase-obj">REVOLUTION PACKS arrive in-store. The campaign enters physical retail. KPI is participation, not sales.</p>
+          </div>
+        </div>
+        <div class="phase-cols">
+          <div class="phase-col">
+            <div class="phase-col-lbl">Retail Activation</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Packs available in-store</li>
+                <li>Take home, create at own pace</li>
+                <li>Upload via QR code</li>
+                <li>Customisation wall in-store</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Launch Drop Weekend</div>
+            <div class="phase-col-body">
+              <p style="color:var(--accent); margin-bottom:10px;">The Grandma Station — in stores.</p>
+              <p>She personally presses shirts on the launch weekend. People who come to collect their pack meet her. The campaign's emotional core is present from day one in retail — not held back for the party.</p>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Social Shift</div>
+            <div class="phase-col-body">
+              <p>Submissions appear in feeds. People share their in-store moment with the grandma. The community starts creating the campaign themselves. The brand steps back. People step forward.</p>
+            </div>
+          </div>
+        </div>
+        <div class="unlock-tag mono">Unlocks April: The Selection</div>
+      </div>
+
+      <!-- ─ PHASE 04 ─────────────────── -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-ghost">04</div>
+        <div class="phase-hd">
+          <h3 class="d phase-month">APR</h3>
+          <div class="phase-id">
+            <span class="mono phase-tag">Phase 04 / The Selection</span>
+            <h4 class="d phase-title">Build Anticipation</h4>
+            <p class="phase-obj">Featured designs surface the people behind them. The community meets the creators. The party is announced.</p>
+          </div>
+        </div>
+        <div class="phase-cols">
+          <div class="phase-col">
+            <div class="phase-col-lbl">Community Voting</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Selected designs featured online</li>
+                <li>Community meets the designers</li>
+                <li>Not influencers — real people</li>
+                <li>Production begins</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Content Series: The Moment</div>
+            <div class="phase-col-body">
+              <p style="font-size:13px; margin-bottom:8px; color:var(--accent);">"When did you stop asking for permission?"</p>
+              <ul>
+                <li>15-second portrait format</li>
+                <li>Simple stories, raw</li>
+                <li>Design submitters featured</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Event Launch</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Revolution Party announced</li>
+                <li>Ticket sales open</li>
+                <li>€20 Entry / €35 Custom</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="unlock-tag mono">Unlocks May: The Celebration</div>
+      </div>
+
+      <!-- ─ PHASE 05 ─────────────────── -->
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-ghost">05</div>
+        <div class="phase-hd">
+          <h3 class="d phase-month">MAY</h3>
+          <div class="phase-id">
+            <span class="mono phase-tag">Phase 05 / The Celebration</span>
+            <h4 class="d phase-title">The Campaign Peak</h4>
+            <p class="phase-obj">The REVOLUTION PARTY. Outdoor. A beach or open-air location with a covered zone. Not a product launch, not a club night. A community gathering in a place that feels like it belongs to everyone.</p>
+          </div>
+        </div>
+        <div class="phase-cols">
+          <div class="phase-col">
+            <div class="phase-col-lbl">The Grandma Station</div>
+            <div class="phase-col-body">
+              <p>She was in stores in March. Now she's here. People who met her then recognise her now. That continuity turns a character into a symbol. Every winning shirt passes through her hands.</p>
+              <p style="margin-top:8px; color:var(--acid); font-size:12px;">Second appearance. Bigger stage.</p>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Event Experiences</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Customisation Lab</li>
+                <li>Community Portrait Studio</li>
+                <li>Revolution Photobooth</li>
+                <li>DJ Program</li>
+                <li>Creator Corner</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Social Peak</div>
+            <div class="phase-col-body">
+              <p>Thousands of UGC pieces generated in a single night. The community becomes the campaign's content department. Maximum organic reach.</p>
+            </div>
+          </div>
+        </div>
+        <div class="unlock-tag mono">Unlocks June: The Afterglow</div>
+      </div>
+
+      <!-- ─ PHASE 06 ─────────────────── -->
+      <div class="phase">
+        <div class="phase-dot done"></div>
+        <div class="phase-ghost">06</div>
+        <div class="phase-hd">
+          <h3 class="d phase-month">JUN</h3>
+          <div class="phase-id" style="border-color: var(--acid);">
+            <span class="mono phase-tag" style="color:var(--acid);">Phase 06 / The Afterglow</span>
+            <h4 class="d phase-title">Turn Attendees Into Advocates</h4>
+            <p class="phase-obj">The campaign continues without budget. Winning designs release. People wear shirts they designed themselves. The movement becomes self-sustaining.</p>
+          </div>
+        </div>
+        <div class="phase-cols">
+          <div class="phase-col">
+            <div class="phase-col-lbl">Content</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Party recap</li>
+                <li>Community portraits</li>
+                <li>Creator stories</li>
+                <li>Best designs featured</li>
+                <li>Behind the scenes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">Product</div>
+            <div class="phase-col-body">
+              <ul>
+                <li>Winning designs released</li>
+                <li>Limited edition drops</li>
+                <li>Community curates next</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-lbl">The Long Game</div>
+            <div class="phase-col-body">
+              <p>People wear shirts they designed. The shirts are walking content. The campaign has no clear end date.</p>
+              <p style="margin-top:10px; color:var(--acid); font-size:12px;">No permission needed to continue.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tl-wrap -->
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ CUSTOMER JOURNEY -->
+<div style="background:var(--surface);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">04</span>
+      <h2 class="d section-name">Customer Journey</h2>
+    </div>
+    <p style="color:var(--muted); font-size:16px; max-width:580px; margin-bottom:56px; line-height:1.7;">A person can enter at any stage. The campaign is open at every door. The path moves them from observer to creator to community member — but it's never forced.</p>
+    <div class="journey-grid">
+      <div class="j-step">
+        <div class="j-num">01</div>
+        <div class="j-action">See a street interview</div>
+        <div class="j-desc">The question lands before the brand. Curiosity opens before loyalty.</div>
+        <span class="j-arrow">→</span>
+      </div>
+      <div class="j-step">
+        <div class="j-num">02</div>
+        <div class="j-action">Discover No Permission Needed</div>
+        <div class="j-desc">The philosophy resonates. They look for more.</div>
+        <span class="j-arrow">→</span>
+      </div>
+      <div class="j-step">
+        <div class="j-num">03</div>
+        <div class="j-action">Receive or collect a pack</div>
+        <div class="j-desc">The campaign becomes something physical in their hands.</div>
+        <span class="j-arrow">→</span>
+      </div>
+      <div class="j-step">
+        <div class="j-num">04</div>
+        <div class="j-action">Create a design</div>
+        <div class="j-desc">They stop watching. They start making. The first convert.</div>
+      </div>
+    </div>
+    <div class="journey-grid" style="margin-top:1px;">
+      <div class="j-step">
+        <div class="j-num">05</div>
+        <div class="j-action">Submit the design</div>
+        <div class="j-desc">A public act. They've put themselves in the campaign.</div>
+        <span class="j-arrow">→</span>
+      </div>
+      <div class="j-step">
+        <div class="j-num">06</div>
+        <div class="j-action">Attend the party</div>
+        <div class="j-desc">The campaign becomes community. Abstract becomes real.</div>
+        <span class="j-arrow">→</span>
+      </div>
+      <div class="j-step">
+        <div class="j-num">07</div>
+        <div class="j-action">Receive a custom shirt</div>
+        <div class="j-desc">A one-of-one object they made. The brand produced their vision.</div>
+        <span class="j-arrow">→</span>
+      </div>
+      <div class="j-step">
+        <div class="j-num">08</div>
+        <div class="j-action">Become part of the campaign</div>
+        <div class="j-desc">They wear it. They share it. They tell the story.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SOCIAL SERIES -->
+<div style="background:var(--ground);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">05</span>
+      <h2 class="d section-name">Social Content Series</h2>
+    </div>
+  </div>
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="series-row">
+      <div class="series-card">
+        <div class="mono series-fmt">Hero Series / Jan–May</div>
+        <h3 class="d series-ttl">WHO GAVE YOU PERMISSION?</h3>
+        <p class="series-body">Street interview format. A simple question with no wrong answer. Real people, no influencers, no scripts. Every answer is a different definition of revolution — and every answer is the whole campaign.</p>
+        <ul class="series-qs">
+          <li>Who gave you permission to dress like that?</li>
+          <li>Who gave you permission to dye your hair?</li>
+          <li>Who gave you permission to start your own business?</li>
+          <li>Who gave you permission to become an artist?</li>
+          <li>Who gave you permission to live this way?</li>
+        </ul>
+      </div>
+      <div class="series-card">
+        <div class="mono series-fmt">Community Series / Apr–Jun</div>
+        <h3 class="d series-ttl">THE MOMENT</h3>
+        <p class="series-body">One question. 15-second stories. Raw, personal, human. "When did you stop asking for permission?" Design submitters become the natural cast — they're already invested. They're already part of the campaign.</p>
+        <ul class="series-qs">
+          <li>When I shaved my head.</li>
+          <li>When I left my corporate job.</li>
+          <li>When I came out.</li>
+          <li>When I stopped caring what people thought.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ DIGITAL PLAYGROUND -->
+<style>
+  .y2k-section {
+    background: var(--ground);
+    border-top: 1px solid var(--border);
+  }
+  .y2k-hero {
+    background: var(--surface);
+    padding: 64px 48px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+  .y2k-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(200,255,0,0.015) 3px,
+      rgba(200,255,0,0.015) 4px
+    );
+    pointer-events: none;
+  }
+  .y2k-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--acid); color: #080808;
+    font-family: 'Courier New', monospace; font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 6px 14px; margin-bottom: 28px;
+  }
+  .y2k-badge::before { content: '●'; font-size: 8px; animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @media (prefers-reduced-motion: reduce) { .y2k-badge::before { animation: none; } }
+
+  .y2k-title { font-size: clamp(32px, 4vw, 60px); margin-bottom: 20px; color: var(--text); }
+  .y2k-desc { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 680px; }
+
+  .y2k-features {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; background: var(--border);
+  }
+  .y2k-feat {
+    background: var(--ground); padding: 40px 36px;
+  }
+  .y2k-feat-icon {
+    font-size: 28px; margin-bottom: 16px; line-height: 1;
+    font-family: 'Courier New', monospace; color: var(--acid);
+    letter-spacing: -0.05em;
+  }
+  .y2k-feat-name { font-size: clamp(16px, 1.8vw, 22px); margin-bottom: 10px; }
+  .y2k-feat-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  .y2k-timing {
+    background: var(--accent); padding: 40px 48px; margin-top: 2px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .y2k-timing-txt { font-size: clamp(18px, 2.5vw, 28px); color: #080808; line-height: 1.2; }
+  .y2k-timing-meta { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(8,8,8,0.65); }
+
+  @media (max-width: 960px) { .y2k-features { grid-template-columns: 1fr; } }
+</style>
+<div class="y2k-section">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">06</span>
+      <h2 class="d section-name">The Digital Playground</h2>
+    </div>
+
+    <div class="y2k-hero">
+      <div class="y2k-badge">Launches with public drop — March 2026</div>
+      <h3 class="d y2k-title">A Landing Page Built Like the Internet in 2000.</h3>
+      <p class="y2k-desc">When the campaign goes public, a dedicated online playground launches alongside it. Designed entirely in a Y2K aesthetic — the chaotic, personalised, hyperlinked visual language of the early web. Animated GIFs. Neon on black. Under-construction banners. Guestbooks. The whole era. It's not nostalgia for its own sake. It's the campaign's digital proof of concept: self-expression existed long before algorithms, long before brand guidelines, long before anyone asked for permission to build a website that looked exactly how they wanted it to look.</p>
+    </div>
+
+    <div class="y2k-features">
+      <div class="y2k-feat">
+        <div class="y2k-feat-icon">✦ ✦ ✦</div>
+        <div class="d y2k-feat-name">Design Your Tee Online</div>
+        <p class="y2k-feat-body">A digital version of the paper mockup. Drag and drop stickers onto a t-shirt template. Apply graphics. Mix and match. Screenshot and share. The physical pack and the digital playground mirror each other — same objects, different surface. People who never received a pack can still participate.</p>
+      </div>
+      <div class="y2k-feat">
+        <div class="y2k-feat-icon">◈ ◈ ◈</div>
+        <div class="d y2k-feat-name">Design Your Frames Online</div>
+        <p class="y2k-feat-body">The REVOLUTION eyewear line available as a digital object. Choose your base frame, add charms, stack gems, attach pins. The same logic as the physical charm set, but playable instantly from any device. A preview before the real thing. A shareable image either way.</p>
+      </div>
+      <div class="y2k-feat">
+        <div class="y2k-feat-icon">★ NEW ★</div>
+        <div class="d y2k-feat-name">Submit &amp; Enter the Campaign</div>
+        <p class="y2k-feat-body">Every design submitted — whether from the physical pack or the digital playground — enters the same pool. The best go into production. The community votes. The winners meet the grandma. Online and offline participation are equal. No pack required to be part of this.</p>
+      </div>
+    </div>
+
+    <div class="y2k-timing">
+      <p class="d y2k-timing-txt">The Y2K aesthetic is not decoration. It is the argument. In 2000, anyone could build a site that looked exactly like themselves. That was the last time the internet felt genuinely personal. This campaign brings that energy back.</p>
+      <div>
+        <div class="y2k-timing-meta" style="color:rgba(8,8,8,0.5); margin-bottom:4px;">Goes live</div>
+        <div class="y2k-timing-meta">March 2026 — Public Launch</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ PRODUCT AS CANVAS -->
+<style>
+  /* ── Print swatches ── */
+  .prints-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 2px; background: var(--border); margin-bottom: 2px;
+  }
+  .print-card { display: flex; flex-direction: column; }
+  .print-swatch {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Pink Neon Tartan */
+  .swatch-tartan {
+    background: #FF1F8E;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(173,216,255,0.55) 18px, rgba(173,216,255,0.55) 22px),
+      repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(173,216,255,0.55) 18px, rgba(173,216,255,0.55) 22px),
+      repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(255,255,255,0.18) 6px, rgba(255,255,255,0.18) 8px),
+      repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(255,255,255,0.18) 6px, rgba(255,255,255,0.18) 8px);
+  }
+  /* Neon Pastel Tiger */
+  .swatch-tiger {
+    background: #F9E4C8;
+    background-image:
+      repeating-linear-gradient(
+        -55deg,
+        transparent 0px, transparent 8px,
+        rgba(255,120,20,0.85) 8px, rgba(255,120,20,0.85) 13px,
+        transparent 13px, transparent 24px,
+        rgba(255,80,0,0.6) 24px, rgba(255,80,0,0.6) 27px,
+        transparent 27px, transparent 36px
+      );
+  }
+  /* Neon Pastel Blue Cheetah */
+  .swatch-cheetah {
+    background: #D4F0FF;
+    background-image:
+      radial-gradient(ellipse 10px 6px at 20% 25%, rgba(30,120,220,0.75) 70%, transparent 100%),
+      radial-gradient(ellipse 6px 9px at 55% 15%, rgba(30,120,220,0.65) 70%, transparent 100%),
+      radial-gradient(ellipse 8px 5px at 75% 40%, rgba(30,120,220,0.7) 70%, transparent 100%),
+      radial-gradient(ellipse 11px 7px at 35% 60%, rgba(30,120,220,0.68) 70%, transparent 100%),
+      radial-gradient(ellipse 7px 10px at 80% 72%, rgba(30,120,220,0.72) 70%, transparent 100%),
+      radial-gradient(ellipse 9px 5px at 15% 80%, rgba(30,120,220,0.6) 70%, transparent 100%),
+      radial-gradient(ellipse 6px 8px at 60% 85%, rgba(30,120,220,0.65) 70%, transparent 100%);
+  }
+  /* Black White Zebra */
+  .swatch-zebra {
+    background: #F0EEE6;
+    background-image:
+      repeating-linear-gradient(
+        -70deg,
+        #080808 0px, #080808 10px,
+        transparent 10px, transparent 20px,
+        #080808 20px, #080808 26px,
+        transparent 26px, transparent 38px,
+        #080808 38px, #080808 42px,
+        transparent 42px, transparent 56px
+      );
+  }
+  .print-info {
+    background: var(--surface); padding: 24px 24px 28px;
+    flex: 1;
+  }
+  .print-name { font-size: clamp(14px, 1.5vw, 18px); margin-bottom: 6px; line-height: 1.1; }
+  .print-palette { font-size: 11px; color: var(--muted); font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
+
+  /* ── Philosophy strip ── */
+  .print-philosophy {
+    background: var(--ground);
+    border-top: 2px solid var(--accent);
+    padding: 72px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .phil-statement {
+    font-size: clamp(22px, 3vw, 40px);
+    line-height: 1.25;
+    color: var(--text);
+  }
+  .phil-statement em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .phil-body {
+    font-size: 14px; color: var(--muted); line-height: 1.8;
+  }
+  .phil-body p + p { margin-top: 14px; }
+  .phil-rule {
+    font-size: clamp(13px, 1.4vw, 16px); color: var(--text);
+    border-top: 1px solid var(--accent); padding-top: 20px; margin-top: 28px;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+  }
+
+  /* ── Garments ── */
+  .garments-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    background: var(--border); margin-top: 2px;
+  }
+  .garment-card { background: var(--surface); padding: 40px 40px; }
+  .garment-form { font-size: clamp(20px, 2.5vw, 32px); margin-bottom: 10px; }
+  .garment-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+  .garment-prints { display: flex; flex-wrap: wrap; gap: 6px; }
+  .garment-print-tag {
+    padding: 5px 12px; border: 1px solid var(--border);
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: 'Courier New', monospace; color: var(--text);
+  }
+
+  /* ── Eyewear ── */
+  .eyewear-block {
+    background: var(--ground); padding: 56px 48px;
+    border-top: 1px solid var(--border); margin-top: 2px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+  }
+  .eyewear-left { }
+  .eyewear-right { }
+  .eyewear-cat { color: var(--acid); margin-bottom: 8px; }
+  .eyewear-name { font-size: clamp(24px, 3vw, 44px); margin-bottom: 20px; }
+  .eyewear-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .eyewear-desc p + p { margin-top: 14px; }
+  .eyewear-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+  .e-tag { border: 1px solid var(--border); padding: 6px 14px; font-size: 11px; color: var(--text); letter-spacing: 0.08em; }
+  .e-tag.hot { border-color: var(--accent); color: var(--accent); }
+  .pack-note {
+    background: var(--surface); padding: 28px 32px; margin-top: 24px;
+    border-left: 2px solid var(--acid);
+  }
+  .pack-note-lbl { color: var(--acid); margin-bottom: 8px; }
+  .pack-note-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  @media (max-width: 960px) {
+    .prints-grid { grid-template-columns: 1fr 1fr; }
+    .print-philosophy { grid-template-columns: 1fr; gap: 40px; }
+    .garments-row { grid-template-columns: 1fr; }
+    .eyewear-block { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .prints-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+<div style="background:var(--surface);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">07</span>
+      <h2 class="d section-name">Product as Canvas</h2>
+    </div>
+    <p style="color:var(--muted); font-size:16px; max-width:640px; margin-bottom:64px; line-height:1.7;">Two product categories. Four prints. One shared language. The collection doesn't decorate the campaign — it is the campaign, made wearable.</p>
+  </div>
+
+  <!-- THE FOUR PRINTS -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="mono" style="color:var(--acid); margin-bottom:20px; font-size:9px; letter-spacing:0.2em;">The Prints — Apparel + Eyewear Collection</div>
+    <div class="prints-grid">
+      <div class="print-card">
+        <div class="print-info">
+          <div class="d print-name">Pink Neon Tartan</div>
+          <div class="print-palette">Neon hot pink / light blue grid</div>
+        </div>
+      </div>
+      <div class="print-card">
+        <div class="print-info">
+          <div class="d print-name">Neon Pastel Tiger</div>
+          <div class="print-palette">Burnt orange stripes / pastel cream base</div>
+        </div>
+      </div>
+      <div class="print-card">
+        <div class="print-info">
+          <div class="d print-name">Neon Pastel Blue Cheetah</div>
+          <div class="print-palette">Electric blue spots / pale sky base</div>
+        </div>
+      </div>
+      <div class="print-card">
+        <div class="print-info">
+          <div class="d print-name">Black &amp; White Zebra</div>
+          <div class="print-palette">High contrast / no colour / pure form</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT PHILOSOPHY -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="print-philosophy">
+      <div>
+        <p class="d phil-statement">Animal print is not a trend.<br>It is a <em>visual symbol</em> of authenticity.</p>
+        <p class="phil-rule">"They represent people who no longer hide, no longer blend in and no longer ask for permission to be themselves."</p>
+      </div>
+      <div class="phil-body">
+        <p>Animal prints were chosen not because they are rebellious, but because they symbolise instinctive self-expression. Throughout history they have been associated with confidence, visibility and individuality.</p>
+        <p>Within REVOLUTION they become a continuation of SUPER NATURE — carrying the power of nature into human expression. The trilogy closes here. ODYSSEY found identity. SUPER NATURE found connection to the natural world. REVOLUTION wears it.</p>
+        <p>Each print is a different kind of visibility. The zebra refuses to blend. The tiger moves with total conviction. The cheetah is the fastest version of itself. The tartan is structure made personal. Together they make a collection that doesn't ask whether the wearer fits in — it assumes they never wanted to.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE GARMENTS -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="garments-row">
+      <div class="garment-card">
+        <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 01</div>
+        <h4 class="d garment-form">Long Sleeve Tee</h4>
+        <p class="garment-desc">Full length. Maximum canvas. The oversized sleeve is the surface — where stickers go, where prints live, where the person shows up. Unisex fit, relaxed.</p>
+        <div class="garment-prints">
+          <div class="garment-print-tag">Pink Neon Tartan</div>
+          <div class="garment-print-tag">Neon Pastel Tiger</div>
+          <div class="garment-print-tag">Neon Pastel Blue Cheetah</div>
+          <div class="garment-print-tag">Black &amp; White Zebra</div>
+        </div>
+      </div>
+      <div class="garment-card">
+        <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 02</div>
+        <h4 class="d garment-form">Cropped Long Sleeve Tee</h4>
+        <p class="garment-desc">Same sleeve, shortened body. A different relationship to visibility. The crop is a statement in itself — worn with confidence, not apology. Available in all four prints.</p>
+        <div class="garment-prints">
+          <div class="garment-print-tag">Pink Neon Tartan</div>
+          <div class="garment-print-tag">Neon Pastel Tiger</div>
+          <div class="garment-print-tag">Neon Pastel Blue Cheetah</div>
+          <div class="garment-print-tag">Black &amp; White Zebra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EYEWEAR -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="eyewear-block">
+      <div class="eyewear-left">
+        <div class="mono eyewear-cat">Category 02 — New Line</div>
+        <h4 class="d eyewear-name">REVOLUTION Eyewear</h4>
+        <div class="eyewear-desc">
+          <p>The sunglasses collection is born from the same visual language as the apparel. Each frame references the animal print palette — not by printing the pattern on the frame, but by carrying its energy into the silhouette, the colour, the lens tint, and the customisation options.</p>
+          <p>The zebra's contrast lives in the black-and-white frames. The tiger's warmth in the amber lenses. The cheetah's speed in the sharp angles. The tartan's structure in the acetate colour blocking. The print doesn't have to be literal to be present.</p>
+          <p>Each frame ships as a base. Charms, gems, pins, and attachments complete it — making every pair a one-of-one. The eyewear is the campaign's most wearable proof of concept. The mini paper sunglasses in the pack are the first version. The real frame is what you earn by submitting.</p>
+        </div>
+        <div class="eyewear-tags">
+          <div class="e-tag hot">Charms</div>
+          <div class="e-tag hot">Gems</div>
+          <div class="e-tag hot">Pins</div>
+          <div class="e-tag hot">Attachments</div>
+          <div class="e-tag">Animal print colour palette</div>
+          <div class="e-tag">Customisation Lab at event</div>
+          <div class="e-tag">In-store from March</div>
+        </div>
+      </div>
+      <div class="eyewear-right">
+        <div class="pack-note">
+          <div class="mono pack-note-lbl">In the Revolution Pack</div>
+          <p class="pack-note-body">Mini paper t-shirt mockup + mini paper sunglasses mockup. Both come with sticker sheets from the print collection. People design both at home, photograph their paper creations, and submit. The paper versions are the rehearsal. They lower the barrier to zero — no real product required to participate, no store visit, no event. The campaign is playable the moment the pack lands.</p>
+        </div>
+        <div class="pack-note" style="margin-top:2px;">
+          <div class="mono pack-note-lbl">The Connection to SUPER NATURE</div>
+          <p class="pack-note-body">The eyewear collection closes the loop between campaigns. SUPER NATURE was about our connection to the natural world. REVOLUTION puts that world on your body — and on your face. The animal is not a costume. It's a continuation. The person wearing it has stopped pretending to be separate from the nature they came from.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ EVENT -->
+<style>
+  .location-block {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    background: var(--border); margin-bottom: 56px;
+  }
+  .loc-why {
+    background: var(--ground); padding: 56px 48px;
+    border-top: 2px solid var(--acid);
+  }
+  .loc-what {
+    background: var(--surface); padding: 56px 48px;
+  }
+  .loc-lbl { color: var(--acid); margin-bottom: 16px; }
+  .loc-ttl { font-size: clamp(24px, 3vw, 40px); margin-bottom: 20px; }
+  .loc-body { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .loc-body p + p { margin-top: 14px; }
+  .loc-spec { list-style: none; margin-top: 28px; border-top: 1px solid var(--border); padding-top: 24px; }
+  .loc-spec li {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; gap: 16px;
+  }
+  .loc-spec li:last-child { border-bottom: none; }
+  .loc-spec li strong { color: var(--text); flex-shrink: 0; }
+  .loc-spec li span { color: var(--muted); text-align: right; }
+  .trilogy-location {
+    background: var(--acid); padding: 40px 48px; margin-bottom: 2px;
+    display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center;
+  }
+  .trilogy-location-seq {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .seq-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 12px; font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em; color: rgba(8,8,8,0.55);
+  }
+  .seq-item.active { color: #080808; font-weight: bold; }
+  .seq-item::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(8,8,8,0.3); flex-shrink: 0;
+  }
+  .seq-item.active::before { background: #080808; }
+  .trilogy-location-copy { }
+  .trilogy-location-copy p { font-size: 14px; line-height: 1.75; color: rgba(8,8,8,0.78); }
+  .trilogy-location-copy p + p { margin-top: 10px; }
+  @media (max-width: 960px) {
+    .location-block { grid-template-columns: 1fr; }
+    .trilogy-location { grid-template-columns: 1fr; gap: 28px; }
+  }
+</style>
+<div class="event-bg">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">08</span>
+      <h2 class="d section-name">The Revolution Party</h2>
+    </div>
+    <p style="color:var(--muted); font-size:16px; max-width:680px; margin-bottom:56px; line-height:1.7;">May 2026. Outdoor. A beach or open-air location with a covered zone. Not a club. Not a warehouse. A place that feels like it belongs to everyone who shows up — because it does.</p>
+
+    <!-- LOCATION STRATEGY -->
+    <div class="trilogy-location">
+      <div class="trilogy-location-seq">
+        <div class="seq-item">ODYSSEY — [Location 01]</div>
+        <div class="seq-item">SUPER NATURE — [Location 02]</div>
+        <div class="seq-item active">REVOLUTION — Outdoor / Beach, May 2026</div>
+      </div>
+      <div class="trilogy-location-copy">
+        <p>Every KOMONO campaign launch has been defined as much by where it happened as by what happened. The location is not a backdrop — it becomes part of the campaign's identity. People remember the place. They reference it. The venue choice is a creative decision, not a logistical one.</p>
+        <p>REVOLUTION's outdoor setting continues that tradition while making the campaign's most important argument: this is not an exclusive event behind a guest list. The sky is the ceiling. The community is the guest list.</p>
+      </div>
+    </div>
+
+    <div class="location-block">
+      <div class="loc-why">
+        <div class="mono loc-lbl">Why Outdoor — The Strategic Decision</div>
+        <h4 class="d loc-ttl">Gen Z Doesn't Go to Clubs.</h4>
+        <div class="loc-body">
+          <p>That's not a criticism. It's a cultural fact that most brands are still getting wrong in 2026. The millennial generation built nightlife culture — the dark room, the velvet rope, the DJ booth as status symbol. Gen Z rejected it. They go to markets, parks, outdoor festivals, rooftop gatherings, beach hang-outs. They want to see each other's faces. They want natural light in their photos. They want to leave when they want to leave. They want the air to feel free.</p>
+          <p>A club venue for this campaign would contradict every word of the manifesto. No permission needed — and yet you need to be on the list, you need to look a certain way, you need to survive the queue. An outdoor location removes all of that. It is the venue choice as campaign statement.</p>
+          <p>Authentic experiences photograph differently too. Golden hour light on the beach creates content no studio can replicate. The community portraits from this event will circulate for months because they look like real life, not a production.</p>
+        </div>
+      </div>
+      <div class="loc-what">
+        <div class="mono loc-lbl">The Venue — What We Need</div>
+        <h4 class="d loc-ttl">Open Air. Covered Zone. Community Feel.</h4>
+        <div class="loc-body">
+          <p>Beach or open-air outdoor space as the main stage. The majority of the event lives outside — the DJ, the Grandma Station, the portrait studio, the photobooth. The covered zone handles what outdoor can't: the Customisation Lab, the production area, weather contingency, the quieter community spaces.</p>
+          <p>The covered area should not feel like a tent at a corporate event. It should feel like someone threw a tarpaulin over a creative space and filled it with people. The same DIY energy as the campaign itself.</p>
+        </div>
+        <ul class="loc-spec">
+          <li><strong>Main outdoor zone</strong><span>DJ stage, Grandma Station, portrait studio, photobooth</span></li>
+          <li><strong>Covered zone</strong><span>Customisation Lab, production, weather backup, Creator Corner</span></li>
+          <li><strong>Natural backdrop</strong><span>Beach / waterfront / open landscape — not urban concrete</span></li>
+          <li><strong>Capacity feel</strong><span>Intimate enough to feel community, big enough to peak</span></li>
+          <li><strong>Timing</strong><span>Late afternoon into evening — golden hour is non-negotiable</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ticket-pair">
+      <div class="ticket">
+        <h4 class="d ticket-price">€20</h4>
+        <p class="mono ticket-name">Revolution Entry</p>
+        <ul class="ticket-inc">
+          <li>Full party access</li>
+          <li>DJs &amp; live performances</li>
+          <li>Community activations</li>
+          <li>Revolution Photobooth</li>
+        </ul>
+      </div>
+      <div class="ticket feat">
+        <div class="ticket-flag mono">Full Experience</div>
+        <h4 class="d ticket-price">€35</h4>
+        <p class="mono ticket-name">Custom Ticket</p>
+        <ul class="ticket-inc">
+          <li>Full party access</li>
+          <li>One personalised T-shirt</li>
+          <li>Live production by The Grandma</li>
+          <li>Priority Customisation Lab</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grandma-box">
+      <h4 class="d grandma-box-ttl">Why the Grandma Works — and Why She Becomes an Icon</h4>
+      <p class="grandma-box-body">She is not a prop. She is not irony. She is the campaign's most honest proof of concept.</p>
+      <p class="grandma-box-body" style="margin-top:14px;">The entire campaign asks one question: who gave you permission? She answers it without saying a word. Pink hair. Her own style. Her own terms. Nobody handed her permission to look the way she looks, to show up the way she shows up, to press shirts at a youth campaign at her age — she simply never asked for it. That is the campaign. That is the whole campaign, standing in front of you.</p>
+      <p class="grandma-box-body" style="margin-top:14px;">She works because she is the most unexpected version of the campaign's audience. Everyone who walks through the door is there to express themselves — and then they see her, and they realise the campaign was never about youth. It was never about a generation. It was about a decision. A decision anyone can make at any age. The moment people understand that, the campaign becomes bigger than a product launch.</p>
+      <p class="grandma-box-body" style="margin-top:14px;">She appears twice. First in-store during the March launch weekend, pressing shirts and meeting people picking up their packs. Then at the Revolution Party in May, as the emotional centrepiece of the night. The repetition builds her into a character. By the party, people who met her in March will point her out. People who didn't will ask who she is. Both conversations are exactly what the campaign needs.</p>
+      <p class="grandma-box-body" style="margin-top:14px; font-weight:600; color:#080808;">She will be photographed thousands of times. She will be posted, shared, and remembered long after the event ends. Not because she was designed to go viral — but because she is genuinely, unmistakably herself. That is why she is an icon.</p>
+    </div>
+
+    <div class="exp-grid">
+      <div class="exp-item">
+        <div class="exp-num mono">01 — Outdoor</div>
+        <div class="exp-name">Grandma Station</div>
+        <div class="exp-desc">Live shirt pressing under open sky. The most photographed spot of the night.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-num mono">02 — Covered Zone</div>
+        <div class="exp-name">Customisation Lab</div>
+        <div class="exp-desc">T-shirts and REVOLUTION eyewear. Charms, gems, pins. Sheltered but open-sided.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-num mono">03 — Outdoor</div>
+        <div class="exp-name">Golden Hour Portraits</div>
+        <div class="exp-desc">Natural light. Beach or open-air backdrop. The content that circulates for months.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-num mono">04 — Outdoor</div>
+        <div class="exp-name">Revolution Photobooth</div>
+        <div class="exp-desc">Raw, open-air, no filter. Real environment. Real people. Real moment.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-num mono">05 — Main Stage</div>
+        <div class="exp-name">DJ Program</div>
+        <div class="exp-desc">Outdoor stage. Local community talent. The sun sets behind it. Iconic by design.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ METRICS -->
+<style>
+  .kpi-intro {
+    font-size: 16px; color: var(--muted); line-height: 1.75;
+    max-width: 680px; margin-bottom: 72px;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+  .kpi-card {
+    background: var(--surface);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .kpi-card-phase {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acid);
+    margin-bottom: 6px;
+  }
+  .kpi-card-name {
+    font-size: clamp(16px, 1.8vw, 22px);
+    font-family: Impact, 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .kpi-list {
+    list-style: none;
+    flex: 1;
+  }
+  .kpi-item {
+    border-top: 1px solid var(--border);
+    padding: 11px 0;
+  }
+  .kpi-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .kpi-how {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.04em;
+  }
+  .kpi-card.span2 {
+    grid-column: span 2;
+  }
+  .kpi-card.span2 .kpi-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+  }
+  .kpi-total {
+    background: var(--ground);
+    border-top: 2px solid var(--accent);
+    padding: 48px;
+    margin-top: 2px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .kpi-total-item {
+    padding: 0 32px 0 0;
+    border-right: 1px solid var(--border);
+  }
+  .kpi-total-item:first-child { padding-left: 0; }
+  .kpi-total-item:last-child { border-right: none; }
+  .kpi-total-label {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-family: 'Courier New', monospace; color: var(--muted); margin-bottom: 10px;
+  }
+  .kpi-total-metric { font-size: clamp(14px, 1.6vw, 18px); color: var(--text); line-height: 1.4; }
+  .kpi-total-how { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  @media (max-width: 960px) {
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-card.span2 { grid-column: span 2; }
+    .kpi-total { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+    .kpi-total-item { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+    .kpi-total-item:last-child { border-bottom: none; padding-bottom: 0; }
+  }
+  @media (max-width: 600px) {
+    .kpi-grid { grid-template-columns: 1fr; }
+    .kpi-card.span2 { grid-column: span 1; }
+    .kpi-card.span2 .kpi-list { grid-template-columns: 1fr; gap: 0; }
+    .kpi-total { grid-template-columns: 1fr; }
+  }
+</style>
+<div style="background:var(--ground);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">09</span>
+      <h2 class="d section-name">Measuring the Campaign</h2>
+    </div>
+    <p class="kpi-intro">Each output has its own success signal. These aren't vanity metrics grouped by category — they're the specific numbers that tell us whether each activation did what it was supposed to do. Measured per output. Reported per phase.</p>
+
+    <div class="kpi-grid">
+
+      <!-- STREET INTERVIEWS -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 01 — Jan → May</div>
+        <div class="kpi-card-name">Street Interviews<br>WHO GAVE YOU PERMISSION?</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Views per episode</div>
+            <div class="kpi-how">TikTok + Reels analytics, tracked per video</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Video completion rate</div>
+            <div class="kpi-how">% watching past 80% — signals genuine resonance</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Shares + saves</div>
+            <div class="kpi-how">Stronger signal than likes — people bookmarking or forwarding</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Profile visits from interviews</div>
+            <div class="kpi-how">Attribution via platform analytics — does the content drive discovery?</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- PR DROP -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 02 — Feb</div>
+        <div class="kpi-card-name">Revolution Pack<br>PR Drop</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Creator pick-up rate</div>
+            <div class="kpi-how">% of recipients who posted — packs sent ÷ posts generated</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Organic reach from creator posts</div>
+            <div class="kpi-how">Total impressions from all creator content, tracked via tagging</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Press pick-ups</div>
+            <div class="kpi-how">Articles, newsletters, features mentioning campaign or pack</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Design submissions from PR recipients</div>
+            <div class="kpi-how">QR code UTM tracking — did press/creators actually submit a design?</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RETAIL PACKS -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 03 — Mar</div>
+        <div class="kpi-card-name">Retail Activation<br>In-Store Packs</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Packs distributed</div>
+            <div class="kpi-how">Physical stock count per store — total packs taken</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">QR scan rate</div>
+            <div class="kpi-how">Pack scans ÷ packs distributed — how many actually engaged?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Store traffic lift — launch weekend</div>
+            <div class="kpi-how">Footfall vs same weekend prior year or rolling 4-week average</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Grandma Station visits in-store</div>
+            <div class="kpi-how">Shirts pressed = minimum floor for engagement during launch weekend</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- THE MOMENT -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 04 — Apr</div>
+        <div class="kpi-card-name">The Moment<br>Community Series</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Views per portrait</div>
+            <div class="kpi-how">Reels + TikTok analytics per episode — does this format travel?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Save rate</div>
+            <div class="kpi-how">Saves ÷ reach — the clearest signal that content felt personal</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Inbound DMs + story replies</div>
+            <div class="kpi-how">People sharing their own "moment" unprompted — qualitative signal</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Ticket clicks from portrait content</div>
+            <div class="kpi-how">UTM links in bio/caption — does this series drive event interest?</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- DESIGN SUBMISSIONS -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 03–04 — Mar → Apr</div>
+        <div class="kpi-card-name">Design Submissions<br>Pack + Digital</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Total submissions received</div>
+            <div class="kpi-how">Combined: physical pack QR uploads + digital playground submits</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Source split</div>
+            <div class="kpi-how">Physical pack UTM vs digital playground UTM — which channel converts better?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Pack-to-submission conversion</div>
+            <div class="kpi-how">Designs received ÷ packs distributed — the participation rate</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Avg. time from pack to submission</div>
+            <div class="kpi-how">Server-side timestamp delta — signals effort and intent</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Y2K PLAYGROUND -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 03 — Mar → ongoing</div>
+        <div class="kpi-card-name">Y2K Digital Playground<br>Online Tool</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Unique visitors</div>
+            <div class="kpi-how">GA4 / privacy-safe analytics — how many people find the page?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Design start → completion rate</div>
+            <div class="kpi-how">Sessions that opened the tool vs sessions that exported a design</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Designs submitted from playground</div>
+            <div class="kpi-how">Playground-specific UTM on the submit button</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Social shares from tool output</div>
+            <div class="kpi-how">Native share button clicks + tagged posts from playground users</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- GRANDMA STATION -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 03 + 05 — Mar &amp; May</div>
+        <div class="kpi-card-name">The Grandma Station<br>Both Appearances</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Shirts pressed — total across both</div>
+            <div class="kpi-how">Physical count: in-store (March) + event (May). The floor metric.</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Tagged content featuring the grandma</div>
+            <div class="kpi-how">Hashtag + mention monitoring — how many posts centre on her?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Reach of grandma-specific content</div>
+            <div class="kpi-how">Total impressions of posts where she is the primary subject</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Earned media featuring her</div>
+            <div class="kpi-how">Press, blogs, newsletters that specifically highlight her role</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- THE PARTY -->
+      <div class="kpi-card span2">
+        <div class="kpi-card-phase">Phase 05 — May</div>
+        <div class="kpi-card-name">The Revolution Party<br>Outdoor Event</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Tickets sold — entry vs custom split</div>
+            <div class="kpi-how">Ticketing platform data — what % paid €35 for the full experience?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Shirts produced and collected</div>
+            <div class="kpi-how">Production count vs pickup rate — did winners show up?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">UGC generated within 48h post-event</div>
+            <div class="kpi-how">Tagged posts, hashtag volume, story mentions in the 48h window</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Golden hour portrait shares</div>
+            <div class="kpi-how">Portrait download count + how many were posted to social</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Peak reach in 24h post-event</div>
+            <div class="kpi-how">Combined organic reach across all tagged and branded content in the first day</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">New followers gained at peak</div>
+            <div class="kpi-how">Account growth in the 72h window around the event — did it pull new audience?</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- AFTERGLOW -->
+      <div class="kpi-card">
+        <div class="kpi-card-phase">Phase 06 — Jun</div>
+        <div class="kpi-card-name">Afterglow<br>Advocacy + Drops</div>
+        <ul class="kpi-list">
+          <li class="kpi-item">
+            <div class="kpi-label">Winning design sell-through</div>
+            <div class="kpi-how">Units sold ÷ units produced — did the community actually want to buy what they voted for?</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Organic UGC reach post-event</div>
+            <div class="kpi-how">Impressions from community posts in June with no paid amplification</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Campaign total reach — all phases</div>
+            <div class="kpi-how">Cumulative unique reach Jan–Jun across all owned + earned channels</div>
+          </li>
+          <li class="kpi-item">
+            <div class="kpi-label">Community growth — net new followers</div>
+            <div class="kpi-how">Start-of-January baseline vs end-of-June — did the campaign build an audience?</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="kpi-total">
+      <div class="kpi-total-item">
+        <div class="kpi-total-label">The One Number That Matters Most</div>
+        <div class="kpi-total-metric">Pack-to-submission conversion rate</div>
+        <div class="kpi-total-how">Packs sent vs designs received. This is the heartbeat of the whole campaign. If people take a pack home and don't submit, the campaign didn't land. If they do, everything else follows.</div>
+      </div>
+      <div class="kpi-total-item">
+        <div class="kpi-total-label">The Creative Health Check</div>
+        <div class="kpi-total-metric">Save rate on interview + portrait content</div>
+        <div class="kpi-total-how">Saves signal that content felt personal enough to keep. If the interviews are just watched and scrolled, they're not working. If they're saved, the campaign has reached the right people.</div>
+      </div>
+      <div class="kpi-total-item">
+        <div class="kpi-total-label">The Community Signal</div>
+        <div class="kpi-total-metric">Tagged posts in 48h post-event</div>
+        <div class="kpi-total-how">The clearest measure of whether the event created a genuine shared experience. Not promoted posts. Not boosted content. People choosing to share because they want to.</div>
+      </div>
+      <div class="kpi-total-item">
+        <div class="kpi-total-label">The Long Game</div>
+        <div class="kpi-total-metric">Net new followers Jan → Jun</div>
+        <div class="kpi-total-how">Did this campaign grow the audience, or just entertain the existing one? If the number is flat, the campaign worked for fans. If it grew, it worked as a brand-building exercise.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ CLOSE -->
+<section class="close-sec">
+  <span class="mono close-tag">KOMONO — Revolution 2026</span>
+  <p class="d close-quote">The world doesn't become more beautiful when people fit in. The world becomes more beautiful when people become themselves.</p>
+  <span class="mono close-tag">NO PERMISSION NEEDED.</span>
+  <div class="d close-wordmark">Revolution</div>
+</section>
