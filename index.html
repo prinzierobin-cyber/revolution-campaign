@@ -624,9 +624,25 @@
   }
   .ci-world {
     background: var(--surface);
-    padding: 56px 48px;
+    padding: 0;
     position: relative;
     overflow: hidden;
+  }
+  .ci-world-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .ci-world-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .ci-world:hover .ci-world-img img { transform: scale(1.04); }
+  .ci-world-body {
+    padding: 36px 40px 48px;
   }
   .ci-world::before {
     content: '';
@@ -865,39 +881,59 @@
     <!-- Four worlds -->
     <div class="ci-worlds-grid">
       <div class="ci-world ci-world-01">
-        <div class="ci-world-num">World 01 — Pink Neon Tartan</div>
-        <h3 class="d ci-world-title">The Awakening</h3>
-        <p class="ci-world-concept">Transition</p>
-        <div class="ci-world-copy">
-          <p>The tartan world represents the beginning of transformation — the moment between two identities. The glowing pink grid creates the feeling of an invisible dimension, as though the character is moving through a portal into a higher-vibrating version of herself.</p>
-          <p>Historically, tartan has always been associated with identity, youth culture, and rebellion. Within REVOLUTION it becomes something softer and more optimistic. A rebellion built on creativity, self-expression, and love. The bright neon pinks and pastel blues give it a dreamlike, almost holographic quality — digital, futuristic, optimistic.</p>
+        <div class="ci-world-img">
+          <img src="images/komono-revolution-hero-pink-neon-tartan-portrait.png" alt="Pink Neon Tartan — The Awakening" loading="lazy">
+        </div>
+        <div class="ci-world-body">
+          <div class="ci-world-num">World 01 — Pink Neon Tartan</div>
+          <h3 class="d ci-world-title">The Awakening</h3>
+          <p class="ci-world-concept">Transition</p>
+          <div class="ci-world-copy">
+            <p>The tartan world represents the beginning of transformation — the moment between two identities. The glowing pink grid creates the feeling of an invisible dimension, as though the character is moving through a portal into a higher-vibrating version of herself.</p>
+            <p>Historically, tartan has always been associated with identity, youth culture, and rebellion. Within REVOLUTION it becomes something softer and more optimistic. A rebellion built on creativity, self-expression, and love.</p>
+          </div>
         </div>
       </div>
       <div class="ci-world ci-world-02">
-        <div class="ci-world-num">World 02 — Blue Cheetah</div>
-        <h3 class="d ci-world-title">Velocity</h3>
-        <p class="ci-world-concept">Momentum</p>
-        <div class="ci-world-copy">
-          <p>The cheetah world represents momentum — confidence in motion. The cheetah never waits for permission. It moves.</p>
-          <p>The swirling blue energy creates the sensation of being pulled through a tunnel of speed and possibility. It symbolizes ambition, confidence, and the courage to move forward without second-guessing yourself.</p>
+        <div class="ci-world-img">
+          <img src="images/komono-revolution-hero-blue-cheetah-portrait.png" alt="Blue Cheetah — Velocity" loading="lazy">
+        </div>
+        <div class="ci-world-body">
+          <div class="ci-world-num">World 02 — Blue Cheetah</div>
+          <h3 class="d ci-world-title">Velocity</h3>
+          <p class="ci-world-concept">Momentum</p>
+          <div class="ci-world-copy">
+            <p>The cheetah world represents momentum — confidence in motion. The cheetah never waits for permission. It moves.</p>
+            <p>The swirling blue energy creates the sensation of being pulled through a tunnel of speed and possibility. It symbolizes ambition, confidence, and the courage to move forward without second-guessing yourself.</p>
+          </div>
         </div>
       </div>
       <div class="ci-world ci-world-03">
-        <div class="ci-world-num">World 03 — Acid Tiger</div>
-        <h3 class="d ci-world-title">Instinct</h3>
-        <p class="ci-world-concept">Pure Presence</p>
-        <div class="ci-world-copy">
-          <p>The tiger world represents pure instinct — the moment overthinking disappears and intuition takes over. The electric green energy explodes outward like a force field.</p>
-          <p>Unlike the cheetah, which represents movement, the tiger represents presence. Owning a room. Being seen. Taking up space unapologetically. The acid palette references rave culture, underground electronic music, and the freedom found on dance floors.</p>
+        <div class="ci-world-img">
+          <img src="images/komono-revolution-hero-acid-tiger-portrait.png" alt="Acid Tiger — Instinct" loading="lazy">
+        </div>
+        <div class="ci-world-body">
+          <div class="ci-world-num">World 03 — Acid Tiger</div>
+          <h3 class="d ci-world-title">Instinct</h3>
+          <p class="ci-world-concept">Pure Presence</p>
+          <div class="ci-world-copy">
+            <p>The tiger world represents pure instinct — the moment overthinking disappears and intuition takes over. The electric green energy explodes outward like a force field.</p>
+            <p>Unlike the cheetah, which represents movement, the tiger represents presence. Owning a room. Being seen. Taking up space unapologetically.</p>
+          </div>
         </div>
       </div>
       <div class="ci-world ci-world-04">
-        <div class="ci-world-num">World 04 — Zebra</div>
-        <h3 class="d ci-world-title">Contrast</h3>
-        <p class="ci-world-concept">Pure Individuality</p>
-        <div class="ci-world-copy">
-          <p>The zebra world is the purest expression of individuality. No two zebras have the same pattern. Just as no two people express themselves in exactly the same way.</p>
-          <p>The monochrome energy strips away distraction and allows confidence to become the focus. It is the simplest expression of the campaign's message: you don't need permission to stand out. You simply need to be yourself.</p>
+        <div class="ci-world-img">
+          <img src="images/komono-revolution-hero-zebra-portrait.png" alt="Zebra — Contrast" loading="lazy">
+        </div>
+        <div class="ci-world-body">
+          <div class="ci-world-num">World 04 — Zebra</div>
+          <h3 class="d ci-world-title">Contrast</h3>
+          <p class="ci-world-concept">Pure Individuality</p>
+          <div class="ci-world-copy">
+            <p>The zebra world is the purest expression of individuality. No two zebras have the same pattern. Just as no two people express themselves in exactly the same way.</p>
+            <p>The monochrome energy strips away distraction and allows confidence to become the focus. You don't need permission to stand out. You simply need to be yourself.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -997,6 +1033,9 @@
       </div>
     </div>
     <p style="margin-top:40px; font-size:14px; color:var(--muted); max-width:580px; line-height:1.75;">Together, these collections allow people to choose the energy they identify with most. Not based on trends. Not based on approval. But based on instinct.</p>
+    <div style="margin-top:2px;">
+      <img src="images/komono-revolution-print-card-set.png" alt="REVOLUTION print card set — eyewear worlds" loading="lazy" style="width:100%; display:block;">
+    </div>
   </div>
 </section>
 
@@ -1006,6 +1045,41 @@
   <p class="ci-close-line" style="margin-top:8px;">That's how culture changes. That's how communities grow. That's how revolutions begin.</p>
   <h2 class="d ci-close-final">NO PERMISSION<br>NEEDED.</h2>
 </section>
+
+<!-- ════════════════════════════════════════ LOGO & TYPOGRAPHY -->
+<div style="background:var(--surface); border-top:1px solid var(--border);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx" style="color:var(--muted);">●</span>
+      <h2 class="d section-name" style="font-size:clamp(28px,3.5vw,52px);">Logo & Typography</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); margin-bottom:56px;">
+      <div style="background:var(--ground); display:flex; align-items:center; justify-content:center; padding:64px 48px; min-height:360px;">
+        <img src="images/komono-revolution-no-permission-needed-logo.png" alt="KOMONO REVOLUTION custom logo — chrome metallic Y2K" loading="lazy" style="width:100%; max-width:420px; display:block;">
+      </div>
+      <div style="background:var(--ground); display:flex; align-items:center; justify-content:center; padding:64px 48px; min-height:360px;">
+        <img src="images/komono-revolution-custom-typeface.png" alt="KOMONO REVOLUTION custom typeface" loading="lazy" style="width:100%; max-width:420px; display:block;">
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:56px;">
+      <div>
+        <p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border);">The Logo</p>
+        <p style="font-size:clamp(20px,2.2vw,30px); font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase; color:var(--text); margin-bottom:16px; line-height:1.1;">Chrome. Metallic. Y2K.</p>
+        <p style="font-size:14px; line-height:1.75; color:var(--muted);">The custom KOMONO logo was created specifically for this campaign. Inspired by early 2000s punk, skate, emo, and alternative culture — but reinterpreted through a more optimistic and contemporary lens. Chrome and metallic effects, neon pink highlights, aggressive stretched letterforms. Imperfect by design rather than overly polished.</p>
+      </div>
+      <div>
+        <p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border);">The Typeface</p>
+        <p style="font-size:clamp(20px,2.2vw,30px); font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase; color:var(--text); margin-bottom:16px; line-height:1.1;">Custom. Aggressive. Self-made.</p>
+        <p style="font-size:14px; line-height:1.75; color:var(--muted);">A custom typeface was developed for the campaign — sharing the same DNA as the logo. Sharp, angular letterforms with an imperfect quality that echoes the campaign's message: authenticity over perfection. Built to be used across apparel graphics, campaign materials, and the digital playground.</p>
+      </div>
+      <div>
+        <p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border);">Design Philosophy</p>
+        <p style="font-size:clamp(20px,2.2vw,30px); font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase; color:var(--text); margin-bottom:16px; line-height:1.1;">Rebellious. Energetic. Yours.</p>
+        <p style="font-size:14px; line-height:1.75; color:var(--muted);">The elongated K flowing into the O creates tension and movement. The logo should feel rebellious, energetic, and self-made — as though someone made it themselves rather than commissioned it from an agency. That's intentional. The campaign celebrates self-expression, and the identity starts there.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ════════════════════════════════════════ TRILOGY ARC -->
 <style>
@@ -1188,6 +1262,9 @@
             </div>
           </div>
         </div>
+            <div style="margin-top:24px;">
+              <img src="images/komono-revolution-brand-system-overview.png" alt="KOMONO Revolution Pack — complete contents" loading="lazy" style="width:100%; display:block;">
+            </div>
         <div class="unlock-tag mono">Unlocks March: The Playground</div>
       </div>
 
@@ -1565,6 +1642,10 @@
       </div>
     </div>
 
+    <div style="margin-top:56px;">
+      <img src="images/komono-revolution-design-your-tee-interface.png" alt="Design Your Tee — manifestation patches customizer interface" loading="lazy" style="width:100%; max-width:100%; display:block; border:1px solid rgba(240,238,230,0.09);">
+    </div>
+
     <div class="y2k-timing">
       <p class="d y2k-timing-txt">The Y2K aesthetic is not decoration. It is the argument. In 2000, anyone could build a site that looked exactly like themselves. That was the last time the internet felt genuinely personal. This campaign brings that energy back.</p>
       <div>
@@ -1772,6 +1853,17 @@
         </div>
       </div>
     </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); margin-top:64px;">
+      <img src="images/komono-revolution-pink-tartan-long-sleeve-tees.png" alt="Pink Neon Tartan long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-blue-cheetah-long-sleeve-tees.png" alt="Blue Cheetah long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-acid-tiger-long-sleeve-tees.png" alt="Acid Tiger long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-zebra-sleeve-long-sleeve-tees.png" alt="Black & White Zebra long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); margin-top:2px;">
+      <img src="images/komono-revolution-acid-tiger-cap.png" alt="Acid Tiger cap" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-phone-cases.png" alt="REVOLUTION phone cases" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+    </div>
   </div>
 
   <!-- EYEWEAR -->
@@ -1933,6 +2025,10 @@
       </div>
     </div>
 
+    <div style="margin-top:64px; margin-bottom:64px;">
+      <img src="images/komono-revolution-patch-library.png" alt="REVOLUTION patch library — 25 manifestation patches" loading="lazy" style="width:100%; max-width:100%; display:block; border-radius:2px;">
+    </div>
+
     <div class="patches-connections">
       <div class="patch-conn-item">Campaign manifesto — source of each intention</div>
       <div class="patch-conn-item">Sticker sheet — where the meanings are revealed</div>
@@ -2081,6 +2177,15 @@
       <p class="grandma-box-body" style="margin-top:14px;">She appears twice. First in-store during the March launch weekend, pressing shirts and meeting people picking up their packs. Then at the Revolution Party in May, as the emotional centrepiece of the night. The repetition builds her into a character. By the party, people who met her in March will point her out. People who didn't will ask who she is. Both conversations are exactly what the campaign needs.</p>
       <p class="grandma-box-body" style="margin-top:14px; font-weight:600; color:#080808;">She will be photographed thousands of times. She will be posted, shared, and remembered long after the event ends. Not because she was designed to go viral — but because she is genuinely, unmistakably herself. That is why she is an icon.</p>
     </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1fr; gap:2px; background:var(--border); margin-top:40px;">
+        <img src="images/komono-revolution-grandma-station-event-collage.png" alt="The Punk Grandma — KOMONO Revolution event" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+        <img src="images/komono-revolution-poster-and-photobooth-strip.png" alt="KOMONO Revolution photobooth strip" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      </div>
+
+      <div style="margin-top:2px;">
+        <img src="images/komono-revolution-lifestyle-community-collage.png" alt="REVOLUTION community — people wearing the campaign" loading="lazy" style="width:100%; display:block;">
+      </div>
 
     <div class="exp-grid">
       <div class="exp-item">
