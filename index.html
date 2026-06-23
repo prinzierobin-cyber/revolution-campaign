@@ -430,6 +430,488 @@
   </div>
 </section>
 
+<!-- ════════════════════════════════════════ CAMPAIGN MANIFESTO -->
+<style>
+  /* ── CAMPAIGN INTRO ──────────────────────────── */
+  .ci-section { background: var(--ground); }
+  .ci-section + .ci-section { border-top: 1px solid var(--border); }
+
+  .ci-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .ci-pull {
+    font-size: clamp(34px, 4vw, 62px);
+    line-height: 1.05;
+    color: var(--text);
+    position: sticky;
+    top: 120px;
+  }
+  .ci-pull em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .ci-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(240,238,230,0.72);
+  }
+  .ci-body p + p { margin-top: 18px; }
+  .ci-body strong { color: var(--text); font-weight: 600; }
+
+  .ci-permission-list {
+    list-style: none;
+    margin: 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ci-permission-list li {
+    font-size: 15px;
+    color: var(--muted);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ci-permission-list li::before {
+    content: '×';
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* transformation section */
+  .ci-transform {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  .ci-transform-inner {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .ci-transform-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ci-transform-label::before { content:''; width:24px; height:1px; background:var(--accent); display:block; }
+  .ci-transform-title {
+    font-size: clamp(44px, 5vw, 80px);
+    color: var(--text);
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+  .ci-transform-subtitle {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* worlds grid */
+  .ci-worlds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 72px;
+  }
+  .ci-world {
+    background: var(--surface);
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ci-world::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .ci-world-01::before { background: radial-gradient(circle at top right, #FF1F8E, transparent 60%); opacity: 0.12; }
+  .ci-world-02::before { background: radial-gradient(circle at top right, #4DAAFF, transparent 60%); opacity: 0.10; }
+  .ci-world-03::before { background: radial-gradient(circle at top right, #C8FF00, transparent 60%); opacity: 0.10; }
+  .ci-world-04::before { background: radial-gradient(circle at top right, #FFFFFF, transparent 60%); opacity: 0.06; }
+
+  .ci-world-num {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ci-world-01 .ci-world-num { color: #FF1F8E; }
+  .ci-world-02 .ci-world-num { color: #4DAAFF; }
+  .ci-world-03 .ci-world-num { color: #C8FF00; }
+  .ci-world-04 .ci-world-num { color: var(--text); }
+
+  .ci-world-num::after { content:''; flex:1; height:1px; background:currentColor; opacity:0.25; }
+
+  .ci-world-title {
+    font-size: clamp(28px, 3vw, 44px);
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .ci-world-concept {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .ci-world-01 .ci-world-concept { color: #FF1F8E; }
+  .ci-world-02 .ci-world-concept { color: #4DAAFF; }
+  .ci-world-03 .ci-world-concept { color: #C8FF00; }
+  .ci-world-04 .ci-world-concept { color: rgba(240,238,230,0.5); }
+
+  .ci-world-copy {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+  .ci-world-copy p + p { margin-top: 10px; }
+
+  /* philosophy columns */
+  .ci-philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 56px;
+  }
+  .ci-phil-col {}
+  .ci-phil-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ci-phil-title {
+    font-size: clamp(22px, 2.5vw, 34px);
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .ci-phil-copy {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .ci-phil-copy p + p { margin-top: 12px; }
+
+  /* collection grid */
+  .ci-collection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 64px;
+  }
+  .ci-coll-item {
+    background: var(--surface);
+    padding: 36px 28px;
+  }
+  .ci-coll-world {
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .ci-coll-01 .ci-coll-world { color: #FF1F8E; }
+  .ci-coll-02 .ci-coll-world { color: #4DAAFF; }
+  .ci-coll-03 .ci-coll-world { color: #C8FF00; }
+  .ci-coll-04 .ci-coll-world { color: var(--text); }
+  .ci-coll-name {
+    font-size: clamp(18px, 2vw, 26px);
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .ci-coll-traits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ci-coll-traits li {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-left: 14px;
+    position: relative;
+  }
+  .ci-coll-traits li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+    font-size: 10px;
+  }
+
+  /* gen z section */
+  .ci-genz-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .ci-genz-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .ci-genz-stat {}
+  .ci-genz-num {
+    font-size: clamp(52px, 7vw, 96px);
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .ci-genz-label { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 240px; }
+
+  /* closing band */
+  .ci-close-band {
+    background: var(--accent);
+    padding: 80px 56px;
+    text-align: center;
+  }
+  .ci-close-line {
+    font-size: clamp(14px, 1.8vw, 22px);
+    color: rgba(8,8,8,0.6);
+    max-width: 720px;
+    margin: 0 auto 16px;
+    line-height: 1.65;
+  }
+  .ci-close-final {
+    font-size: clamp(40px, 6vw, 96px);
+    color: #080808;
+    line-height: 0.95;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 960px) {
+    .ci-intro-grid,
+    .ci-transform-inner,
+    .ci-genz-split { grid-template-columns: 1fr; gap: 48px; }
+    .ci-worlds-grid,
+    .ci-collection-grid { grid-template-columns: 1fr; }
+    .ci-philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ci-pull { position: static; }
+    .ci-transform-inner { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- ── INTRO: Revolution -->
+<section class="ci-section">
+  <div class="wrap section-pad">
+    <div class="ci-intro-grid">
+      <div>
+        <p class="mono" style="color:var(--accent); letter-spacing:0.2em; margin-bottom:28px;">Campaign Manifesto — 2026</p>
+        <h2 class="d ci-pull">The most revolutionary thing a person can do today is live <em>authentically.</em></h2>
+      </div>
+      <div class="ci-body">
+        <p>After <strong>ODYSSEY</strong>, we discovered who we are. After <strong>SUPER NATURE</strong>, we rediscovered our connection to ourselves, each other, and the natural world. <strong>REVOLUTION</strong> is the moment everything clicks into place.</p>
+        <p>It is the moment we stop asking for permission.</p>
+        <ul class="ci-permission-list">
+          <li>Not permission to dress differently</li>
+          <li>Not permission to create differently</li>
+          <li>Not permission to love differently</li>
+          <li>Not permission to live differently</li>
+        </ul>
+        <p>Because once you know who you are, and once you understand where you belong, there is only one question left: <strong>What is stopping you from being that person?</strong></p>
+        <p>For many people, the answer is permission. Permission from society. From family. From culture. From strangers.</p>
+        <p>REVOLUTION is about rejecting that need for approval and embracing the freedom of self-expression.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE TRANSFORMATION -->
+<section class="ci-section ci-transform">
+  <div class="wrap section-pad">
+    <div class="ci-transform-inner">
+      <div>
+        <p class="ci-transform-label">The Hero Visual</p>
+        <h2 class="d ci-transform-title">The Trans&shy;formation</h2>
+        <p class="ci-transform-subtitle">She is not becoming someone new. She is finally becoming who she was always meant to be.</p>
+      </div>
+      <div class="ci-body">
+        <p>The hero visual captures the exact moment she steps into the most authentic version of herself — a person moving through an invisible dimension, a symbolic space between who she was and who she is becoming.</p>
+        <p>It feels as though she is shifting into a higher frequency. Not through transformation into someone new, but through the release of limitations, expectations, and the need for external validation.</p>
+        <p>The glowing worlds surrounding her represent portals into a more authentic state of being — where instinct replaces approval and self-expression replaces conformity.</p>
+        <p>As she moves through these dimensions, she becomes one with her spirit animal. Not as a literal creature, but as a symbol of her most natural, confident, and uninhibited self.</p>
+        <p style="margin-top:32px; padding-top:32px; border-top:1px solid var(--border); color:var(--text);">
+          <strong>ODYSSEY</strong> was about discovering yourself.<br>
+          <strong>SUPER NATURE</strong> was about reconnecting with your true nature.<br>
+          <strong>REVOLUTION</strong> is about embodying it.
+        </p>
+        <p>They are no longer becoming. They are arriving.</p>
+      </div>
+    </div>
+
+    <!-- Four worlds -->
+    <div class="ci-worlds-grid">
+      <div class="ci-world ci-world-01">
+        <div class="ci-world-num">World 01 — Pink Neon Tartan</div>
+        <h3 class="d ci-world-title">The Awakening</h3>
+        <p class="ci-world-concept">Transition</p>
+        <div class="ci-world-copy">
+          <p>The tartan world represents the beginning of transformation — the moment between two identities. The glowing pink grid creates the feeling of an invisible dimension, as though the character is moving through a portal into a higher-vibrating version of herself.</p>
+          <p>Historically, tartan has always been associated with identity, youth culture, and rebellion. Within REVOLUTION it becomes something softer and more optimistic. A rebellion built on creativity, self-expression, and love. The bright neon pinks and pastel blues give it a dreamlike, almost holographic quality — digital, futuristic, optimistic.</p>
+        </div>
+      </div>
+      <div class="ci-world ci-world-02">
+        <div class="ci-world-num">World 02 — Blue Cheetah</div>
+        <h3 class="d ci-world-title">Velocity</h3>
+        <p class="ci-world-concept">Momentum</p>
+        <div class="ci-world-copy">
+          <p>The cheetah world represents momentum — confidence in motion. The cheetah never waits for permission. It moves.</p>
+          <p>The swirling blue energy creates the sensation of being pulled through a tunnel of speed and possibility. It symbolizes ambition, confidence, and the courage to move forward without second-guessing yourself.</p>
+        </div>
+      </div>
+      <div class="ci-world ci-world-03">
+        <div class="ci-world-num">World 03 — Acid Tiger</div>
+        <h3 class="d ci-world-title">Instinct</h3>
+        <p class="ci-world-concept">Pure Presence</p>
+        <div class="ci-world-copy">
+          <p>The tiger world represents pure instinct — the moment overthinking disappears and intuition takes over. The electric green energy explodes outward like a force field.</p>
+          <p>Unlike the cheetah, which represents movement, the tiger represents presence. Owning a room. Being seen. Taking up space unapologetically. The acid palette references rave culture, underground electronic music, and the freedom found on dance floors.</p>
+        </div>
+      </div>
+      <div class="ci-world ci-world-04">
+        <div class="ci-world-num">World 04 — Zebra</div>
+        <h3 class="d ci-world-title">Contrast</h3>
+        <p class="ci-world-concept">Pure Individuality</p>
+        <div class="ci-world-copy">
+          <p>The zebra world is the purest expression of individuality. No two zebras have the same pattern. Just as no two people express themselves in exactly the same way.</p>
+          <p>The monochrome energy strips away distraction and allows confidence to become the focus. It is the simplest expression of the campaign's message: you don't need permission to stand out. You simply need to be yourself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHILOSOPHY PILLARS -->
+<section class="ci-section">
+  <div class="wrap section-pad">
+    <div class="section-hd" style="margin-bottom:72px;">
+      <span class="mono section-idx" style="color:var(--acid);">●</span>
+      <h2 class="d section-name" style="font-size:clamp(28px,3.5vw,52px);">The Philosophy</h2>
+    </div>
+    <div class="ci-philosophy-grid">
+      <div class="ci-phil-col">
+        <p class="ci-phil-label">From Punk to Animal Print</p>
+        <h3 class="d ci-phil-title">The Visual Heritage</h3>
+        <div class="ci-phil-copy">
+          <p>The visual language of REVOLUTION began with research into early punk and emo culture. One recurring visual code was the striped sleeve — a recognizable symbol of rebellion, self-expression, and belonging to alternative communities.</p>
+          <p>For REVOLUTION, that symbol has been reinterpreted. The striped sleeve evolves into oversized animal prints. The spirit remains the same: a visual statement made by people who choose their own path.</p>
+          <p>The animal prints become extensions of identity. A way of channeling confidence, individuality, and instinct through fashion.</p>
+        </div>
+      </div>
+      <div class="ci-phil-col">
+        <p class="ci-phil-label">Energy, Not Perfection</p>
+        <h3 class="d ci-phil-title">Why It Feels Different</h3>
+        <div class="ci-phil-copy">
+          <p>The bright neon palette draws inspiration from electronic music culture, festivals, nightlife, internet aesthetics, and the highly visual world Gen Z grew up in. The colours feel energetic, optimistic, playful, and impossible to ignore.</p>
+          <p>Many lifestyle brands today take themselves too seriously. Everything feels curated. Everything feels controlled. Everything feels perfect. But Gen Z doesn't connect with perfection.</p>
+          <p>They connect with personality. They connect with authenticity. They connect with brands that are willing to experiment, participate, and have fun. REVOLUTION embraces bold colours, animal prints, charms, stickers, and customization because self-expression should never feel intimidating. It should feel alive.</p>
+        </div>
+      </div>
+      <div class="ci-phil-col">
+        <p class="ci-phil-label">Why This Matters to Gen Z</p>
+        <h3 class="d ci-phil-title">A Generation That Refuses to Ask</h3>
+        <div class="ci-phil-copy">
+          <p>No generation has challenged traditional expectations quite like Gen Z. They are redefining success, identity, relationships, creativity, and self-expression.</p>
+          <p>They understand that authenticity is more valuable than approval. They are setting boundaries, questioning outdated norms, and creating their own definitions of success.</p>
+          <p>NO PERMISSION NEEDED isn't simply a slogan. It captures an entire mindset. A generation that is no longer waiting for validation before becoming themselves.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE COLLECTION -->
+<section class="ci-section" style="background:var(--surface);">
+  <div class="wrap section-pad">
+    <div class="section-hd" style="margin-bottom:28px;">
+      <span class="mono section-idx" style="color:var(--muted);">●</span>
+      <h2 class="d section-name" style="font-size:clamp(28px,3.5vw,52px);">The Collection</h2>
+    </div>
+    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:0; line-height:1.75;">The four visual worlds become the foundation for four distinct eyewear families. Rather than designing one collection with different colours, each world creates its own design language.</p>
+    <div class="ci-collection-grid">
+      <div class="ci-coll-item ci-coll-01">
+        <p class="ci-coll-world">World 01</p>
+        <h3 class="d ci-coll-name">Pink Neon Tartan</h3>
+        <ul class="ci-coll-traits">
+          <li>Transparent crystal frames</li>
+          <li>Pastel pink and blue acetates</li>
+          <li>Gradient lenses</li>
+          <li>Iridescent and holographic effects</li>
+        </ul>
+        <p style="margin-top:20px; font-size:11px; color:rgba(255,31,142,0.7); letter-spacing:0.08em;">The most expressive and fashion-forward collection.</p>
+      </div>
+      <div class="ci-coll-item ci-coll-02">
+        <p class="ci-coll-world">World 02</p>
+        <h3 class="d ci-coll-name">Blue Cheetah</h3>
+        <ul class="ci-coll-traits">
+          <li>Chrome constructions</li>
+          <li>Reflective blue shield lenses</li>
+          <li>Aerodynamic silhouettes</li>
+          <li>Futuristic Y2K sports references</li>
+        </ul>
+        <p style="margin-top:20px; font-size:11px; color:rgba(77,170,255,0.7); letter-spacing:0.08em;">Built around movement, speed, and confidence.</p>
+      </div>
+      <div class="ci-coll-item ci-coll-03">
+        <p class="ci-coll-world">World 03</p>
+        <h3 class="d ci-coll-name">Acid Tiger</h3>
+        <ul class="ci-coll-traits">
+          <li>Bright acid green details</li>
+          <li>Chrome hardware</li>
+          <li>Minimal silhouettes</li>
+          <li>Festival and rave-inspired energy</li>
+        </ul>
+        <p style="margin-top:20px; font-size:11px; color:rgba(200,255,0,0.7); letter-spacing:0.08em;">Built around instinct and self-expression.</p>
+      </div>
+      <div class="ci-coll-item ci-coll-04">
+        <p class="ci-coll-world">World 04</p>
+        <h3 class="d ci-coll-name">Zebra Monochrome</h3>
+        <ul class="ci-coll-traits">
+          <li>Zebra, dalmatian, cow print patterns</li>
+          <li>Abstract black-and-white graphics</li>
+          <li>Graphic, timeless, bold</li>
+        </ul>
+        <p style="margin-top:20px; font-size:11px; color:rgba(240,238,230,0.5); letter-spacing:0.08em;">The purest expression of individuality.</p>
+      </div>
+    </div>
+    <p style="margin-top:40px; font-size:14px; color:var(--muted); max-width:580px; line-height:1.75;">Together, these collections allow people to choose the energy they identify with most. Not based on trends. Not based on approval. But based on instinct.</p>
+  </div>
+</section>
+
+<!-- ── CLOSING REVOLUTION STATEMENT -->
+<section class="ci-close-band">
+  <p class="ci-close-line">REVOLUTION is not about changing who you are. It is about removing everything that prevents you from being yourself. Because true revolution isn't about following a movement. It's about having the courage to become yourself — and inspiring others to do the same.</p>
+  <p class="ci-close-line" style="margin-top:8px;">That's how culture changes. That's how communities grow. That's how revolutions begin.</p>
+  <h2 class="d ci-close-final">NO PERMISSION<br>NEEDED.</h2>
+</section>
+
 <!-- ════════════════════════════════════════ TRILOGY ARC -->
 <style>
   .trilogy-grid {
