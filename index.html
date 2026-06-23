@@ -1789,6 +1789,761 @@
   </div>
 </div>
 
+<!-- ════════════════════════════════════════ CONTENT CALENDAR -->
+<style>
+  .cal-intro { font-size:16px; color:var(--muted); line-height:1.75; max-width:680px; margin-bottom:72px; }
+
+  .cal-phase-block { margin-bottom: 2px; }
+  .cal-phase-hd {
+    display: grid; grid-template-columns: 200px 1fr;
+    background: var(--surface); border-left: 3px solid var(--accent);
+    padding: 28px 36px; gap: 32px; align-items: start;
+  }
+  .cal-phase-hd.alt { border-color: var(--acid); }
+  .cal-month-label { font-size: clamp(28px,3.5vw,48px); line-height:1; }
+  .cal-phase-name { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; font-family:'Courier New',monospace; color:var(--accent); margin-bottom:6px; }
+  .cal-phase-hd.alt .cal-phase-name { color:var(--acid); }
+  .cal-phase-goal { font-size:14px; color:var(--muted); line-height:1.6; }
+
+  .cal-rows { display:grid; grid-template-columns: repeat(4,1fr); gap:0; background:var(--border); }
+  .cal-cell {
+    background: var(--ground); padding: 24px 22px;
+    border-right: 1px solid var(--border);
+  }
+  .cal-cell:last-child { border-right:none; }
+  .cal-cell-platform {
+    font-size:9px; letter-spacing:0.18em; text-transform:uppercase;
+    font-family:'Courier New',monospace; color:var(--acid); margin-bottom:8px;
+  }
+  .cal-cell-format { font-size:13px; font-weight:500; margin-bottom:6px; }
+  .cal-cell-cadence { font-size:11px; color:var(--muted); line-height:1.5; margin-bottom:8px; }
+  .cal-cell-window {
+    font-size:10px; font-family:'Courier New',monospace; letter-spacing:0.08em;
+    color:var(--accent); border-top:1px solid var(--border); padding-top:8px; margin-top:8px;
+  }
+  .cal-cell-window.paid { color: var(--acid); }
+
+  .posting-rules {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:var(--border); margin-top:48px;
+  }
+  .posting-rule { background:var(--surface); padding:32px 28px; }
+  .posting-rule-platform { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; font-family:'Courier New',monospace; color:var(--acid); margin-bottom:10px; }
+  .posting-rule-name { font-size:clamp(16px,1.8vw,22px); margin-bottom:12px; }
+  .posting-rule-list { list-style:none; }
+  .posting-rule-list li { font-size:12px; color:var(--muted); padding:6px 0; border-bottom:1px solid var(--border); line-height:1.5; }
+  .posting-rule-list li:last-child { border-bottom:none; }
+  .posting-rule-list li strong { color:var(--text); display:block; }
+
+  @media (max-width:960px) {
+    .cal-phase-hd { grid-template-columns:1fr; gap:12px; }
+    .cal-rows { grid-template-columns:1fr 1fr; }
+    .cal-cell { border-right:none; border-bottom:1px solid var(--border); }
+    .posting-rules { grid-template-columns:1fr; }
+  }
+  @media (max-width:600px) {
+    .cal-rows { grid-template-columns:1fr; }
+  }
+</style>
+<div style="background:var(--ground);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">10</span>
+      <h2 class="d section-name">Content Release Calendar</h2>
+    </div>
+    <p class="cal-intro">Each phase has a content job. The timing isn't arbitrary — it's engineered so that each wave of content creates the appetite for the next. The street interviews build the question. The question makes the pack feel like an answer. The pack generates the submissions. The submissions fuel the event. The event creates the afterglow. Nothing drops randomly.</p>
+
+    <!-- JAN -->
+    <div class="cal-phase-block">
+      <div class="cal-phase-hd">
+        <h3 class="d cal-month-label">January</h3>
+        <div>
+          <div class="cal-phase-name">Phase 01 — The Question</div>
+          <p class="cal-phase-goal">Plant the question before anyone knows what it belongs to. 3 weeks of intrigue, 1 week of identity reveal. Never explain — let people wonder.</p>
+        </div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1–2 / TikTok + Reels</div>
+          <div class="cal-cell-format">Teaser visuals — no context</div>
+          <div class="cal-cell-cadence">3× per week. No caption, no brand tag. Just the image or short clip. Let the mystery do the work.</div>
+          <div class="cal-cell-window">Tue / Thu / Sat — 19:00–21:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 3 / TikTok</div>
+          <div class="cal-cell-format">First street interview drops</div>
+          <div class="cal-cell-cadence">2× per week. Lead with the most surprising answer. The question appears on screen. No brand logo until episode 3.</div>
+          <div class="cal-cell-window">Wed + Fri — 18:00–20:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 3–4 / Instagram Feed</div>
+          <div class="cal-cell-format">Campaign identity reveal</div>
+          <div class="cal-cell-cadence">2× per week. The REVOLUTION wordmark + NO PERMISSION NEEDED. Still no product. Brand comes before product.</div>
+          <div class="cal-cell-window">Tue + Thu — 09:00–11:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 4 / Paid</div>
+          <div class="cal-cell-format">Boost top interview</div>
+          <div class="cal-cell-cadence">Take the strongest performing interview and boost it. Target: lookalike audience of existing followers + interest-based Gen Z / youth culture.</div>
+          <div class="cal-cell-window paid">Budget: €800–1,200 / 7 days</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEB -->
+    <div class="cal-phase-block" style="margin-top:2px;">
+      <div class="cal-phase-hd">
+        <h3 class="d cal-month-label">February</h3>
+        <div>
+          <div class="cal-phase-name">Phase 02 — The Invitation</div>
+          <p class="cal-phase-goal">PR drop week is the single most important content moment of the first half. Every piece of content this month exists to make the pack feel unmissable.</p>
+        </div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1 / All channels</div>
+          <div class="cal-cell-format">Pack reveal — owned content</div>
+          <div class="cal-cell-cadence">Show the pack. Every element. Do it in a 15-second flat-lay video. No music. Just the objects. Let the craft speak.</div>
+          <div class="cal-cell-window">Tuesday — 12:00 drop</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 2 / Creator content</div>
+          <div class="cal-cell-format">First creator unboxings go live</div>
+          <div class="cal-cell-cadence">Don't post your own content this week. Step back. Let creator content lead. Repost and amplify — don't compete with it.</div>
+          <div class="cal-cell-window">Organic — let creators choose timing</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 3–4 / TikTok + Reels</div>
+          <div class="cal-cell-format">Interviews continue + first designs appear</div>
+          <div class="cal-cell-cadence">2× interviews per week. Feature the first submitted designs alongside them. Show the campaign working. 3–4 posts per week total.</div>
+          <div class="cal-cell-window">Wed / Fri — 18:00–20:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 2 / Paid</div>
+          <div class="cal-cell-format">Amplify best creator content</div>
+          <div class="cal-cell-cadence">Take 2 creator posts (with permission) and run as paid dark posts. Creator-authentic content outperforms brand content in paid by 2–3×.</div>
+          <div class="cal-cell-window paid">Budget: €1,500–2,000 / 2 weeks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAR -->
+    <div class="cal-phase-block" style="margin-top:2px;">
+      <div class="cal-phase-hd">
+        <h3 class="d cal-month-label">March</h3>
+        <div>
+          <div class="cal-phase-name">Phase 03 — The Playground</div>
+          <p class="cal-phase-goal">Retail goes live. Digital playground launches. Content job this month: make participation feel normal. Show people doing it, not just the invitation to do it.</p>
+        </div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Launch weekend / Stories</div>
+          <div class="cal-cell-format">Grandma Station in-store — live</div>
+          <div class="cal-cell-cadence">Stories only. Raw, unedited. Show the grandma pressing shirts. Show real people's faces when they meet her. Post 6–8 stories across the day.</div>
+          <div class="cal-cell-window">Saturday — all day from 11:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 2–4 / TikTok + Reels</div>
+          <div class="cal-cell-format">UGC reposts + playground demo</div>
+          <div class="cal-cell-cadence">Start reposting submitted designs. Show the Y2K playground in use. 4× per week. The brand becomes a curator, not a broadcaster.</div>
+          <div class="cal-cell-window">Mon / Wed / Fri / Sun — 18:00–21:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1 / Digital</div>
+          <div class="cal-cell-format">Y2K playground launch</div>
+          <div class="cal-cell-cadence">Announce on all channels simultaneously. One reel showing the tool in action. Link in bio. Stories with swipe-up. Email to existing community.</div>
+          <div class="cal-cell-window">Wednesday — 10:00 drop</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1–4 / Paid</div>
+          <div class="cal-cell-format">Retarget + acquisition push</div>
+          <div class="cal-cell-cadence">Retarget people who visited the site but didn't submit. Acquisition campaign targeting youth culture / DIY / streetwear audiences. Drive to playground.</div>
+          <div class="cal-cell-window paid">Budget: €2,500–3,500 / month</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APR -->
+    <div class="cal-phase-block" style="margin-top:2px;">
+      <div class="cal-phase-hd">
+        <h3 class="d cal-month-label">April</h3>
+        <div>
+          <div class="cal-phase-name">Phase 04 — The Selection</div>
+          <p class="cal-phase-goal">Announce the event. Build personal anticipation. This month's content should make people feel like they know the community already — so attending feels like a reunion, not a cold room.</p>
+        </div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1 / All channels</div>
+          <div class="cal-cell-format">THE MOMENT series launches</div>
+          <div class="cal-cell-cadence">3× per week. 15 seconds each. Back-to-back in the same week for impact — then slow to 2× per week. These run alongside ticket sales the whole month.</div>
+          <div class="cal-cell-window">Tue / Thu / Sat — 19:00–21:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 2 / All channels</div>
+          <div class="cal-cell-format">Event announcement</div>
+          <div class="cal-cell-cadence">One post. Maximum impact. Date, location teaser (outdoor — exact venue TBC). Ticket link. Reels format. Then one story per day counting down.</div>
+          <div class="cal-cell-window">Wednesday — 12:00 drop</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 2–4 / Feed + Stories</div>
+          <div class="cal-cell-format">Featured design reveals</div>
+          <div class="cal-cell-cadence">2× per week. Each post introduces a designer. Name, face, their moment. The community meets the people behind the shirts being produced.</div>
+          <div class="cal-cell-window">Mon + Thu — 09:00–11:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 2–4 / Paid</div>
+          <div class="cal-cell-format">Event ticket campaign</div>
+          <div class="cal-cell-cadence">Drive ticket sales. Use THE MOMENT content as the ad creative — it outperforms hard-sell event ads. Retarget website visitors + engagement audiences.</div>
+          <div class="cal-cell-window paid">Budget: €2,000–3,000 / 3 weeks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY -->
+    <div class="cal-phase-block" style="margin-top:2px;">
+      <div class="cal-phase-hd alt">
+        <h3 class="d cal-month-label">May</h3>
+        <div>
+          <div class="cal-phase-name" style="color:var(--acid);">Phase 05 — The Celebration</div>
+          <p class="cal-phase-goal">Event week is the campaign's peak. Content goes live in real time. Have 3 people posting throughout the day — one on stories, one on TikTok, one capturing for recap. Post within 6 hours of event ending.</p>
+        </div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1–2 / Build-up</div>
+          <div class="cal-cell-format">Countdown + behind the scenes</div>
+          <div class="cal-cell-cadence">Show setup. The venue. The grandma arriving. Production of winning shirts. Raw, unpolished. 1 post per day in the 7 days before the event.</div>
+          <div class="cal-cell-window">Daily — 18:00–20:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Event day / Stories</div>
+          <div class="cal-cell-format">Live all-day coverage</div>
+          <div class="cal-cell-cadence">Stories every 30–45 minutes from doors open to close. The grandma pressing shirts. Golden hour portraits. The DJ stage at sunset. Shirt collection moments.</div>
+          <div class="cal-cell-window">From 15:00 — real time</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Event day / TikTok + Reels</div>
+          <div class="cal-cell-format">2–3 polished short clips live same day</div>
+          <div class="cal-cell-cadence">The grandma in action. Best outfit at the event. Most unexpected moment. Edit on location. Post before midnight the same night — not the day after.</div>
+          <div class="cal-cell-window">First post by 22:00 event night</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Post-event / Paid</div>
+          <div class="cal-cell-format">Boost best event content</div>
+          <div class="cal-cell-cadence">Take the highest-performing organic post from the event and boost immediately. Strike while the algorithm is warm. Don't wait for the recap reel.</div>
+          <div class="cal-cell-window paid">Budget: €1,500–2,000 / 5 days</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUN -->
+    <div class="cal-phase-block" style="margin-top:2px;">
+      <div class="cal-phase-hd">
+        <h3 class="d cal-month-label">June</h3>
+        <div>
+          <div class="cal-phase-name">Phase 06 — The Afterglow</div>
+          <p class="cal-phase-goal">Don't let the campaign die with the event. June's content job is to make people who weren't there wish they had been — and make people who were feel celebrated.</p>
+        </div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1 / All channels</div>
+          <div class="cal-cell-format">Full recap reel</div>
+          <div class="cal-cell-cadence">60–90 second edit. The whole night. Start with the grandma. End with shirts being worn. This is the campaign's most shareable piece of long-form content.</div>
+          <div class="cal-cell-window">Post within 72h of event</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1–2 / Feed</div>
+          <div class="cal-cell-format">Community portrait gallery</div>
+          <div class="cal-cell-cadence">One portrait per day for 10 days. Tag the person. Let them reshare. No caption needed beyond their name and "No Permission Needed."</div>
+          <div class="cal-cell-window">Daily — 09:00</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 3 / All channels</div>
+          <div class="cal-cell-format">Winning designs — product drop</div>
+          <div class="cal-cell-cadence">Announce the limited drop. Show the shirts in the wild — on the people who designed them. Link to shop. One week of content around the release.</div>
+          <div class="cal-cell-window">Monday — 10:00 drop</div>
+        </div>
+        <div class="cal-cell">
+          <div class="cal-cell-platform">Wk 1 / Paid</div>
+          <div class="cal-cell-format">Recap reel amplification</div>
+          <div class="cal-cell-cadence">Boost the recap reel to people who engaged with campaign content but didn't attend. FOMO drives product interest. Then retarget with the product drop.</div>
+          <div class="cal-cell-window paid">Budget: €1,000–1,500 / 2 weeks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSTING RULES -->
+    <div class="posting-rules">
+      <div class="posting-rule">
+        <div class="posting-rule-platform">TikTok</div>
+        <div class="d posting-rule-name">When + How</div>
+        <ul class="posting-rule-list">
+          <li><strong>Best days</strong>Tue, Thu, Sat — avoid Sunday drops for campaign content</li>
+          <li><strong>Best window</strong>18:00–21:00 local time — evening scroll peak</li>
+          <li><strong>Frequency</strong>3–5× per week during active phases, 1–2× maintenance</li>
+          <li><strong>Format priority</strong>Under 30 seconds. Hook in the first 2 seconds or it's lost.</li>
+          <li><strong>Captions</strong>One line max. The question, not the answer.</li>
+        </ul>
+      </div>
+      <div class="posting-rule">
+        <div class="posting-rule-platform">Instagram Reels + Feed</div>
+        <div class="d posting-rule-name">When + How</div>
+        <ul class="posting-rule-list">
+          <li><strong>Best days</strong>Mon, Wed, Fri for feed. Reels any day 18:00–21:00.</li>
+          <li><strong>Best window</strong>09:00–11:00 for feed posts — morning browse</li>
+          <li><strong>Frequency</strong>Feed: 3–4× per week. Stories: daily during active phases</li>
+          <li><strong>Stories cadence</strong>7–9am teaser + 7–9pm follow-up. Never just once a day.</li>
+          <li><strong>Reels vs feed</strong>Reels for reach. Feed for community. Don't conflate them.</li>
+        </ul>
+      </div>
+      <div class="posting-rule">
+        <div class="posting-rule-platform">Paid Social</div>
+        <div class="d posting-rule-name">Rules of Amplification</div>
+        <ul class="posting-rule-list">
+          <li><strong>Never boost a post under 4 hours old</strong>Let organic signals build first — the algorithm rewards it</li>
+          <li><strong>Best ad creative</strong>Creator content &gt; brand content. Always. Ask for usage rights upfront.</li>
+          <li><strong>Audience priority</strong>Retargeting &gt; lookalike &gt; interest. In that order of efficiency.</li>
+          <li><strong>Don't boost everything</strong>3–4 key moments across the campaign. Concentrate the spend.</li>
+          <li><strong>Event window</strong>Pause all non-event ads 48h before the event. Focus the algorithm.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ BUDGET -->
+<style>
+  .budget-grid {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:2px; background:var(--border);
+  }
+  .budget-card { background:var(--surface); padding:40px 32px; }
+  .budget-phase { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; font-family:'Courier New',monospace; color:var(--acid); margin-bottom:6px; }
+  .budget-name { font-size:clamp(18px,2vw,26px); margin-bottom:24px; line-height:1.1; }
+  .budget-lines { list-style:none; border-top:1px solid var(--border); padding-top:16px; }
+  .budget-line {
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding:10px 0; border-bottom:1px solid var(--border); gap:12px; font-size:13px;
+  }
+  .budget-line:last-child { border-bottom:none; }
+  .budget-line-name { color:var(--muted); flex:1; line-height:1.4; }
+  .budget-line-amt { color:var(--text); font-family:'Courier New',monospace; font-size:12px; white-space:nowrap; }
+  .budget-line-amt.accent { color:var(--accent); }
+  .budget-card-total {
+    margin-top:16px; padding-top:14px; border-top:1px solid var(--accent);
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .budget-card-total span:last-child { color:var(--accent); font-size:14px; }
+
+  .budget-total-bar {
+    background:var(--accent); padding:48px 56px; margin-top:2px;
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; align-items:center;
+  }
+  .btotal-label { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; font-family:'Courier New',monospace; color:rgba(8,8,8,0.6); margin-bottom:8px; }
+  .btotal-number { font-size:clamp(32px,4vw,56px); color:#080808; line-height:1; }
+  .btotal-note { font-size:13px; color:rgba(8,8,8,0.72); line-height:1.65; }
+
+  @media (max-width:960px) {
+    .budget-grid { grid-template-columns:1fr 1fr; }
+    .budget-total-bar { grid-template-columns:1fr; gap:28px; }
+  }
+  @media (max-width:600px) {
+    .budget-grid { grid-template-columns:1fr; }
+  }
+</style>
+<div style="background:var(--ground);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">11</span>
+      <h2 class="d section-name">Campaign Budget</h2>
+    </div>
+    <p class="cal-intro">Budget broken down by phase and activation — not by month. The biggest spend is in May (the event) and March (digital + retail). Paid social is distributed across all phases but concentrated at three key moments: interview launch, event announcement, and post-event amplification.</p>
+
+    <div class="budget-grid">
+
+      <div class="budget-card">
+        <div class="budget-phase">Phase 01 — January</div>
+        <div class="d budget-name">The Question</div>
+        <ul class="budget-lines">
+          <li class="budget-line"><span class="budget-line-name">Street interview production (2 shoot days, crew, locations)</span><span class="budget-line-amt">€10,000–14,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Campaign identity design + key visuals</span><span class="budget-line-amt">€3,000–5,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Video editing — interview series (6–8 episodes)</span><span class="budget-line-amt">€2,000–3,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Paid social — interview amplification</span><span class="budget-line-amt accent">€800–1,200</span></li>
+        </ul>
+        <div class="budget-card-total"><span>Phase Total</span><span>€15,800–23,200</span></div>
+      </div>
+
+      <div class="budget-card">
+        <div class="budget-phase">Phase 02 — February</div>
+        <div class="d budget-name">The Invitation</div>
+        <ul class="budget-lines">
+          <li class="budget-line"><span class="budget-line-name">Revolution Pack production — 500 units (all contents, print, assembly)</span><span class="budget-line-amt">€8,000–12,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Pack distribution + postage (PR, creators, community)</span><span class="budget-line-amt">€2,000–3,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Creator coordination / seeding management</span><span class="budget-line-amt">€1,500–2,500</span></li>
+          <li class="budget-line"><span class="budget-line-name">Paid social — creator content amplification</span><span class="budget-line-amt accent">€1,500–2,000</span></li>
+        </ul>
+        <div class="budget-card-total"><span>Phase Total</span><span>€13,000–19,500</span></div>
+      </div>
+
+      <div class="budget-card">
+        <div class="budget-phase">Phase 03 — March</div>
+        <div class="d budget-name">The Playground</div>
+        <ul class="budget-lines">
+          <li class="budget-line"><span class="budget-line-name">Y2K landing page development (design + build)</span><span class="budget-line-amt">€6,000–12,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">In-store retail materials + customisation wall setup</span><span class="budget-line-amt">€4,000–6,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Grandma Station — in-store (equipment, materials, fee)</span><span class="budget-line-amt">€800–1,200</span></li>
+          <li class="budget-line"><span class="budget-line-name">Paid social — retargeting + acquisition push</span><span class="budget-line-amt accent">€2,500–3,500</span></li>
+        </ul>
+        <div class="budget-card-total"><span>Phase Total</span><span>€13,300–22,700</span></div>
+      </div>
+
+      <div class="budget-card">
+        <div class="budget-phase">Phase 04 — April</div>
+        <div class="d budget-name">The Selection</div>
+        <ul class="budget-lines">
+          <li class="budget-line"><span class="budget-line-name">THE MOMENT portrait shoot (1 day, photographer, locations)</span><span class="budget-line-amt">€4,000–6,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Event design + announcement graphics</span><span class="budget-line-amt">€1,500–2,500</span></li>
+          <li class="budget-line"><span class="budget-line-name">Ticketing platform setup</span><span class="budget-line-amt">€500–800</span></li>
+          <li class="budget-line"><span class="budget-line-name">Community management + design curation</span><span class="budget-line-amt">€1,500–2,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Paid social — event ticket campaign</span><span class="budget-line-amt accent">€2,000–3,000</span></li>
+        </ul>
+        <div class="budget-card-total"><span>Phase Total</span><span>€9,500–14,300</span></div>
+      </div>
+
+      <div class="budget-card">
+        <div class="budget-phase">Phase 05 — May</div>
+        <div class="d budget-name">The Celebration</div>
+        <ul class="budget-lines">
+          <li class="budget-line"><span class="budget-line-name">Outdoor venue / beach location fee</span><span class="budget-line-amt">€5,000–15,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Stage, sound, lighting production</span><span class="budget-line-amt">€10,000–20,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">DJ fee (1–2 acts)</span><span class="budget-line-amt">€2,500–5,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Grandma Station at event (press + shirt production)</span><span class="budget-line-amt">€1,200–2,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Winner shirt production (approx. 100 units)</span><span class="budget-line-amt">€4,000–6,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Event photography + videography team</span><span class="budget-line-amt">€5,000–8,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Customisation Lab materials (shirts, eyewear, charms)</span><span class="budget-line-amt">€3,000–5,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Photobooth setup</span><span class="budget-line-amt">€1,500–2,500</span></li>
+          <li class="budget-line"><span class="budget-line-name">Paid social — event boost + post-event amplification</span><span class="budget-line-amt accent">€1,500–2,000</span></li>
+        </ul>
+        <div class="budget-card-total"><span>Phase Total</span><span>€33,700–65,500</span></div>
+      </div>
+
+      <div class="budget-card">
+        <div class="budget-phase">Phase 06 — June</div>
+        <div class="d budget-name">The Afterglow</div>
+        <ul class="budget-lines">
+          <li class="budget-line"><span class="budget-line-name">Recap reel edit (full event film, 60–90 sec)</span><span class="budget-line-amt">€2,500–4,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Winning design production run (limited drop)</span><span class="budget-line-amt">€6,000–10,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Community portrait retouching + delivery</span><span class="budget-line-amt">€1,000–2,000</span></li>
+          <li class="budget-line"><span class="budget-line-name">Paid social — recap boost + product drop campaign</span><span class="budget-line-amt accent">€1,000–1,500</span></li>
+        </ul>
+        <div class="budget-card-total"><span>Phase Total</span><span>€10,500–17,500</span></div>
+      </div>
+
+    </div>
+
+    <div class="budget-total-bar">
+      <div>
+        <div class="btotal-label">Total Campaign Investment</div>
+        <div class="d btotal-number">€95k–162k</div>
+      </div>
+      <div>
+        <div class="btotal-label">Paid Social — Total</div>
+        <div class="d btotal-number">€9k–13k</div>
+        <div class="btotal-note" style="margin-top:8px;">~8–10% of total budget. Concentrated at 4 moments. Organic-first, paid to amplify — not to compensate for weak content.</div>
+      </div>
+      <div>
+        <div class="btotal-note">The event (Phase 05) is 35–40% of total spend — that's correct for a campaign where the live moment is the peak. Everything before it builds toward it. Everything after it capitalises on it. The budget follows the strategy.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ ASSET ECOSYSTEM -->
+<style>
+  .eco-intro { font-size:16px; color:var(--muted); line-height:1.75; max-width:680px; margin-bottom:72px; }
+  .eco-grid {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:2px; background:var(--border);
+  }
+  .eco-cat {
+    background:var(--surface); padding:36px 28px;
+    display:flex; flex-direction:column; gap:0;
+  }
+  .eco-cat-icon { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; font-family:'Courier New',monospace; color:var(--acid); margin-bottom:6px; }
+  .eco-cat-name { font-size:clamp(18px,2vw,26px); margin-bottom:20px; line-height:1.05; padding-bottom:16px; border-bottom:1px solid var(--border); }
+  .eco-list { list-style:none; flex:1; }
+  .eco-item {
+    display:flex; align-items:flex-start; gap:10px;
+    padding:7px 0; border-bottom:1px solid var(--border);
+    font-size:12px; line-height:1.4;
+  }
+  .eco-item:last-child { border-bottom:none; }
+  .eco-item .check { flex-shrink:0; width:14px; color:var(--acid); font-size:10px; margin-top:1px; }
+  .eco-item .gap { flex-shrink:0; width:14px; color:var(--accent); font-size:10px; margin-top:1px; }
+  .eco-item .item-text { color:var(--text); }
+  .eco-item.missing .item-text { color:var(--accent); }
+  .eco-item.missing { background: rgba(255,31,142,0.04); margin:0 -4px; padding:7px 4px; }
+  .eco-sub {
+    font-size:9px; letter-spacing:0.1em; text-transform:uppercase;
+    font-family:'Courier New',monospace; color:var(--muted);
+    padding:10px 0 4px; display:block; border-bottom:1px solid var(--border);
+    margin-bottom:0;
+  }
+
+  .eco-totals {
+    background:var(--ground); border-top:2px solid var(--accent);
+    padding:48px 56px; margin-top:2px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  }
+  .eco-total-item { padding:0 32px 0 0; border-right:1px solid var(--border); }
+  .eco-total-item:first-child { padding-left:0; }
+  .eco-total-item:last-child { border-right:none; }
+  .eco-total-lbl { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; font-family:'Courier New',monospace; color:var(--muted); margin-bottom:10px; }
+  .eco-total-num { font-size:clamp(36px,5vw,72px); line-height:1; color:var(--text); }
+  .eco-total-note { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.6; }
+  .eco-total-num.hot { color:var(--accent); }
+
+  @media (max-width:1100px) { .eco-grid { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px) {
+    .eco-grid { grid-template-columns:1fr; }
+    .eco-totals { grid-template-columns:1fr 1fr; gap:24px 0; }
+    .eco-total-item { border-right:none; padding-right:0; border-bottom:1px solid var(--border); padding-bottom:24px; }
+    .eco-total-item:last-child { border-bottom:none; padding-bottom:0; }
+  }
+</style>
+<div style="background:var(--ground);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx">12</span>
+      <h2 class="d section-name">Complete Asset Ecosystem</h2>
+    </div>
+    <p class="eco-intro">Every deliverable across every category — brand, product, content, community, retail, digital, event, and advocacy. <span style="color:var(--acid);">✓ Completed.</span> <span style="color:var(--accent);">→ Recommended addition.</span> This is what a 360° campaign system looks like when it's fully built out.</p>
+
+    <div class="eco-grid">
+
+      <!-- BRAND -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">01 / Brand System</div>
+        <div class="d eco-cat-name">Brand</div>
+        <ul class="eco-list">
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">REVOLUTION logo</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">No Permission Needed lockup</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Typography system</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Graphic icon library</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Print system — 4 animal prints</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Colour system</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Charm language</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Y2K UI language</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Motion identity guidelines</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Brand voice + tone guide</span></li>
+        </ul>
+      </div>
+
+      <!-- PRODUCT -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">02 / Product Assets</div>
+        <div class="d eco-cat-name">Product</div>
+        <ul class="eco-list">
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Sunglasses — REVOLUTION line</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Charms collection</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Apparel — long sleeve + cropped</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Cap</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Phone cases</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Packaging</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Revolution Pack</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Sticker sheets</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Mini paper tee mockup</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Mini paper sunglasses mockup</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Design-your-own assets</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Charm Drop series (5 drops)</span></li>
+        </ul>
+      </div>
+
+      <!-- CONTENT — PHOTOGRAPHY -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">03 / Campaign Photography</div>
+        <div class="d eco-cat-name">Photography</div>
+        <ul class="eco-list">
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Hero portraits</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Print transformation portraits</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Product photography</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Lifestyle photography</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Community photography</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Party photography</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Golden hour portrait series</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Grandma Station portrait series</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Behind-the-scenes stills</span></li>
+        </ul>
+      </div>
+
+      <!-- CONTENT — SOCIAL FORMATS -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">03 / Social Content</div>
+        <div class="d eco-cat-name">Content Formats</div>
+        <ul class="eco-list">
+          <span class="eco-sub">Interview Series</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Opening card — WHO GAVE YOU PERMISSION?</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Question card template</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Answer card — Nobody.</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">End card — NO PERMISSION NEEDED</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Subtitle + motion templates</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Thumbnail system</span></li>
+          <span class="eco-sub">The Moment Series</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Full-screen portrait poster template</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">"When I shaved my head." asset</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">"When I quit my job." asset</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">"When I came out." asset</span></li>
+          <span class="eco-sub">Charm Drop Series</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Drop 01 — Stars: teaser, reveal, product, styling</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Drop 02 — Hearts: teaser, reveal, product, styling</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Drop 03 — Flames: teaser, reveal, product, styling</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Drop 04 — Animals: teaser, reveal, product, styling</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Drop 05 — Community Designs: teaser, reveal, product</span></li>
+        </ul>
+      </div>
+
+      <!-- COMMUNITY -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">04 / Community Activation</div>
+        <div class="d eco-cat-name">Community</div>
+        <ul class="eco-list">
+          <span class="eco-sub">UGC Toolkit</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">"Show us your revolution" story template</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Blank tee template — downloadable</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Blank glasses template — downloadable</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Downloadable sticker pack</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Voting template</span></li>
+          <span class="eco-sub">Submission Kit</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Submission announcement post</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Instagram Story submission template</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Countdown assets (7-day, 3-day, 1-day)</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Winner announcement asset</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Community spotlight template</span></li>
+          <span class="eco-sub">Social Stickers</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Instagram GIF pack</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">TikTok sticker set</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Story stickers — brand + prints</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">AR filter — frame customisation</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Reaction stickers</span></li>
+        </ul>
+      </div>
+
+      <!-- RETAIL -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">05 / Retail</div>
+        <div class="d eco-cat-name">Retail</div>
+        <ul class="eco-list">
+          <span class="eco-sub">In-Store Materials</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Window graphics</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Store posters — campaign series</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Floor decals</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">QR code signage system</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Pack display unit design</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Customisation wall branding</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Grandma Station in-store branding</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Campaign gallery wall design</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Submission station signage</span></li>
+        </ul>
+      </div>
+
+      <!-- DIGITAL -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">06 / Digital Experience</div>
+        <div class="d eco-cat-name">Digital</div>
+        <ul class="eco-list">
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Y2K Landing Page</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Design Your Tee — online tool</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Design Your Frames — configurator</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Submission platform</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Email campaign — pack recipients</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Email campaign — ticket holders</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Community voting interface</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Winner notification system</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Digital portrait download page</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Post-event recap microsite</span></li>
+        </ul>
+      </div>
+
+      <!-- EVENT -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">07 / Event Assets</div>
+        <div class="d eco-cat-name">Event</div>
+        <ul class="eco-list">
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Revolution Party concept</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Grandma Station setup</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Customisation Lab</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Portrait Studio</span></li>
+          <li class="eco-item"><span class="check">✓</span><span class="item-text">Creator Corner</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Event invitation design</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Ticket design — Entry + Custom</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Lineup poster</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Countdown assets (30, 7, 1 day)</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Venue map graphic</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Wristband design</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Outdoor signage system</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Stage screen visuals</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Photobooth strip design</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Photobooth polaroid frame</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Digital download card design</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Aftermovie identity</span></li>
+        </ul>
+      </div>
+
+      <!-- ADVOCACY -->
+      <div class="eco-cat">
+        <div class="eco-cat-icon">08 / Advocacy + Afterglow</div>
+        <div class="d eco-cat-name">Advocacy</div>
+        <ul class="eco-list">
+          <span class="eco-sub">Grandma Series</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Meet Grandma — who gave you permission?</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Grandma Rates Designs — content series</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Grandma Presses Winners — event series</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Grandma Advice — organic content</span></li>
+          <span class="eco-sub">Post-Event</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Full recap reel (60–90 sec)</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Community portrait gallery — 10-day series</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Creator story highlights</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Behind the scenes compilation</span></li>
+          <span class="eco-sub">Limited Drops</span>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Winner design campaign assets</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Limited drop announcement template</span></li>
+          <li class="eco-item missing"><span class="gap">→</span><span class="item-text">Community next-drop voting assets</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- TOTALS -->
+    <div class="eco-totals">
+      <div class="eco-total-item">
+        <div class="eco-total-lbl">Total Deliverables</div>
+        <div class="d eco-total-num">108</div>
+        <div class="eco-total-note">Across 8 categories. Brand to advocacy. Every touchpoint in the campaign system.</div>
+      </div>
+      <div class="eco-total-item">
+        <div class="eco-total-lbl">Completed</div>
+        <div class="d eco-total-num" style="color:var(--acid);">31</div>
+        <div class="eco-total-note">Brand system, product assets, photography, digital playground, and event concept all in place.</div>
+      </div>
+      <div class="eco-total-item">
+        <div class="eco-total-lbl">Recommended Additions</div>
+        <div class="d eco-total-num hot">77</div>
+        <div class="eco-total-note">Content formats, community toolkits, retail materials, event production, and advocacy series.</div>
+      </div>
+      <div class="eco-total-item">
+        <div class="eco-total-lbl">The Point</div>
+        <div class="eco-total-note" style="font-size:14px; margin-top:0; line-height:1.7;">This is the difference between a campaign idea and a campaign system. The 31 completed assets prove the concept. The 77 recommended additions are what makes it executable from day one — no gaps, no scramble, no improvising under pressure.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ════════════════════════════════════════ CLOSE -->
 <section class="close-sec">
   <span class="mono close-tag">KOMONO — Revolution 2026</span>
