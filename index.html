@@ -830,8 +830,12 @@
   }
   .ci-coll-item {
     background: var(--surface);
-    padding: 36px 28px;
+    padding: 0;
   }
+  .ci-coll-img { width: 100%; overflow: hidden; }
+  .ci-coll-img img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; transition: transform 0.6s ease; }
+  .ci-coll-item:hover .ci-coll-img img { transform: scale(1.04); }
+  .ci-coll-body { padding: 28px 28px 36px; }
   .ci-coll-world {
     font-family: 'Courier New', monospace;
     font-size: 8px;
@@ -1079,54 +1083,74 @@
       <span class="mono section-idx" style="color:var(--muted);">●</span>
       <h2 class="d section-name" style="font-size:clamp(28px,3.5vw,52px);">The Collection</h2>
     </div>
-    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:0; line-height:1.75;">The four visual worlds become the foundation for four distinct eyewear families. Rather than designing one collection with different colours, each world creates its own design language.</p>
+    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:40px; line-height:1.75;">The four visual worlds become the foundation for four distinct eyewear families. Rather than designing one collection with different colours, each world creates its own design language.</p>
+
+    <img src="images/catalogue_cover.png" alt="KOMONO REVOLUTION catalogue cover" loading="lazy" style="width:100%; max-width:100%; display:block; margin-bottom:2px;">
+
     <div class="ci-collection-grid">
       <div class="ci-coll-item ci-coll-01">
-        <p class="ci-coll-world">World 01</p>
-        <h3 class="d ci-coll-name">Pink Neon Tartan</h3>
-        <ul class="ci-coll-traits">
-          <li>Transparent crystal frames</li>
-          <li>Pastel pink and blue acetates</li>
-          <li>Gradient lenses</li>
-          <li>Iridescent and holographic effects</li>
-        </ul>
-        <p style="margin-top:20px; font-size:11px; color:rgba(255,31,142,0.7); letter-spacing:0.08em;">The most expressive and fashion-forward collection.</p>
+        <div class="ci-coll-img">
+          <img src="images/tartan_sunglasses.png" alt="Pink Neon Tartan sunglasses" loading="lazy">
+        </div>
+        <div class="ci-coll-body">
+          <p class="ci-coll-world">World 01</p>
+          <h3 class="d ci-coll-name">Pink Neon Tartan</h3>
+          <ul class="ci-coll-traits">
+            <li>Transparent crystal frames</li>
+            <li>Pastel pink and blue acetates</li>
+            <li>Gradient lenses</li>
+            <li>Iridescent and holographic effects</li>
+          </ul>
+          <p style="margin-top:20px; font-size:11px; color:rgba(255,31,142,0.7); letter-spacing:0.08em;">The most expressive and fashion-forward collection.</p>
+        </div>
       </div>
       <div class="ci-coll-item ci-coll-02">
-        <p class="ci-coll-world">World 02</p>
-        <h3 class="d ci-coll-name">Blue Cheetah</h3>
-        <ul class="ci-coll-traits">
-          <li>Chrome constructions</li>
-          <li>Reflective blue shield lenses</li>
-          <li>Aerodynamic silhouettes</li>
-          <li>Futuristic Y2K sports references</li>
-        </ul>
-        <p style="margin-top:20px; font-size:11px; color:rgba(77,170,255,0.7); letter-spacing:0.08em;">Built around movement, speed, and confidence.</p>
+        <div class="ci-coll-img">
+          <img src="images/cheetah_sunglasses.png" alt="Blue Cheetah sunglasses" loading="lazy">
+        </div>
+        <div class="ci-coll-body">
+          <p class="ci-coll-world">World 02</p>
+          <h3 class="d ci-coll-name">Blue Cheetah</h3>
+          <ul class="ci-coll-traits">
+            <li>Chrome constructions</li>
+            <li>Reflective blue shield lenses</li>
+            <li>Aerodynamic silhouettes</li>
+            <li>Futuristic Y2K sports references</li>
+          </ul>
+          <p style="margin-top:20px; font-size:11px; color:rgba(77,170,255,0.7); letter-spacing:0.08em;">Built around movement, speed, and confidence.</p>
+        </div>
       </div>
       <div class="ci-coll-item ci-coll-03">
-        <p class="ci-coll-world">World 03</p>
-        <h3 class="d ci-coll-name">Acid Tiger</h3>
-        <ul class="ci-coll-traits">
-          <li>Bright acid green details</li>
-          <li>Chrome hardware</li>
-          <li>Minimal silhouettes</li>
-          <li>Festival and rave-inspired energy</li>
-        </ul>
-        <p style="margin-top:20px; font-size:11px; color:rgba(200,255,0,0.7); letter-spacing:0.08em;">Built around instinct and self-expression.</p>
+        <div class="ci-coll-img">
+          <img src="images/acid_tiger_sunglasses.png" alt="Acid Tiger sunglasses" loading="lazy">
+        </div>
+        <div class="ci-coll-body">
+          <p class="ci-coll-world">World 03</p>
+          <h3 class="d ci-coll-name">Acid Tiger</h3>
+          <ul class="ci-coll-traits">
+            <li>Bright acid green details</li>
+            <li>Chrome hardware</li>
+            <li>Minimal silhouettes</li>
+            <li>Festival and rave-inspired energy</li>
+          </ul>
+          <p style="margin-top:20px; font-size:11px; color:rgba(200,255,0,0.7); letter-spacing:0.08em;">Built around instinct and self-expression.</p>
+        </div>
       </div>
       <div class="ci-coll-item ci-coll-04">
-        <p class="ci-coll-world">World 04</p>
-        <h3 class="d ci-coll-name">Zebra Monochrome</h3>
-        <ul class="ci-coll-traits">
-          <li>Zebra, dalmatian, cow print patterns</li>
-          <li>Abstract black-and-white graphics</li>
-          <li>Graphic, timeless, bold</li>
-        </ul>
-        <p style="margin-top:20px; font-size:11px; color:rgba(240,238,230,0.5); letter-spacing:0.08em;">The purest expression of individuality.</p>
+        <div class="ci-coll-body" style="padding-top:48px;">
+          <p class="ci-coll-world">World 04</p>
+          <h3 class="d ci-coll-name">Zebra Monochrome</h3>
+          <ul class="ci-coll-traits">
+            <li>Zebra, dalmatian, cow print patterns</li>
+            <li>Abstract black-and-white graphics</li>
+            <li>Graphic, timeless, bold</li>
+          </ul>
+          <p style="margin-top:20px; font-size:11px; color:rgba(240,238,230,0.5); letter-spacing:0.08em;">The purest expression of individuality.</p>
+        </div>
       </div>
     </div>
     <p style="margin-top:40px; font-size:14px; color:var(--muted); max-width:580px; line-height:1.75;">Together, these collections allow people to choose the energy they identify with most. Not based on trends. Not based on approval. But based on instinct.</p>
-    <div style="margin-top:2px;">
+    <div style="margin-top:16px;">
       <img src="images/komono-revolution-print-card-set.png" alt="REVOLUTION print card set — eyewear worlds" loading="lazy" style="width:100%; display:block;">
     </div>
   </div>
