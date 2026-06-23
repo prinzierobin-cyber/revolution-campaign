@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>REVOLUTION — No Permission Needed | KOMONO 2027</title>
 <style>
   :root {
@@ -452,6 +453,98 @@
   }
 
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ════════════════════════════════════════════════
+     MOBILE — comprehensive overrides
+  ════════════════════════════════════════════════ */
+  .ig-2col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: var(--border);
+  }
+  .ig-3col {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 56px;
+  }
+  .ig-2col-text {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .ig-grandma {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 2px; background: var(--border);
+  }
+
+  @media (max-width: 768px) {
+    /* Basics */
+    .wrap { padding: 0 20px !important; }
+    .section-pad { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .hero { padding: 100px 20px 48px !important; }
+
+    /* Nav */
+    nav { padding: 0 20px !important; }
+
+    /* Manifesto band */
+    .manifesto-band { padding: 48px 20px !important; }
+    .manifesto-band-inner { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+    /* Campaign intro */
+    .ci-intro-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .ci-transform-inner { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .ci-worlds-grid { grid-template-columns: 1fr !important; }
+    .ci-philosophy-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .ci-collection-grid { grid-template-columns: 1fr !important; }
+    .ci-pull { position: static !important; }
+    .ci-close-band { padding: 56px 20px !important; }
+
+    /* Inline grids → single column */
+    .ig-2col { grid-template-columns: 1fr !important; }
+    .ig-3col { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .ig-2col-text { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .ig-grandma { grid-template-columns: 1fr !important; }
+
+    /* Trilogy / Timeline */
+    .trilogy-grid { grid-template-columns: 1fr !important; }
+    .tl-wrap { padding-left: 32px !important; }
+
+    /* Patches */
+    .patches-grid { grid-template-columns: 1fr !important; }
+    .patches-thesis { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .patches-connections { flex-direction: column !important; }
+
+    /* Customer journey */
+    .journey-grid { grid-template-columns: 1fr 1fr !important; }
+
+    /* Social / Y2K */
+    .social-grid { grid-template-columns: 1fr !important; }
+    .y2k-features { grid-template-columns: 1fr !important; }
+    .y2k-timing { grid-template-columns: 1fr !important; }
+
+    /* Product */
+    .garment-grid { grid-template-columns: 1fr !important; }
+    .eyewear-inner { grid-template-columns: 1fr !important; gap: 36px !important; }
+
+    /* Event / party */
+    .location-block { grid-template-columns: 1fr !important; }
+    .event-series-grid { grid-template-columns: 1fr !important; }
+    .trilogy-location { grid-template-columns: 1fr !important; }
+
+    /* Metrics */
+    .kpi-grid { grid-template-columns: 1fr 1fr !important; }
+    .north-star-grid { grid-template-columns: 1fr !important; }
+
+    /* Calendar */
+    .cal-grid { grid-template-columns: 1fr !important; }
+
+    /* Budget */
+    .budget-grid { grid-template-columns: 1fr !important; }
+    .budget-total-bar { flex-direction: column !important; gap: 24px !important; }
+
+    /* Inline product sections that use max-width/padding */
+    div[style*="padding:0 56px"] { padding: 0 20px !important; }
+
+    /* Generic fixes for all images */
+    img { max-width: 100% !important; height: auto !important; }
+  }
 </style>
 
 <!-- NAV -->
@@ -1053,7 +1146,7 @@
       <span class="mono section-idx" style="color:var(--muted);">●</span>
       <h2 class="d section-name" style="font-size:clamp(28px,3.5vw,52px);">Logo & Typography</h2>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); margin-bottom:56px;">
+    <div style="class="ig-2col" style="margin-bottom:56px;"">
       <div style="background:var(--ground); display:flex; align-items:center; justify-content:center; padding:64px 48px; min-height:360px;">
         <img src="images/komono-revolution-no-permission-needed-logo.png" alt="KOMONO REVOLUTION custom logo — chrome metallic Y2K" loading="lazy" style="width:100%; max-width:420px; display:block;">
       </div>
@@ -1061,7 +1154,7 @@
         <img src="images/komono-revolution-custom-typeface.png" alt="KOMONO REVOLUTION custom typeface" loading="lazy" style="width:100%; max-width:420px; display:block;">
       </div>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:56px;">
+    <div style="class="ig-3col"">
       <div>
         <p style="font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border);">The Logo</p>
         <p style="font-size:clamp(20px,2.2vw,30px); font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase; color:var(--text); margin-bottom:16px; line-height:1.1;">Chrome. Metallic. Y2K.</p>
@@ -1854,13 +1947,13 @@
       </div>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); margin-top:64px;">
+    <div style="class="ig-2col" style="margin-top:64px;"">
       <img src="images/komono-revolution-pink-tartan-long-sleeve-tees.png" alt="Pink Neon Tartan long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       <img src="images/komono-revolution-blue-cheetah-long-sleeve-tees.png" alt="Blue Cheetah long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       <img src="images/komono-revolution-acid-tiger-long-sleeve-tees.png" alt="Acid Tiger long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       <img src="images/komono-revolution-zebra-sleeve-long-sleeve-tees.png" alt="Black & White Zebra long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); margin-top:2px;">
+    <div style="class="ig-2col" style="margin-top:2px;"">
       <img src="images/komono-revolution-acid-tiger-cap.png" alt="Acid Tiger cap" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       <img src="images/komono-revolution-phone-cases.png" alt="REVOLUTION phone cases" loading="lazy" style="width:100%; display:block; object-fit:cover;">
     </div>
@@ -2016,7 +2109,7 @@
       <h2 class="d section-name">The Patch System</h2>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-bottom:64px;">
+    <div style="class="ig-2col-text" style="margin-bottom:64px;"">
       <p style="color:var(--text); font-size:clamp(22px,2.8vw,40px); line-height:1.15; font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase;">A vision board you wear. Built patch by patch.</p>
       <div style="color:var(--muted); font-size:15px; line-height:1.8;">
         <p>The collection includes 25 patches — each with its own print, colour, and visual identity. Their colours and aesthetic energy are rooted in the campaign's manifesto and four visual worlds, but each patch exists in its own playful register.</p>
@@ -2178,7 +2271,7 @@
       <p class="grandma-box-body" style="margin-top:14px; font-weight:600; color:#080808;">She will be photographed thousands of times. She will be posted, shared, and remembered long after the event ends. Not because she was designed to go viral — but because she is genuinely, unmistakably herself. That is why she is an icon.</p>
     </div>
 
-      <div style="display:grid; grid-template-columns:2fr 1fr; gap:2px; background:var(--border); margin-top:40px;">
+      <div style="class="ig-grandma" style="margin-top:40px;"">
         <img src="images/komono-revolution-grandma-station-event-collage.png" alt="The Punk Grandma — KOMONO Revolution event" loading="lazy" style="width:100%; display:block; object-fit:cover;">
         <img src="images/komono-revolution-poster-and-photobooth-strip.png" alt="KOMONO Revolution photobooth strip" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       </div>
