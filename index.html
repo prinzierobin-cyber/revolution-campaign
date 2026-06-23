@@ -1,4 +1,4 @@
-<title>REVOLUTION — No Permission Needed | KOMONO 2026</title>
+<title>REVOLUTION — No Permission Needed | KOMONO 2027</title>
 <style>
   :root {
     --ground: #080808;
@@ -45,13 +45,81 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 56px;
-    background: rgba(8,8,8,0.85);
-    backdrop-filter: blur(12px);
+    padding: 0 56px;
+    height: 64px;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-brand { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; }
-  .nav-tag { color: var(--accent); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .nav-brand {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    padding: 6px 10px; border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--text); background: rgba(240,238,230,0.06); }
+  .nav-links a.nav-active { color: var(--accent); }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 36px; height: 36px; cursor: pointer; background: none; border: none;
+    padding: 4px;
+  }
+  .nav-burger span {
+    display: block; height: 1px; background: var(--text);
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* mobile overlay */
+  .nav-overlay {
+    display: none;
+    position: fixed; inset: 64px 0 0 0;
+    z-index: 99;
+    background: rgba(8,8,8,0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 40px;
+    gap: 4px;
+    overflow-y: auto;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay a {
+    font-family: Impact, 'Arial Narrow', sans-serif;
+    font-size: clamp(28px, 6vw, 48px);
+    text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    width: 100%;
+    transition: color 0.2s;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .nav-overlay a span {
+    font-family: 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.16em;
+    color: var(--accent); flex-shrink: 0;
+  }
+  .nav-overlay a:hover { color: var(--text); }
+
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+  }
 
   /* ── HERO ─────────────────────────────────────── */
   .hero {
@@ -388,19 +456,46 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#">KOMONO</a>
-  <span class="nav-tag mono">Campaign 2026 — Revolution</span>
+  <a class="nav-brand" href="#hero">KOMONO</a>
+  <ul class="nav-links">
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#trilogy">Trilogy</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#content">Content</a></li>
+    <li><a href="#product">Product</a></li>
+    <li><a href="#party">Party</a></li>
+    <li><a href="#metrics">Metrics</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#assets">Assets</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<div class="nav-overlay" id="navOverlay">
+  <a href="#manifesto" class="nav-ol-link"><span>01</span>Manifesto</a>
+  <a href="#trilogy" class="nav-ol-link"><span>02</span>Trilogy</a>
+  <a href="#timeline" class="nav-ol-link"><span>03</span>Timeline</a>
+  <a href="#content" class="nav-ol-link"><span>04</span>Content</a>
+  <a href="#product" class="nav-ol-link"><span>05</span>Product</a>
+  <a href="#party" class="nav-ol-link"><span>06</span>Party</a>
+  <a href="#metrics" class="nav-ol-link"><span>07</span>Metrics</a>
+  <a href="#calendar" class="nav-ol-link"><span>08</span>Calendar</a>
+  <a href="#budget" class="nav-ol-link"><span>09</span>Budget</a>
+  <a href="#assets" class="nav-ol-link"><span>10</span>Assets</a>
+</div>
+
 <!-- ════════════════════════════════════════ HERO -->
-<section class="hero">
-  <div class="hero-eyebrow mono">KOMONO — Campaign Manifesto 2026</div>
+<section class="hero" id="hero">
+  <div class="hero-eyebrow mono">KOMONO — Campaign Manifesto 2027</div>
   <span class="d hero-title">Revolution</span>
   <p class="d hero-sub">No Permission Needed.</p>
   <div class="hero-meta">
     <div class="hero-meta-item">
       <strong>Campaign Period</strong>
-      <span>January — June 2026</span>
+      <span>January — June 2027</span>
     </div>
     <div class="hero-meta-item">
       <strong>Phases</strong>
@@ -408,7 +503,7 @@
     </div>
     <div class="hero-meta-item">
       <strong>Peak Moment</strong>
-      <span>Revolution Party, May 2026</span>
+      <span>Revolution Party, May 2027</span>
     </div>
     <div class="hero-meta-item">
       <strong>Core Principle</strong>
@@ -720,11 +815,11 @@
 </style>
 
 <!-- ── INTRO: Revolution -->
-<section class="ci-section">
+<section class="ci-section" id="manifesto">
   <div class="wrap section-pad">
     <div class="ci-intro-grid">
       <div>
-        <p class="mono" style="color:var(--accent); letter-spacing:0.2em; margin-bottom:28px;">Campaign Manifesto — 2026</p>
+        <p class="mono" style="color:var(--accent); letter-spacing:0.2em; margin-bottom:28px;">Campaign Manifesto — 2027</p>
         <h2 class="d ci-pull">The most revolutionary thing a person can do today is live <em>authentically.</em></h2>
       </div>
       <div class="ci-body">
@@ -953,7 +1048,7 @@
 <div style="background:var(--surface);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">02</span>
+      <span class="mono section-idx" id="trilogy">02</span>
       <h2 class="d section-name">The Trilogy</h2>
     </div>
     <p style="color:var(--muted); font-size:16px; max-width:640px; margin-bottom:64px; line-height:1.7;">REVOLUTION doesn't arrive from nowhere. It's the third chapter of a campaign trilogy that has been building a philosophy for three years. Each campaign asked a different question about who we are. This one closes the loop.</p>
@@ -976,7 +1071,7 @@
         <div class="mono tril-num" style="color:var(--accent);">Chapter 03</div>
         <h3 class="d tril-name current-name">REVOLUTION</h3>
         <p class="tril-line">We know who we are. We know where we belong. Now we stop asking for permission to be it. The trilogy completes here.</p>
-        <div class="tril-status now">2026 — Active</div>
+        <div class="tril-status now">2027 — Active</div>
       </div>
     </div>
   </div>
@@ -986,7 +1081,7 @@
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">03</span>
+      <span class="mono section-idx" id="timeline">03</span>
       <h2 class="d section-name">Campaign Timeline</h2>
     </div>
 
@@ -1281,7 +1376,7 @@
 <div style="background:var(--surface);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">04</span>
+      <span class="mono section-idx" id="journey">04</span>
       <h2 class="d section-name">Customer Journey</h2>
     </div>
     <p style="color:var(--muted); font-size:16px; max-width:580px; margin-bottom:56px; line-height:1.7;">A person can enter at any stage. The campaign is open at every door. The path moves them from observer to creator to community member — but it's never forced.</p>
@@ -1342,7 +1437,7 @@
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">05</span>
+      <span class="mono section-idx" id="content">05</span>
       <h2 class="d section-name">Social Content Series</h2>
     </div>
   </div>
@@ -1442,12 +1537,12 @@
 <div class="y2k-section">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">06</span>
+      <span class="mono section-idx" id="playground">06</span>
       <h2 class="d section-name">The Digital Playground</h2>
     </div>
 
     <div class="y2k-hero">
-      <div class="y2k-badge">Launches with public drop — March 2026</div>
+      <div class="y2k-badge">Launches with public drop — March 2027</div>
       <h3 class="d y2k-title">A Landing Page Built Like the Internet in 2000.</h3>
       <p class="y2k-desc">When the campaign goes public, a dedicated online playground launches alongside it. Designed entirely in a Y2K aesthetic — the chaotic, personalised, hyperlinked visual language of the early web. Animated GIFs. Neon on black. Under-construction banners. Guestbooks. The whole era. It's not nostalgia for its own sake. It's the campaign's digital proof of concept: self-expression existed long before algorithms, long before brand guidelines, long before anyone asked for permission to build a website that looked exactly how they wanted it to look.</p>
     </div>
@@ -1474,7 +1569,7 @@
       <p class="d y2k-timing-txt">The Y2K aesthetic is not decoration. It is the argument. In 2000, anyone could build a site that looked exactly like themselves. That was the last time the internet felt genuinely personal. This campaign brings that energy back.</p>
       <div>
         <div class="y2k-timing-meta" style="color:rgba(8,8,8,0.5); margin-bottom:4px;">Goes live</div>
-        <div class="y2k-timing-meta">March 2026 — Public Launch</div>
+        <div class="y2k-timing-meta">March 2027 — Public Launch</div>
       </div>
     </div>
   </div>
@@ -1629,7 +1724,7 @@
 <div style="background:var(--surface);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">07</span>
+      <span class="mono section-idx" id="product">07</span>
       <h2 class="d section-name">Product as Canvas</h2>
     </div>
     <p style="color:var(--muted); font-size:16px; max-width:640px; margin-bottom:64px; line-height:1.7;">Two product categories. Four prints. One shared language. The collection doesn't decorate the campaign — it is the campaign, made wearable.</p>
@@ -1744,6 +1839,177 @@
   </div>
 </div>
 
+<!-- ════════════════════════════════════════ PATCHES -->
+<style>
+  .patches-section {
+    background: var(--ground);
+    border-top: 1px solid var(--border);
+  }
+  .patches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 64px;
+  }
+  .patch-card {
+    background: var(--surface);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .patch-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .patch-01::after { background: #FF1F8E; }
+  .patch-02::after { background: #4DAAFF; }
+  .patch-03::after { background: #C8FF00; }
+  .patch-04::after { background: var(--text); }
+  .patch-world {
+    font-family: 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .patch-01 .patch-world { color: #FF1F8E; }
+  .patch-02 .patch-world { color: #4DAAFF; }
+  .patch-03 .patch-world { color: #C8FF00; }
+  .patch-04 .patch-world { color: rgba(240,238,230,0.5); }
+  .patch-name {
+    font-size: clamp(22px, 2.5vw, 34px);
+    color: var(--text); line-height: 1; margin-bottom: 12px;
+  }
+  .patch-instinct {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .patch-01 .patch-instinct { color: rgba(255,31,142,0.6); }
+  .patch-02 .patch-instinct { color: rgba(77,170,255,0.6); }
+  .patch-03 .patch-instinct { color: rgba(200,255,0,0.6); }
+  .patch-04 .patch-instinct { color: rgba(240,238,230,0.4); }
+  .patch-meaning {
+    font-size: 14px; line-height: 1.75; color: var(--muted);
+  }
+
+  .patches-thesis {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    padding-top: 56px;
+    border-top: 1px solid var(--border);
+  }
+  .patches-thesis-pull {
+    font-size: clamp(28px, 3.2vw, 48px);
+    color: var(--text); line-height: 1.1;
+  }
+  .patches-thesis-pull em { font-style: normal; color: var(--accent); }
+  .patches-thesis-body {
+    font-size: 15px; line-height: 1.8; color: var(--muted);
+  }
+  .patches-thesis-body p + p { margin-top: 16px; }
+  .patches-thesis-body strong { color: var(--text); }
+
+  .patches-connections {
+    margin-top: 56px;
+    display: flex; flex-wrap: wrap; gap: 2px;
+  }
+  .patch-conn-item {
+    background: var(--surface);
+    padding: 16px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .patch-conn-item::before { content: '→'; color: var(--accent); }
+
+  .patches-final {
+    margin-top: 56px;
+    padding: 48px 56px;
+    background: var(--accent);
+    text-align: center;
+  }
+  .patches-final-line {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: rgba(8,8,8,0.75);
+    max-width: 600px; margin: 0 auto 8px;
+    line-height: 1.4;
+  }
+  .patches-final-line strong { color: #080808; }
+
+  @media (max-width: 960px) {
+    .patches-grid { grid-template-columns: 1fr; }
+    .patches-thesis { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+
+<div class="patches-section">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx" style="color:var(--acid);">●</span>
+      <h2 class="d section-name">Patches as Identity Markers</h2>
+    </div>
+    <p style="color:var(--muted); font-size:16px; max-width:680px; line-height:1.75; margin-bottom:0;">The animal-print patches throughout the collection are more than graphic embellishments. They are wearable symbols of self-expression — and the clearest articulation of the campaign's core idea.</p>
+
+    <div class="patches-grid">
+      <div class="patch-card patch-01">
+        <p class="patch-world">World 01 — Pink Neon Tartan</p>
+        <h3 class="d patch-name">The Tartan Patch</h3>
+        <p class="patch-instinct">Transformation</p>
+        <p class="patch-meaning">The tartan patch represents the moment of becoming — the transition itself. Unlike the spirit animals, which embody a character, the tartan represents the portal between two versions of the self. Wearing it is a declaration: I am in the process of becoming who I was always meant to be.</p>
+      </div>
+      <div class="patch-card patch-02">
+        <p class="patch-world">World 02 — Blue Cheetah</p>
+        <h3 class="d patch-name">The Cheetah Patch</h3>
+        <p class="patch-instinct">Ambition — Momentum</p>
+        <p class="patch-meaning">The cheetah patch channels ambition and forward motion. It belongs to the person who moves without second-guessing themselves — who acts on instinct, trusts their direction, and doesn't wait for the path to be cleared before stepping onto it.</p>
+      </div>
+      <div class="patch-card patch-03">
+        <p class="patch-world">World 03 — Acid Tiger</p>
+        <h3 class="d patch-name">The Tiger Patch</h3>
+        <p class="patch-instinct">Confidence — Presence</p>
+        <p class="patch-meaning">The tiger patch is about taking up space. About walking into a room and not making yourself smaller. The person who wears it has stopped apologizing for being visible. They don't need to roar. Their presence does it for them.</p>
+      </div>
+      <div class="patch-card patch-04">
+        <p class="patch-world">World 04 — Zebra</p>
+        <h3 class="d patch-name">The Zebra Patch</h3>
+        <p class="patch-instinct">Individuality — Visibility</p>
+        <p class="patch-meaning">No two zebras share the same pattern. The zebra patch belongs to the person who has stopped hiding what makes them different — and started leading with it. The contrast is the point. Standing out is not the side effect. It's the intention.</p>
+      </div>
+    </div>
+
+    <div class="patches-thesis">
+      <div>
+        <p class="patches-thesis-pull">You don't buy a finished identity.<br>You <em>build</em> one.</p>
+      </div>
+      <div class="patches-thesis-body">
+        <p>In punk culture, patches communicated belonging, beliefs, and individuality. They told people who you were before you said a word. REVOLUTION reinterprets that idea for a new generation.</p>
+        <p>Instead of band logos or political statements, these patches are built from the campaign's animal worlds — allowing wearers to construct their own visual identity by choosing the energies they connect with most.</p>
+        <p>This is why the shirts are designed as canvases rather than finished products. <strong>The wearer completes them.</strong> Just as the campaign asks people to stop asking for permission and start expressing themselves, the patches encourage customization, participation, and ownership.</p>
+        <p>No two shirts should feel exactly the same. Because no two people are exactly the same.</p>
+      </div>
+    </div>
+
+    <div class="patches-connections">
+      <div class="patch-conn-item">Spirit-animal campaign imagery</div>
+      <div class="patch-conn-item">DIY punk inspiration</div>
+      <div class="patch-conn-item">Sticker sheets in the Revolution Pack</div>
+      <div class="patch-conn-item">Y2K customisation platform</div>
+      <div class="patch-conn-item">Patches on apparel sleeves</div>
+      <div class="patch-conn-item">Charms on sunglasses</div>
+    </div>
+
+    <div class="patches-final">
+      <p class="patches-final-line"><strong>Everything follows the same strategic idea.</strong> The campaign imagery, the packs, the patches, the charms, the sticker sheets, the landing page — they are all the same sentence written in different languages.</p>
+      <p class="patches-final-line" style="margin-top:8px;">No permission needed. No finished product required. Just you, your instincts, and a blank canvas.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ════════════════════════════════════════ EVENT -->
 <style>
   .location-block {
@@ -1799,17 +2065,17 @@
 <div class="event-bg">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">08</span>
+      <span class="mono section-idx" id="party">08</span>
       <h2 class="d section-name">The Revolution Party</h2>
     </div>
-    <p style="color:var(--muted); font-size:16px; max-width:680px; margin-bottom:56px; line-height:1.7;">May 2026. Outdoor. A beach or open-air location with a covered zone. Not a club. Not a warehouse. A place that feels like it belongs to everyone who shows up — because it does.</p>
+    <p style="color:var(--muted); font-size:16px; max-width:680px; margin-bottom:56px; line-height:1.7;">May 2027. Outdoor. A beach or open-air location with a covered zone. Not a club. Not a warehouse. A place that feels like it belongs to everyone who shows up — because it does.</p>
 
     <!-- LOCATION STRATEGY -->
     <div class="trilogy-location">
       <div class="trilogy-location-seq">
         <div class="seq-item">ODYSSEY — [Location 01]</div>
         <div class="seq-item">SUPER NATURE — [Location 02]</div>
-        <div class="seq-item active">REVOLUTION — Outdoor / Beach, May 2026</div>
+        <div class="seq-item active">REVOLUTION — Outdoor / Beach, May 2027</div>
       </div>
       <div class="trilogy-location-copy">
         <p>Every KOMONO campaign launch has been defined as much by where it happened as by what happened. The location is not a backdrop — it becomes part of the campaign's identity. People remember the place. They reference it. The venue choice is a creative decision, not a logistical one.</p>
@@ -1822,7 +2088,7 @@
         <div class="mono loc-lbl">Why Outdoor — The Strategic Decision</div>
         <h4 class="d loc-ttl">Gen Z Doesn't Go to Clubs.</h4>
         <div class="loc-body">
-          <p>That's not a criticism. It's a cultural fact that most brands are still getting wrong in 2026. The millennial generation built nightlife culture — the dark room, the velvet rope, the DJ booth as status symbol. Gen Z rejected it. They go to markets, parks, outdoor festivals, rooftop gatherings, beach hang-outs. They want to see each other's faces. They want natural light in their photos. They want to leave when they want to leave. They want the air to feel free.</p>
+          <p>That's not a criticism. It's a cultural fact that most brands are still getting wrong in 2027. The millennial generation built nightlife culture — the dark room, the velvet rope, the DJ booth as status symbol. Gen Z rejected it. They go to markets, parks, outdoor festivals, rooftop gatherings, beach hang-outs. They want to see each other's faces. They want natural light in their photos. They want to leave when they want to leave. They want the air to feel free.</p>
           <p>A club venue for this campaign would contradict every word of the manifesto. No permission needed — and yet you need to be on the list, you need to look a certain way, you need to survive the queue. An outdoor location removes all of that. It is the venue choice as campaign statement.</p>
           <p>Authentic experiences photograph differently too. Golden hour light on the beach creates content no studio can replicate. The community portraits from this event will circulate for months because they look like real life, not a production.</p>
         </div>
@@ -2012,7 +2278,7 @@
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">09</span>
+      <span class="mono section-idx" id="metrics">09</span>
       <h2 class="d section-name">Measuring the Campaign</h2>
     </div>
     <p class="kpi-intro">Each output has its own success signal. These aren't vanity metrics grouped by category — they're the specific numbers that tell us whether each activation did what it was supposed to do. Measured per output. Reported per phase.</p>
@@ -2330,7 +2596,7 @@
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">10</span>
+      <span class="mono section-idx" id="calendar">10</span>
       <h2 class="d section-name">Content Release Calendar</h2>
     </div>
     <p class="cal-intro">Each phase has a content job. The timing isn't arbitrary — it's engineered so that each wave of content creates the appetite for the next. The street interviews build the question. The question makes the pack feel like an answer. The pack generates the submissions. The submissions fuel the event. The event creates the afterglow. Nothing drops randomly.</p>
@@ -2640,7 +2906,7 @@
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">11</span>
+      <span class="mono section-idx" id="budget">11</span>
       <h2 class="d section-name">Campaign Budget</h2>
     </div>
     <p class="cal-intro">Budget calibrated for a smaller fashion brand — lean production, smart amplification, community-first spending. The biggest cost is the event in May. Everything else is kept tight and intentional.</p>
@@ -2800,7 +3066,7 @@
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
     <div class="section-hd">
-      <span class="mono section-idx">12</span>
+      <span class="mono section-idx" id="assets">12</span>
       <h2 class="d section-name">Complete Asset Ecosystem</h2>
     </div>
     <p class="eco-intro">Every deliverable across every category — brand, product, content, community, retail, digital, event, and advocacy. <span style="color:var(--acid);">✓ Completed.</span> <span style="color:var(--accent);">→ Recommended addition.</span> This is what a 360° campaign system looks like when it's fully built out.</p>
@@ -3027,8 +3293,54 @@
 
 <!-- ════════════════════════════════════════ CLOSE -->
 <section class="close-sec">
-  <span class="mono close-tag">KOMONO — Revolution 2026</span>
+  <span class="mono close-tag">KOMONO — Revolution 2027</span>
   <p class="d close-quote">The world doesn't become more beautiful when people fit in. The world becomes more beautiful when people become themselves.</p>
   <span class="mono close-tag">NO PERMISSION NEEDED.</span>
   <div class="d close-wordmark">Revolution</div>
 </section>
+
+<script>
+(function(){
+  // Burger toggle
+  var burger = document.getElementById('navBurger');
+  var overlay = document.getElementById('navOverlay');
+  burger.addEventListener('click', function(){
+    var open = overlay.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  // Close overlay when a link is clicked
+  overlay.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Active nav highlight via IntersectionObserver
+  var navLinks = document.querySelectorAll('.nav-links a');
+  var targets = [];
+  navLinks.forEach(function(a){
+    var id = a.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) targets.push({ id: id, el: el, a: a });
+  });
+
+  if('IntersectionObserver' in window && targets.length){
+    var active = null;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var t = targets.find(function(t){ return t.el === entry.target; });
+        if(!t) return;
+        if(entry.isIntersecting){
+          if(active) active.classList.remove('nav-active');
+          t.a.classList.add('nav-active');
+          active = t.a;
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    targets.forEach(function(t){ obs.observe(t.el); });
+  }
+})();
+</script>
