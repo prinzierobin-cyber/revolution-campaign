@@ -1468,6 +1468,152 @@
       <img src="images/komono-revolution-blue-cheetah-long-sleeve-tees.png" alt="Blue Cheetah long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       <img src="images/komono-revolution-acid-tiger-long-sleeve-tees.png" alt="Acid Tiger long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
       <img src="images/komono-revolution-zebra-sleeve-long-sleeve-tees.png" alt="Black & White Zebra long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+
+<!-- ════════════════════════════════════════ PATCHES -->
+<style>
+  .patches-section {
+    background: var(--ground);
+    border-top: 1px solid var(--border);
+  }
+  .patches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 64px;
+  }
+  .patch-card {
+    background: var(--surface);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .patch-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .patch-01::after { background: #FF1F8E; }
+  .patch-02::after { background: #4DAAFF; }
+  .patch-03::after { background: #C8FF00; }
+  .patch-04::after { background: var(--text); }
+  .patch-world {
+    font-family: 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .patch-01 .patch-world { color: #FF1F8E; }
+  .patch-02 .patch-world { color: #4DAAFF; }
+  .patch-03 .patch-world { color: #C8FF00; }
+  .patch-04 .patch-world { color: rgba(240,238,230,0.5); }
+  .patch-name {
+    font-size: clamp(22px, 2.5vw, 34px);
+    color: var(--text); line-height: 1; margin-bottom: 12px;
+  }
+  .patch-instinct {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .patch-01 .patch-instinct { color: rgba(255,31,142,0.6); }
+  .patch-02 .patch-instinct { color: rgba(77,170,255,0.6); }
+  .patch-03 .patch-instinct { color: rgba(200,255,0,0.6); }
+  .patch-04 .patch-instinct { color: rgba(240,238,230,0.4); }
+  .patch-meaning {
+    font-size: 14px; line-height: 1.75; color: var(--muted);
+  }
+
+  .patches-thesis {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    padding-top: 56px;
+    border-top: 1px solid var(--border);
+  }
+  .patches-thesis-pull {
+    font-size: clamp(28px, 3.2vw, 48px);
+    color: var(--text); line-height: 1.1;
+  }
+  .patches-thesis-pull em { font-style: normal; color: var(--accent); }
+  .patches-thesis-body {
+    font-size: 15px; line-height: 1.8; color: var(--muted);
+  }
+  .patches-thesis-body p + p { margin-top: 16px; }
+  .patches-thesis-body strong { color: var(--text); }
+
+  .patches-connections {
+    margin-top: 56px;
+    display: flex; flex-wrap: wrap; gap: 2px;
+  }
+  .patch-conn-item {
+    background: var(--surface);
+    padding: 16px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .patch-conn-item::before { content: '→'; color: var(--accent); }
+
+  .patches-final {
+    margin-top: 56px;
+    padding: 48px 56px;
+    background: var(--accent);
+    text-align: center;
+  }
+  .patches-final-line {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: rgba(8,8,8,0.75);
+    max-width: 600px; margin: 0 auto 8px;
+    line-height: 1.4;
+  }
+  .patches-final-line strong { color: #080808; }
+
+  @media (max-width: 960px) {
+    .patches-grid { grid-template-columns: 1fr; }
+    .patches-thesis { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+
+<div class="patches-section">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx" style="color:var(--acid);">●</span>
+      <h2 class="d section-name">The Patch System</h2>
+    </div>
+
+    <div style="class="ig-2col-text" style="margin-bottom:64px;"">
+      <p style="color:var(--text); font-size:clamp(22px,2.8vw,40px); line-height:1.15; font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase;">A vision board you wear. Built patch by patch.</p>
+      <div style="color:var(--muted); font-size:15px; line-height:1.8;">
+        <p>The collection includes 25 patches — each with its own print, colour, and visual identity. Their colours and aesthetic energy are rooted in the campaign's manifesto and four visual worlds, but each patch exists in its own playful register.</p>
+        <p>What makes the system work is that each patch carries a hidden meaning. Not printed on the patch itself — discovered on the sticker sheet inside the Revolution Pack, or revealed on the website at launch. You choose a patch because something draws you to it visually. You find out what it means after.</p>
+        <p>That discovery is the moment. The combination you build on your shirt becomes your own vision board — a set of intentions you've chosen to carry and wear. Some people pick one and mean it completely. Some layer five. No combination is wrong. No two shirts end up the same.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:64px; margin-bottom:64px;">
+      <img src="images/komono-revolution-patch-library.png" alt="REVOLUTION patch library — 25 manifestation patches" loading="lazy" style="width:100%; max-width:100%; display:block; border-radius:2px;">
+    </div>
+
+    <div class="patches-connections">
+      <div class="patch-conn-item">Campaign manifesto — source of each intention</div>
+      <div class="patch-conn-item">Sticker sheet — where the meanings are revealed</div>
+      <div class="patch-conn-item">Y2K landing page — full patch library at drop</div>
+      <div class="patch-conn-item">Apparel as canvas — shirt is complete only when you decide it is</div>
+      <div class="patch-conn-item">Paper mockups in the pack — rehearse your build at home</div>
+      <div class="patch-conn-item">Charms on eyewear — same system, different surface</div>
+    </div>
+
+    <div class="patches-final">
+      <p class="patches-final-line"><strong>25 patches. 25 intentions. Infinite combinations.</strong> The shirt is the canvas. The patches are the language. What you choose to say is entirely up to you.</p>
+      <p class="patches-final-line" style="margin-top:8px;">No permission required.</p>
+    </div>
+  </div>
+</div>
+
+
     </div>
     <div style="class="ig-2col" style="margin-top:2px;"">
       <img src="images/komono-revolution-acid-tiger-cap.png" alt="Acid Tiger cap" loading="lazy" style="width:100%; display:block; object-fit:cover;">
@@ -2011,150 +2157,6 @@
         <div class="y2k-timing-meta" style="color:rgba(8,8,8,0.5); margin-bottom:4px;">Goes live</div>
         <div class="y2k-timing-meta">March 2027 — Public Launch</div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════ PATCHES -->
-<style>
-  .patches-section {
-    background: var(--ground);
-    border-top: 1px solid var(--border);
-  }
-  .patches-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--border);
-    margin-top: 64px;
-  }
-  .patch-card {
-    background: var(--surface);
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .patch-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-  }
-  .patch-01::after { background: #FF1F8E; }
-  .patch-02::after { background: #4DAAFF; }
-  .patch-03::after { background: #C8FF00; }
-  .patch-04::after { background: var(--text); }
-  .patch-world {
-    font-family: 'Courier New', monospace;
-    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .patch-01 .patch-world { color: #FF1F8E; }
-  .patch-02 .patch-world { color: #4DAAFF; }
-  .patch-03 .patch-world { color: #C8FF00; }
-  .patch-04 .patch-world { color: rgba(240,238,230,0.5); }
-  .patch-name {
-    font-size: clamp(22px, 2.5vw, 34px);
-    color: var(--text); line-height: 1; margin-bottom: 12px;
-  }
-  .patch-instinct {
-    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .patch-01 .patch-instinct { color: rgba(255,31,142,0.6); }
-  .patch-02 .patch-instinct { color: rgba(77,170,255,0.6); }
-  .patch-03 .patch-instinct { color: rgba(200,255,0,0.6); }
-  .patch-04 .patch-instinct { color: rgba(240,238,230,0.4); }
-  .patch-meaning {
-    font-size: 14px; line-height: 1.75; color: var(--muted);
-  }
-
-  .patches-thesis {
-    margin-top: 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    padding-top: 56px;
-    border-top: 1px solid var(--border);
-  }
-  .patches-thesis-pull {
-    font-size: clamp(28px, 3.2vw, 48px);
-    color: var(--text); line-height: 1.1;
-  }
-  .patches-thesis-pull em { font-style: normal; color: var(--accent); }
-  .patches-thesis-body {
-    font-size: 15px; line-height: 1.8; color: var(--muted);
-  }
-  .patches-thesis-body p + p { margin-top: 16px; }
-  .patches-thesis-body strong { color: var(--text); }
-
-  .patches-connections {
-    margin-top: 56px;
-    display: flex; flex-wrap: wrap; gap: 2px;
-  }
-  .patch-conn-item {
-    background: var(--surface);
-    padding: 16px 20px;
-    font-family: 'Courier New', monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--muted);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .patch-conn-item::before { content: '→'; color: var(--accent); }
-
-  .patches-final {
-    margin-top: 56px;
-    padding: 48px 56px;
-    background: var(--accent);
-    text-align: center;
-  }
-  .patches-final-line {
-    font-size: clamp(18px, 2.5vw, 28px);
-    color: rgba(8,8,8,0.75);
-    max-width: 600px; margin: 0 auto 8px;
-    line-height: 1.4;
-  }
-  .patches-final-line strong { color: #080808; }
-
-  @media (max-width: 960px) {
-    .patches-grid { grid-template-columns: 1fr; }
-    .patches-thesis { grid-template-columns: 1fr; gap: 40px; }
-  }
-</style>
-
-<div class="patches-section">
-  <div class="wrap section-pad">
-    <div class="section-hd">
-      <span class="mono section-idx" style="color:var(--acid);">●</span>
-      <h2 class="d section-name">The Patch System</h2>
-    </div>
-
-    <div style="class="ig-2col-text" style="margin-bottom:64px;"">
-      <p style="color:var(--text); font-size:clamp(22px,2.8vw,40px); line-height:1.15; font-family:Impact,'Arial Narrow',sans-serif; text-transform:uppercase;">A vision board you wear. Built patch by patch.</p>
-      <div style="color:var(--muted); font-size:15px; line-height:1.8;">
-        <p>The collection includes 25 patches — each with its own print, colour, and visual identity. Their colours and aesthetic energy are rooted in the campaign's manifesto and four visual worlds, but each patch exists in its own playful register.</p>
-        <p>What makes the system work is that each patch carries a hidden meaning. Not printed on the patch itself — discovered on the sticker sheet inside the Revolution Pack, or revealed on the website at launch. You choose a patch because something draws you to it visually. You find out what it means after.</p>
-        <p>That discovery is the moment. The combination you build on your shirt becomes your own vision board — a set of intentions you've chosen to carry and wear. Some people pick one and mean it completely. Some layer five. No combination is wrong. No two shirts end up the same.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:64px; margin-bottom:64px;">
-      <img src="images/komono-revolution-patch-library.png" alt="REVOLUTION patch library — 25 manifestation patches" loading="lazy" style="width:100%; max-width:100%; display:block; border-radius:2px;">
-    </div>
-
-    <div class="patches-connections">
-      <div class="patch-conn-item">Campaign manifesto — source of each intention</div>
-      <div class="patch-conn-item">Sticker sheet — where the meanings are revealed</div>
-      <div class="patch-conn-item">Y2K landing page — full patch library at drop</div>
-      <div class="patch-conn-item">Apparel as canvas — shirt is complete only when you decide it is</div>
-      <div class="patch-conn-item">Paper mockups in the pack — rehearse your build at home</div>
-      <div class="patch-conn-item">Charms on eyewear — same system, different surface</div>
-    </div>
-
-    <div class="patches-final">
-      <p class="patches-final-line"><strong>25 patches. 25 intentions. Infinite combinations.</strong> The shirt is the canvas. The patches are the language. What you choose to say is entirely up to you.</p>
-      <p class="patches-final-line" style="margin-top:8px;">No permission required.</p>
     </div>
   </div>
 </div>
