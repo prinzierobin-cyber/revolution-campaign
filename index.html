@@ -2,13 +2,13 @@
 <title>REVOLUTION — No Permission Needed | KOMONO 2027</title>
 <style>
   :root {
-    --ground: #FFF6F9;
-    --surface: #FDEEF4;
-    --text: #08080F;
-    --muted: rgba(8,8,15,0.68);
+    --ground: #080808;
+    --surface: #111111;
+    --text: #F0EDE6;
+    --muted: rgba(240,238,230,0.55);
     --accent: #FF1F8E;
-    --acid: #007A28;
-    --border: rgba(8,8,15,0.1);
+    --acid: #C8FF00;
+    --border: rgba(240,238,230,0.1);
     --spine: rgba(255,31,142,0.3);
   }
 
@@ -48,7 +48,7 @@
     align-items: center;
     padding: 0 56px;
     height: 64px;
-    background: rgba(255,246,249,0.96);
+    background: rgba(8,8,8,0.96);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
@@ -90,7 +90,7 @@
     display: none;
     position: fixed; inset: 64px 0 0 0;
     z-index: 99;
-    background: rgba(255,246,249,0.98);
+    background: rgba(8,8,8,0.98);
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -482,6 +482,12 @@
 
     /* Nav */
     nav { padding: 0 20px !important; }
+    .manifesto-band { padding-left: 20px !important; padding-right: 20px !important; }
+    .ci-close-band { padding-left: 20px !important; padding-right: 20px !important; }
+    .close-sec { padding-left: 20px !important; padding-right: 20px !important; }
+    /* inline-padded wrappers */
+    div[style*="padding:0 56px"] { padding: 0 20px !important; }
+    div[style*="padding: 0 56px"] { padding: 0 20px !important; }
 
     /* Manifesto band */
     .manifesto-band { padding: 48px 20px !important; }
@@ -1425,7 +1431,7 @@
 
 
   <!-- PRINT PHILOSOPHY -->
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+  <div class="wrap">
     <div class="print-philosophy">
       <div>
         <p class="d phil-statement">Animal print is not a trend.<br>It is a <em>visual symbol</em> of authenticity.</p>
@@ -1440,7 +1446,7 @@
   </div>
 
   <!-- THE GARMENTS -->
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+  <div class="wrap">
     <div class="garments-row">
       <div class="garment-card">
         <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 01</div>
@@ -1625,7 +1631,7 @@
   </div>
 
   <!-- EYEWEAR -->
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+  <div class="wrap">
     <div class="eyewear-block">
       <div class="eyewear-left">
         <div class="mono eyewear-cat">Category 02 — New Line</div>
@@ -2026,7 +2032,7 @@
       <h2 class="d section-name">Social Content Series</h2>
     </div>
   </div>
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+  <div class="wrap">
     <div class="series-row">
       <div class="series-card">
         <div class="mono series-fmt">Hero Series / Jan–May</div>
