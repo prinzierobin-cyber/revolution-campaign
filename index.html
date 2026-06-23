@@ -1244,6 +1244,251 @@
   </div>
 </div>
 
+<!-- ════════════════════════════════════════ PRODUCT AS CANVAS -->
+<style>
+  /* ── Print swatches ── */
+  .prints-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 2px; background: var(--border); margin-bottom: 2px;
+  }
+  .print-card { display: flex; flex-direction: column; }
+  .print-swatch {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Pink Neon Tartan */
+  .swatch-tartan {
+    background: #FF1F8E;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(173,216,255,0.55) 18px, rgba(173,216,255,0.55) 22px),
+      repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(173,216,255,0.55) 18px, rgba(173,216,255,0.55) 22px),
+      repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(255,255,255,0.18) 6px, rgba(255,255,255,0.18) 8px),
+      repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(255,255,255,0.18) 6px, rgba(255,255,255,0.18) 8px);
+  }
+  /* Neon Pastel Tiger */
+  .swatch-tiger {
+    background: #F9E4C8;
+    background-image:
+      repeating-linear-gradient(
+        -55deg,
+        transparent 0px, transparent 8px,
+        rgba(255,120,20,0.85) 8px, rgba(255,120,20,0.85) 13px,
+        transparent 13px, transparent 24px,
+        rgba(255,80,0,0.6) 24px, rgba(255,80,0,0.6) 27px,
+        transparent 27px, transparent 36px
+      );
+  }
+  /* Neon Pastel Blue Cheetah */
+  .swatch-cheetah {
+    background: #D4F0FF;
+    background-image:
+      radial-gradient(ellipse 10px 6px at 20% 25%, rgba(30,120,220,0.75) 70%, transparent 100%),
+      radial-gradient(ellipse 6px 9px at 55% 15%, rgba(30,120,220,0.65) 70%, transparent 100%),
+      radial-gradient(ellipse 8px 5px at 75% 40%, rgba(30,120,220,0.7) 70%, transparent 100%),
+      radial-gradient(ellipse 11px 7px at 35% 60%, rgba(30,120,220,0.68) 70%, transparent 100%),
+      radial-gradient(ellipse 7px 10px at 80% 72%, rgba(30,120,220,0.72) 70%, transparent 100%),
+      radial-gradient(ellipse 9px 5px at 15% 80%, rgba(30,120,220,0.6) 70%, transparent 100%),
+      radial-gradient(ellipse 6px 8px at 60% 85%, rgba(30,120,220,0.65) 70%, transparent 100%);
+  }
+  /* Black White Zebra */
+  .swatch-zebra {
+    background: #F0EEE6;
+    background-image:
+      repeating-linear-gradient(
+        -70deg,
+        #080808 0px, #080808 10px,
+        transparent 10px, transparent 20px,
+        #080808 20px, #080808 26px,
+        transparent 26px, transparent 38px,
+        #080808 38px, #080808 42px,
+        transparent 42px, transparent 56px
+      );
+  }
+  .print-info {
+    background: var(--surface); padding: 24px 24px 28px;
+    flex: 1;
+  }
+  .print-name { font-size: clamp(14px, 1.5vw, 18px); margin-bottom: 6px; line-height: 1.1; }
+  .print-palette { font-size: 11px; color: var(--muted); font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
+
+  /* ── Philosophy strip ── */
+  .print-philosophy {
+    background: var(--ground);
+    border-top: 2px solid var(--accent);
+    padding: 72px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .phil-statement {
+    font-size: clamp(22px, 3vw, 40px);
+    line-height: 1.25;
+    color: var(--text);
+  }
+  .phil-statement em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .phil-body {
+    font-size: 14px; color: var(--muted); line-height: 1.8;
+  }
+  .phil-body p + p { margin-top: 14px; }
+  .phil-rule {
+    font-size: clamp(13px, 1.4vw, 16px); color: var(--text);
+    border-top: 1px solid var(--accent); padding-top: 20px; margin-top: 28px;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+  }
+
+  /* ── Garments ── */
+  .garments-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    background: var(--border); margin-top: 2px;
+  }
+  .garment-card { background: var(--surface); padding: 40px 40px; }
+  .garment-form { font-size: clamp(20px, 2.5vw, 32px); margin-bottom: 10px; }
+  .garment-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+  .garment-prints { display: flex; flex-wrap: wrap; gap: 6px; }
+  .garment-print-tag {
+    padding: 5px 12px; border: 1px solid var(--border);
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: 'Courier New', monospace; color: var(--text);
+  }
+
+  /* ── Eyewear ── */
+  .eyewear-block {
+    background: var(--ground); padding: 56px 48px;
+    border-top: 1px solid var(--border); margin-top: 2px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+  }
+  .eyewear-left { }
+  .eyewear-right { }
+  .eyewear-cat { color: var(--acid); margin-bottom: 8px; }
+  .eyewear-name { font-size: clamp(24px, 3vw, 44px); margin-bottom: 20px; }
+  .eyewear-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .eyewear-desc p + p { margin-top: 14px; }
+  .eyewear-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+  .e-tag { border: 1px solid var(--border); padding: 6px 14px; font-size: 11px; color: var(--text); letter-spacing: 0.08em; }
+  .e-tag.hot { border-color: var(--accent); color: var(--accent); }
+  .pack-note {
+    background: var(--surface); padding: 28px 32px; margin-top: 24px;
+    border-left: 2px solid var(--acid);
+  }
+  .pack-note-lbl { color: var(--acid); margin-bottom: 8px; }
+  .pack-note-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  @media (max-width: 960px) {
+    .prints-grid { grid-template-columns: 1fr 1fr; }
+    .print-philosophy { grid-template-columns: 1fr; gap: 40px; }
+    .garments-row { grid-template-columns: 1fr; }
+    .eyewear-block { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .prints-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+<div style="background:var(--surface);">
+  <div class="wrap section-pad">
+    <div class="section-hd">
+      <span class="mono section-idx" id="product">07</span>
+      <h2 class="d section-name">Product as Canvas</h2>
+    </div>
+    <p style="color:var(--muted); font-size:16px; max-width:640px; margin-bottom:64px; line-height:1.7;">Two product categories. Four prints. One shared language. The collection doesn't decorate the campaign — it is the campaign, made wearable.</p>
+  </div>
+
+
+  <!-- PRINT PHILOSOPHY -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="print-philosophy">
+      <div>
+        <p class="d phil-statement">Animal print is not a trend.<br>It is a <em>visual symbol</em> of authenticity.</p>
+        <p class="phil-rule">"They represent people who no longer hide, no longer blend in and no longer ask for permission to be themselves."</p>
+      </div>
+      <div class="phil-body">
+        <p>Animal prints were chosen not because they are rebellious, but because they symbolise instinctive self-expression. Throughout history they have been associated with confidence, visibility and individuality.</p>
+        <p>Within REVOLUTION they become a continuation of SUPER NATURE — carrying the power of nature into human expression. The trilogy closes here. ODYSSEY found identity. SUPER NATURE found connection to the natural world. REVOLUTION wears it.</p>
+        <p>Each print is a different kind of visibility. The zebra refuses to blend. The tiger moves with total conviction. The cheetah is the fastest version of itself. The tartan is structure made personal. Together they make a collection that doesn't ask whether the wearer fits in — it assumes they never wanted to.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE GARMENTS -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="garments-row">
+      <div class="garment-card">
+        <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 01</div>
+        <h4 class="d garment-form">Long Sleeve Tee</h4>
+        <p class="garment-desc">Full length. Maximum canvas. The oversized sleeve is the surface — where stickers go, where prints live, where the person shows up. Unisex fit, relaxed.</p>
+        <div class="garment-prints">
+          <div class="garment-print-tag">Pink Neon Tartan</div>
+          <div class="garment-print-tag">Neon Pastel Tiger</div>
+          <div class="garment-print-tag">Neon Pastel Blue Cheetah</div>
+          <div class="garment-print-tag">Black &amp; White Zebra</div>
+        </div>
+      </div>
+      <div class="garment-card">
+        <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 02</div>
+        <h4 class="d garment-form">Cropped Long Sleeve Tee</h4>
+        <p class="garment-desc">Same sleeve, shortened body. A different relationship to visibility. The crop is a statement in itself — worn with confidence, not apology. Available in all four prints.</p>
+        <div class="garment-prints">
+          <div class="garment-print-tag">Pink Neon Tartan</div>
+          <div class="garment-print-tag">Neon Pastel Tiger</div>
+          <div class="garment-print-tag">Neon Pastel Blue Cheetah</div>
+          <div class="garment-print-tag">Black &amp; White Zebra</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="class="ig-2col" style="margin-top:64px;"">
+      <img src="images/komono-revolution-pink-tartan-long-sleeve-tees.png" alt="Pink Neon Tartan long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-blue-cheetah-long-sleeve-tees.png" alt="Blue Cheetah long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-acid-tiger-long-sleeve-tees.png" alt="Acid Tiger long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-zebra-sleeve-long-sleeve-tees.png" alt="Black & White Zebra long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+    </div>
+    <div style="class="ig-2col" style="margin-top:2px;"">
+      <img src="images/komono-revolution-acid-tiger-cap.png" alt="Acid Tiger cap" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+      <img src="images/komono-revolution-phone-cases.png" alt="REVOLUTION phone cases" loading="lazy" style="width:100%; display:block; object-fit:cover;">
+    </div>
+  </div>
+
+  <!-- EYEWEAR -->
+  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
+    <div class="eyewear-block">
+      <div class="eyewear-left">
+        <div class="mono eyewear-cat">Category 02 — New Line</div>
+        <h4 class="d eyewear-name">REVOLUTION Eyewear</h4>
+        <div class="eyewear-desc">
+          <p>The sunglasses collection is born from the same visual language as the apparel. Each frame references the animal print palette — not by printing the pattern on the frame, but by carrying its energy into the silhouette, the colour, the lens tint, and the customisation options.</p>
+          <p>The zebra's contrast lives in the black-and-white frames. The tiger's warmth in the amber lenses. The cheetah's speed in the sharp angles. The tartan's structure in the acetate colour blocking. The print doesn't have to be literal to be present.</p>
+          <p>Each frame ships as a base. Charms, gems, pins, and attachments complete it — making every pair a one-of-one. The eyewear is the campaign's most wearable proof of concept. The mini paper sunglasses in the pack are the first version. The real frame is what you earn by submitting.</p>
+        </div>
+        <div class="eyewear-tags">
+          <div class="e-tag hot">Charms</div>
+          <div class="e-tag hot">Gems</div>
+          <div class="e-tag hot">Pins</div>
+          <div class="e-tag hot">Attachments</div>
+          <div class="e-tag">Animal print colour palette</div>
+          <div class="e-tag">Customisation Lab at event</div>
+          <div class="e-tag">In-store from March</div>
+        </div>
+      </div>
+      <div class="eyewear-right">
+        <div class="pack-note">
+          <div class="mono pack-note-lbl">In the Revolution Pack</div>
+          <p class="pack-note-body">Mini paper t-shirt mockup + mini paper sunglasses mockup. Both come with sticker sheets from the print collection. People design both at home, photograph their paper creations, and submit. The paper versions are the rehearsal. They lower the barrier to zero — no real product required to participate, no store visit, no event. The campaign is playable the moment the pack lands.</p>
+        </div>
+        <div class="pack-note" style="margin-top:2px;">
+          <div class="mono pack-note-lbl">The Connection to SUPER NATURE</div>
+          <p class="pack-note-body">The eyewear collection closes the loop between campaigns. SUPER NATURE was about our connection to the natural world. REVOLUTION puts that world on your body — and on your face. The animal is not a costume. It's a continuation. The person wearing it has stopped pretending to be separate from the nature they came from.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ════════════════════════════════════════ TIMELINE -->
 <div style="background:var(--ground);">
   <div class="wrap section-pad">
@@ -1744,251 +1989,6 @@
       <div>
         <div class="y2k-timing-meta" style="color:rgba(8,8,8,0.5); margin-bottom:4px;">Goes live</div>
         <div class="y2k-timing-meta">March 2027 — Public Launch</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════ PRODUCT AS CANVAS -->
-<style>
-  /* ── Print swatches ── */
-  .prints-grid {
-    display: grid; grid-template-columns: repeat(4,1fr);
-    gap: 2px; background: var(--border); margin-bottom: 2px;
-  }
-  .print-card { display: flex; flex-direction: column; }
-  .print-swatch {
-    height: 180px;
-    position: relative;
-    overflow: hidden;
-  }
-  /* Pink Neon Tartan */
-  .swatch-tartan {
-    background: #FF1F8E;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(173,216,255,0.55) 18px, rgba(173,216,255,0.55) 22px),
-      repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(173,216,255,0.55) 18px, rgba(173,216,255,0.55) 22px),
-      repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(255,255,255,0.18) 6px, rgba(255,255,255,0.18) 8px),
-      repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(255,255,255,0.18) 6px, rgba(255,255,255,0.18) 8px);
-  }
-  /* Neon Pastel Tiger */
-  .swatch-tiger {
-    background: #F9E4C8;
-    background-image:
-      repeating-linear-gradient(
-        -55deg,
-        transparent 0px, transparent 8px,
-        rgba(255,120,20,0.85) 8px, rgba(255,120,20,0.85) 13px,
-        transparent 13px, transparent 24px,
-        rgba(255,80,0,0.6) 24px, rgba(255,80,0,0.6) 27px,
-        transparent 27px, transparent 36px
-      );
-  }
-  /* Neon Pastel Blue Cheetah */
-  .swatch-cheetah {
-    background: #D4F0FF;
-    background-image:
-      radial-gradient(ellipse 10px 6px at 20% 25%, rgba(30,120,220,0.75) 70%, transparent 100%),
-      radial-gradient(ellipse 6px 9px at 55% 15%, rgba(30,120,220,0.65) 70%, transparent 100%),
-      radial-gradient(ellipse 8px 5px at 75% 40%, rgba(30,120,220,0.7) 70%, transparent 100%),
-      radial-gradient(ellipse 11px 7px at 35% 60%, rgba(30,120,220,0.68) 70%, transparent 100%),
-      radial-gradient(ellipse 7px 10px at 80% 72%, rgba(30,120,220,0.72) 70%, transparent 100%),
-      radial-gradient(ellipse 9px 5px at 15% 80%, rgba(30,120,220,0.6) 70%, transparent 100%),
-      radial-gradient(ellipse 6px 8px at 60% 85%, rgba(30,120,220,0.65) 70%, transparent 100%);
-  }
-  /* Black White Zebra */
-  .swatch-zebra {
-    background: #F0EEE6;
-    background-image:
-      repeating-linear-gradient(
-        -70deg,
-        #080808 0px, #080808 10px,
-        transparent 10px, transparent 20px,
-        #080808 20px, #080808 26px,
-        transparent 26px, transparent 38px,
-        #080808 38px, #080808 42px,
-        transparent 42px, transparent 56px
-      );
-  }
-  .print-info {
-    background: var(--surface); padding: 24px 24px 28px;
-    flex: 1;
-  }
-  .print-name { font-size: clamp(14px, 1.5vw, 18px); margin-bottom: 6px; line-height: 1.1; }
-  .print-palette { font-size: 11px; color: var(--muted); font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
-
-  /* ── Philosophy strip ── */
-  .print-philosophy {
-    background: var(--ground);
-    border-top: 2px solid var(--accent);
-    padding: 72px 56px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .phil-statement {
-    font-size: clamp(22px, 3vw, 40px);
-    line-height: 1.25;
-    color: var(--text);
-  }
-  .phil-statement em {
-    font-style: normal;
-    color: var(--accent);
-  }
-  .phil-body {
-    font-size: 14px; color: var(--muted); line-height: 1.8;
-  }
-  .phil-body p + p { margin-top: 14px; }
-  .phil-rule {
-    font-size: clamp(13px, 1.4vw, 16px); color: var(--text);
-    border-top: 1px solid var(--accent); padding-top: 20px; margin-top: 28px;
-    font-style: italic;
-    font-family: Georgia, 'Times New Roman', serif;
-    line-height: 1.6;
-  }
-
-  /* ── Garments ── */
-  .garments-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
-    background: var(--border); margin-top: 2px;
-  }
-  .garment-card { background: var(--surface); padding: 40px 40px; }
-  .garment-form { font-size: clamp(20px, 2.5vw, 32px); margin-bottom: 10px; }
-  .garment-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
-  .garment-prints { display: flex; flex-wrap: wrap; gap: 6px; }
-  .garment-print-tag {
-    padding: 5px 12px; border: 1px solid var(--border);
-    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-    font-family: 'Courier New', monospace; color: var(--text);
-  }
-
-  /* ── Eyewear ── */
-  .eyewear-block {
-    background: var(--ground); padding: 56px 48px;
-    border-top: 1px solid var(--border); margin-top: 2px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
-  }
-  .eyewear-left { }
-  .eyewear-right { }
-  .eyewear-cat { color: var(--acid); margin-bottom: 8px; }
-  .eyewear-name { font-size: clamp(24px, 3vw, 44px); margin-bottom: 20px; }
-  .eyewear-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
-  .eyewear-desc p + p { margin-top: 14px; }
-  .eyewear-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
-  .e-tag { border: 1px solid var(--border); padding: 6px 14px; font-size: 11px; color: var(--text); letter-spacing: 0.08em; }
-  .e-tag.hot { border-color: var(--accent); color: var(--accent); }
-  .pack-note {
-    background: var(--surface); padding: 28px 32px; margin-top: 24px;
-    border-left: 2px solid var(--acid);
-  }
-  .pack-note-lbl { color: var(--acid); margin-bottom: 8px; }
-  .pack-note-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
-  @media (max-width: 960px) {
-    .prints-grid { grid-template-columns: 1fr 1fr; }
-    .print-philosophy { grid-template-columns: 1fr; gap: 40px; }
-    .garments-row { grid-template-columns: 1fr; }
-    .eyewear-block { grid-template-columns: 1fr; gap: 40px; }
-  }
-  @media (max-width: 600px) {
-    .prints-grid { grid-template-columns: 1fr 1fr; }
-  }
-</style>
-<div style="background:var(--surface);">
-  <div class="wrap section-pad">
-    <div class="section-hd">
-      <span class="mono section-idx" id="product">07</span>
-      <h2 class="d section-name">Product as Canvas</h2>
-    </div>
-    <p style="color:var(--muted); font-size:16px; max-width:640px; margin-bottom:64px; line-height:1.7;">Two product categories. Four prints. One shared language. The collection doesn't decorate the campaign — it is the campaign, made wearable.</p>
-  </div>
-
-
-  <!-- PRINT PHILOSOPHY -->
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
-    <div class="print-philosophy">
-      <div>
-        <p class="d phil-statement">Animal print is not a trend.<br>It is a <em>visual symbol</em> of authenticity.</p>
-        <p class="phil-rule">"They represent people who no longer hide, no longer blend in and no longer ask for permission to be themselves."</p>
-      </div>
-      <div class="phil-body">
-        <p>Animal prints were chosen not because they are rebellious, but because they symbolise instinctive self-expression. Throughout history they have been associated with confidence, visibility and individuality.</p>
-        <p>Within REVOLUTION they become a continuation of SUPER NATURE — carrying the power of nature into human expression. The trilogy closes here. ODYSSEY found identity. SUPER NATURE found connection to the natural world. REVOLUTION wears it.</p>
-        <p>Each print is a different kind of visibility. The zebra refuses to blend. The tiger moves with total conviction. The cheetah is the fastest version of itself. The tartan is structure made personal. Together they make a collection that doesn't ask whether the wearer fits in — it assumes they never wanted to.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE GARMENTS -->
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
-    <div class="garments-row">
-      <div class="garment-card">
-        <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 01</div>
-        <h4 class="d garment-form">Long Sleeve Tee</h4>
-        <p class="garment-desc">Full length. Maximum canvas. The oversized sleeve is the surface — where stickers go, where prints live, where the person shows up. Unisex fit, relaxed.</p>
-        <div class="garment-prints">
-          <div class="garment-print-tag">Pink Neon Tartan</div>
-          <div class="garment-print-tag">Neon Pastel Tiger</div>
-          <div class="garment-print-tag">Neon Pastel Blue Cheetah</div>
-          <div class="garment-print-tag">Black &amp; White Zebra</div>
-        </div>
-      </div>
-      <div class="garment-card">
-        <div class="mono" style="color:var(--acid); margin-bottom:10px; font-size:9px; letter-spacing:0.18em;">Silhouette 02</div>
-        <h4 class="d garment-form">Cropped Long Sleeve Tee</h4>
-        <p class="garment-desc">Same sleeve, shortened body. A different relationship to visibility. The crop is a statement in itself — worn with confidence, not apology. Available in all four prints.</p>
-        <div class="garment-prints">
-          <div class="garment-print-tag">Pink Neon Tartan</div>
-          <div class="garment-print-tag">Neon Pastel Tiger</div>
-          <div class="garment-print-tag">Neon Pastel Blue Cheetah</div>
-          <div class="garment-print-tag">Black &amp; White Zebra</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="class="ig-2col" style="margin-top:64px;"">
-      <img src="images/komono-revolution-pink-tartan-long-sleeve-tees.png" alt="Pink Neon Tartan long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
-      <img src="images/komono-revolution-blue-cheetah-long-sleeve-tees.png" alt="Blue Cheetah long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
-      <img src="images/komono-revolution-acid-tiger-long-sleeve-tees.png" alt="Acid Tiger long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
-      <img src="images/komono-revolution-zebra-sleeve-long-sleeve-tees.png" alt="Black & White Zebra long sleeve tee" loading="lazy" style="width:100%; display:block; object-fit:cover;">
-    </div>
-    <div style="class="ig-2col" style="margin-top:2px;"">
-      <img src="images/komono-revolution-acid-tiger-cap.png" alt="Acid Tiger cap" loading="lazy" style="width:100%; display:block; object-fit:cover;">
-      <img src="images/komono-revolution-phone-cases.png" alt="REVOLUTION phone cases" loading="lazy" style="width:100%; display:block; object-fit:cover;">
-    </div>
-  </div>
-
-  <!-- EYEWEAR -->
-  <div style="max-width:1380px; margin:0 auto; padding:0 56px;">
-    <div class="eyewear-block">
-      <div class="eyewear-left">
-        <div class="mono eyewear-cat">Category 02 — New Line</div>
-        <h4 class="d eyewear-name">REVOLUTION Eyewear</h4>
-        <div class="eyewear-desc">
-          <p>The sunglasses collection is born from the same visual language as the apparel. Each frame references the animal print palette — not by printing the pattern on the frame, but by carrying its energy into the silhouette, the colour, the lens tint, and the customisation options.</p>
-          <p>The zebra's contrast lives in the black-and-white frames. The tiger's warmth in the amber lenses. The cheetah's speed in the sharp angles. The tartan's structure in the acetate colour blocking. The print doesn't have to be literal to be present.</p>
-          <p>Each frame ships as a base. Charms, gems, pins, and attachments complete it — making every pair a one-of-one. The eyewear is the campaign's most wearable proof of concept. The mini paper sunglasses in the pack are the first version. The real frame is what you earn by submitting.</p>
-        </div>
-        <div class="eyewear-tags">
-          <div class="e-tag hot">Charms</div>
-          <div class="e-tag hot">Gems</div>
-          <div class="e-tag hot">Pins</div>
-          <div class="e-tag hot">Attachments</div>
-          <div class="e-tag">Animal print colour palette</div>
-          <div class="e-tag">Customisation Lab at event</div>
-          <div class="e-tag">In-store from March</div>
-        </div>
-      </div>
-      <div class="eyewear-right">
-        <div class="pack-note">
-          <div class="mono pack-note-lbl">In the Revolution Pack</div>
-          <p class="pack-note-body">Mini paper t-shirt mockup + mini paper sunglasses mockup. Both come with sticker sheets from the print collection. People design both at home, photograph their paper creations, and submit. The paper versions are the rehearsal. They lower the barrier to zero — no real product required to participate, no store visit, no event. The campaign is playable the moment the pack lands.</p>
-        </div>
-        <div class="pack-note" style="margin-top:2px;">
-          <div class="mono pack-note-lbl">The Connection to SUPER NATURE</div>
-          <p class="pack-note-body">The eyewear collection closes the loop between campaigns. SUPER NATURE was about our connection to the natural world. REVOLUTION puts that world on your body — and on your face. The animal is not a costume. It's a continuation. The person wearing it has stopped pretending to be separate from the nature they came from.</p>
-        </div>
       </div>
     </div>
   </div>
