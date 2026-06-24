@@ -881,6 +881,69 @@
   }
   .ci-phil-copy p + p { margin-top: 12px; }
 
+  /* catalogue design block */
+  .catalogue-block {
+    border: 1px solid var(--border);
+    padding: 48px;
+  }
+  .catalogue-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+  .catalogue-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .catalogue-title {
+    font-size: clamp(22px, 2.8vw, 42px);
+    color: var(--text);
+    margin-bottom: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .catalogue-body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .catalogue-specs {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border);
+    padding-left: 40px;
+  }
+  .catalogue-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .catalogue-spec-item:last-child { border-bottom: none; }
+  .catalogue-spec-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .catalogue-spec-val {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .catalogue-block { padding: 28px 20px; }
+    .catalogue-inner { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .catalogue-specs { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 24px; }
+  }
+
   /* collection grid */
   .ci-collection-grid {
     display: grid;
@@ -1180,9 +1243,40 @@
       <span class="mono section-idx" style="color:var(--muted);">●</span>
       <h2 class="d section-name" style="font-size:clamp(28px,3.5vw,52px);">The Collection</h2>
     </div>
-    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:40px; line-height:1.75;">The four visual worlds become the foundation for four distinct eyewear families. Rather than designing one collection with different colours, each world creates its own design language.</p>
+    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:64px; line-height:1.75;">The four visual worlds become the foundation for four distinct eyewear families. Rather than designing one collection with different colours, each world creates its own design language.</p>
 
-    <img src="images/catalogue_cover.png" alt="KOMONO REVOLUTION catalogue cover" loading="lazy" style="width:320px; max-width:100%; display:block; margin-bottom:32px;">
+    <!-- Catalogue design block -->
+    <div class="catalogue-block">
+      <div class="catalogue-label mono">Catalogue Design</div>
+      <div class="catalogue-inner">
+        <div class="catalogue-text">
+          <h3 class="d catalogue-title">Affordable Luxury,<br>Printed in Neon</h3>
+          <p class="catalogue-body">The cover is the first statement. A bright neon-pastel tartan printed with neon pastel inks — bold enough to stop you, considered enough to hold you. It doesn't whisper. It announces.</p>
+          <p class="catalogue-body">Inside, the logic shifts. Each spread follows a strict Swiss grid: one page of clean, typeset content; one page given entirely to a single image. White space does the heavy lifting. The neon pastel ink bleeds through as an accent, not a takeover.</p>
+          <p class="catalogue-body">The restraint is intentional. A catalogue that goes full Y2K loses the sense of luxury. This one earns it — by knowing exactly when to be quiet. The result feels like something you'd find in a high-end boutique that also has a sense of humour.</p>
+        </div>
+        <div class="catalogue-specs">
+          <div class="catalogue-spec-item">
+            <span class="catalogue-spec-label">Cover</span>
+            <span class="catalogue-spec-val">Neon pastel tartan print — vivid ink on uncoated stock</span>
+          </div>
+          <div class="catalogue-spec-item">
+            <span class="catalogue-spec-label">Interior layout</span>
+            <span class="catalogue-spec-val">Swiss grid — typography page facing full-bleed image page</span>
+          </div>
+          <div class="catalogue-spec-item">
+            <span class="catalogue-spec-label">Ink palette</span>
+            <span class="catalogue-spec-val">Neon pastel — pink, blue, acid, monochrome</span>
+          </div>
+          <div class="catalogue-spec-item">
+            <span class="catalogue-spec-label">Tone</span>
+            <span class="catalogue-spec-val">High fashion restraint with a campaign-level energy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img src="images/catalogue_cover.png" alt="KOMONO REVOLUTION catalogue cover" loading="lazy" style="width:320px; max-width:100%; display:block; margin-bottom:32px; margin-top:56px;">
 
     <div class="ci-collection-grid">
       <div class="ci-coll-item ci-coll-01">
