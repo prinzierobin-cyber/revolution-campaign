@@ -713,6 +713,61 @@
     color: var(--muted);
   }
 
+  /* transformation strip */
+  .transform-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 80px;
+    border: 1px solid var(--border);
+  }
+  .transform-panel {
+    position: relative;
+    overflow: hidden;
+  }
+  .transform-panel + .transform-panel { border-left: 1px solid var(--border); }
+  .transform-img {
+    width: 100%;
+    aspect-ratio: 3/5;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+  }
+  .transform-panel:hover .transform-img { transform: scale(1.05); }
+  .transform-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px 20px;
+    background: linear-gradient(to top, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.5) 50%, transparent 100%);
+  }
+  .transform-num {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+  .transform-title {
+    display: block;
+    font-size: clamp(15px, 1.4vw, 22px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .transform-msg {
+    font-size: 12px;
+    color: rgba(240,238,230,0.65);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  @media (max-width: 768px) {
+    .transform-strip { grid-template-columns: 1fr 1fr !important; }
+    .transform-panel:nth-child(3) { border-left: none; border-top: 1px solid var(--border); }
+    .transform-panel:nth-child(4) { border-top: 1px solid var(--border); }
+  }
+
   /* worlds grid */
   .ci-worlds-grid {
     display: grid;
@@ -978,6 +1033,42 @@
           <strong>REVOLUTION</strong> is about embodying it.
         </p>
         <p>They are no longer becoming. They are arriving.</p>
+      </div>
+    </div>
+
+    <!-- Transformation strip -->
+    <div class="transform-strip">
+      <div class="transform-panel">
+        <img class="transform-img" src="images/komono-revolution-hero-pink-neon-tartan-portrait.png" alt="The Awakening — Pink Neon Tartan" loading="lazy">
+        <div class="transform-overlay">
+          <span class="transform-num">01 / Pink Neon Tartan</span>
+          <span class="transform-title">The Awakening</span>
+          <p class="transform-msg">"She realises the door was never locked."</p>
+        </div>
+      </div>
+      <div class="transform-panel">
+        <img class="transform-img" src="images/komono-revolution-hero-blue-cheetah-portrait.png" alt="Velocity — Blue Cheetah" loading="lazy">
+        <div class="transform-overlay">
+          <span class="transform-num">02 / Blue Cheetah</span>
+          <span class="transform-title">Velocity</span>
+          <p class="transform-msg">"She stops asking. She starts moving."</p>
+        </div>
+      </div>
+      <div class="transform-panel">
+        <img class="transform-img" src="images/komono-revolution-hero-acid-tiger-portrait.png" alt="Instinct — Acid Tiger" loading="lazy">
+        <div class="transform-overlay">
+          <span class="transform-num">03 / Acid Tiger</span>
+          <span class="transform-title">Instinct</span>
+          <p class="transform-msg">"She trusts what she always knew."</p>
+        </div>
+      </div>
+      <div class="transform-panel">
+        <img class="transform-img" src="images/komono-revolution-hero-zebra-portrait.png" alt="Contrast — Zebra Monochrome" loading="lazy">
+        <div class="transform-overlay">
+          <span class="transform-num">04 / Zebra Monochrome</span>
+          <span class="transform-title">Contrast</span>
+          <p class="transform-msg">"She arrives. Exactly as she was always meant to be."</p>
+        </div>
       </div>
     </div>
 
